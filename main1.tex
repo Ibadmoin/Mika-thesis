@@ -591,7 +591,7 @@ The goal of this project is to develop a cross-platform mobile application with 
 \begin{itemize}
     \item[1.] \textbf{Logic Engine} IntentRouter (Dart-based) for parsing user commands and managing the model lifecycle.
     \item[2.] \textbf{Wake-Word} Custom CNN (TFLite) trained on private dataset of 7k+ samples.
-    \item[3.] \textbf{Vision Core} YOLOv8n Vision Core (General Detection) & YOLOv8-seg (Currency Segmentation), both quantized to FP16 for mobile efficiency.
+    \item[3.] \textbf{Vision Core} YOLOv8n Vision Core (General Detection) \& YOLOv8-seg (Currency Segmentation), both quantized to FP16 for mobile efficiency.
     \item[4.] \textbf{Brain (SLM)} Qwen 0.5B (picked for good RAM to performance ratio). 
     \item[5.] \textbf{Speech} Whisper Tiny (Offline STT) and Native TTS for Output
     \item[6.] \textbf{Hardware} Hardware Optimized for Android devices with 3-4GB RAM with TensorFlow Lite (TFLite) and Georgi Gerganov Machine Learning Library (GGML) acceleration.
@@ -1096,22 +1096,20 @@ When Regex patterns are insufficient due to OCR noise (e.g., a `0' recognized as
 \end{algorithm}
  
 \section{Phase IV: Currency Dataset Engineering and Segmentation}
-The currency identification system focuses on seven denominations of the PKR: 10, 20, 50, 100, 500, 1000, and 5000. To ensure the assistant can accurately count overlapping notes, the system utilizes Instance Segmentation rather than standard object detection.
+The currency identification system is aimed at seven denominations of PKR: 10, 20, 50, 100, 500, 1000, and 5000. The system uses Instance Segmentation instead of standard object detection to allow the assistant to accurately count overlapping notes.
  
 \subsection{Dataset Acquisition and Consolidation}
-A comprehensive local dataset of \textbf{3,611 images} was curated to capture the high variance in currency appearance, including physical wear, different lighting conditions, and various background textures.
- 
+A local dataset consisting of \textbf{3,611 images} was collected to account for high variance of currency appearance, for example, physical wear, different lighting conditions, and different background textures.
 \begin{itemize}
-    \item[1.] \textbf{Structural Organization} The raw data was organized into a hierarchical folder structure, separating the \textbf{Front} and \textbf{Back} views of each of the seven denominations to ensure the model learns bilateral features.
-    \item[2.] \textbf{Data Merging} These individual repositories were merged into a single unified dataset within the \textbf{Roboflow} environment, facilitating a streamlined training pipeline and robustness against real-world orientation changes.
+    \item[1.] \textbf{Structural Organization} The raw data was structured in a hierarchical folder structure, dividing the \textbf{Front} and \textbf{Back} views of each of the seven denominations so that the model could learn bilateral features.
+    \item[2.] \textbf{Data Merging} In the \textbf{Roboflow} environment we combined the individual repositories into a single, unified dataset that enabled a streamlined training pipeline and robustness to real-world orientation changes.
 \end{itemize}
  
 \subsection{AI-Accelerated Annotation via SAM 3}
-To overcome the bottleneck of manual polygon annotation, which typically requires defining hundreds of points per note, the project employs \textbf{SAM 3 (Segment Anything Model 3)} within the Roboflow Annotate ecosystem.
- 
+To address the bottleneck of manual polygon annotation that typically requires hundreds of points per note, the project utilizes \textbf{SAM 3 (Segment Anything Model 3)} within the Roboflow Annotate ecosystem.
 \begin{itemize}
-    \item[1.] \textbf{Process} SAM 3 acts as a zero-shot foundational segmenter. By providing a single point-click or a bounding box prompt, the model automatically predicts a high-fidelity mask around the currency note, as illustrated in Figure \ref{fig:roboflow_process}.
-    \item[2.] \textbf{Efficiency} This semi-automated approach reduced total annotation time by approximately \textbf{90\%}, allowing for the generation of 3,611 high-precision instance masks. These masks are critical for the final counting logic, enabling the model to distinguish between individual notes in stacked or partially obscured scenarios.
+    \item[1.] \textbf{Process} SAM 3 is a zero-shot foundational segmenter. The model automatically predicts a high fidelity mask around the currency note with a single point click or a bounding box prompt as shown in Figure  \ref{fig:roboflow_process}.
+    \item[2.] \textbf{Efficiency} This semi-automated approach reduced total annotation time by approximately \textbf{90\%}, resulting in 3,611 high-precision instance masks. These masks are important for the final counting logic, allowing the model to differentiate between individual notes in stacked or partially obscured situations.
 \end{itemize}
  
 \hypertarget{fig:4.5}{}
@@ -1162,23 +1160,22 @@ Deployment & Flutter with NPU/GPU Delegation \\
  
 \section{The Multimodal Intent Router}
 \subsection{Sequential Model Lifecycle (Load-Execute-Purge)}
-To operate on mobile devices with a 4 GB RAM ceiling, MIKA employs a ``Deterministic Memory Management'' strategy known as the Load-Execute-Purge cycle. Standard mobile architectures often fail when multiple heavy AI models (Whisper, Qwen, and YOLO) compete for the same heap space, leading to ``Out of Memory'' (OOM) crashes.
+MIKA runs on mobile devices with 4 GB RAM ceiling using a deterministic memory management strategy named Load-Execute-Purge cycle. Standard mobile architectures often struggle to handle multiple heavy AI models (Whisper, Qwen and YOLO) competing for the same heap space and crash with "Out of Memory" (OOM) errors.
  
 \begin{itemize}
-    \item[1.] \textbf{Sequential Loading:} The MIKA Orchestrator ensures that only one high-memory model is active at any given time.
+    \item[1.] \textbf{Sequential Loading:} The MIKA Orchestrator makes sure that only one high memory model is active at a time.
  
-    \item[2.] \textbf{Execution \& Interleaving:} When the Wake-Word engine (Stage 1) triggers, the system loads Whisper for STT; once the text is generated, Whisper is purged from RAM before Qwen 2.5 is initialized for intent analysis.
+    \item[2.] \textbf{Execution \& Interleaving:} When the Wake-Word engine (Stage 1) wakes up, the system loads Whisper for STT and once the text is generated, Whisper is purged from RAM before Qwen 2.5 is initialized for intent analysis.
  
-    \item[3.] \textbf{Manual Garbage Collection:} The system uses Dart's isolate management and native C++ free() commands via Foreign Function Interface (FFI) to explicitly clear model buffers, ensuring that the total memory footprint remains below 900 MB during peak operation.
+    \item[3.] \textbf{Manual Garbage Collection:}  The system uses Dart's isolate management and native C++ free() commands through Foreign Function Interface (FFI) for explicit clearing of model buffers to keep total memory footprint at 900MB at peak operation.
 \end{itemize}
  
 \subsection{Intent Classification with Qwen 2.5}
 The system utilizes the Qwen 2.5-0.5B SLM as a semantic router to interpret user needs.
  
 \begin{itemize}
-    \item[1.] \textbf{Contextual Understanding:} Unlike simple keyword matching, Qwen analyzes the user's natural language to determine the required vision module. For example, if a user says, ``Tell me what's in my hand,'' Qwen identifies the ``Object Detection'' intent.
- 
-    \item[2.] \textbf{Module Triggering:} If the user asks, ``How much money is this?'' or ``What is the name of this syrup?'', Qwen outputs a specific token that the Dart layer uses to trigger either the Currency Segmentation module or the Medicine OCR module.
+    \item[1.] \textbf{Contextual Understanding:} Unlike simple keyword matching, Qwen analyzes the user’s natural language to determine the required vision module. For example, if a user says, “Tell me what’s in my hand,” Qwen identifies the “Object Detection”
+    \item[2.] \textbf{Module Triggering:}  If the user asks, “How much money is this?” or “What is the name of this syrup?”, Qwen outputs a specific token that the Dart layer uses to trigger either the Currency Segmentation module or the Medicine OCR module intent.
  
     \item[3.] \textbf{Routing Logic:} This routing happens entirely offline, preserving privacy and eliminating latency associated with cloud-based intent APIs.
 \end{itemize}
