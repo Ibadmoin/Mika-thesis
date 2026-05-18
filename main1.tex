@@ -505,78 +505,67 @@ YOLO    & You Only Look Once \\
 \chapter{INTRODUCTION}
  
 \section{Background of the Study}
-\noindent The rapid advancement of AI has led to the widespread adoption of virtual assistants in everyday life. From smartphones to smart homes, these systems enhance user convenience by enabling voice-activated tasks and visual recognition. However, most commercially available AI assistants---such as Amazon's Alexa, Apple's Siri, and accessibility-focused apps like \textit{Be My Eyes}---rely heavily on cloud-based computation. This architectural dependency requires a persistent internet connection and involves the transmission of sensitive user data to remote servers, raising serious concerns regarding data privacy, response latency, and usability in low-bandwidth or disconnected environments.
+\noindent As AI is developing rapidly, virtual assistants have become omnipresent in our everyday lives. From smart-phones to smart-homes, these systems improve user comfort via voice-activated tasks and visual recognition. But most commercially cloud-based computation frequently leveraged by available AI helpers such as Amazon’s Alexa, Apple’s Siri, and accessibility-focused apps like Be My Eyes. This architectural dependency on a persistent Internet connection, the transmission of sensitive user data to remote servers, and serious privacy, response latency, and usability concerns in low-bandwidth or disconnected environments.
  
-\noindent Recent developments in Tiny Machine Learning (TinyML) and On-Device AI have introduced new opportunities for deploying complex neural networks directly on mobile devices. Through techniques such as model quantization and the use of hardware acceleration frameworks (e.g., Android Neural Networks API (NNAPI) and Apple CoreML), it has become feasible to perform tasks such as keyword spotting, object detection, and natural language reasoning locally. These advancements enable a transition from unimodal apps to Multimodal AI Systems that can process audio, vision, and text simultaneously on-device.
- 
+\noindent Recent advances in Tiny Machine Learning (TinyML) and On-Device AI have paved the way for running complex neural networks directly on mobile devices. by methods like model quantization and using hardware acceleration frameworks (e.g., Android Neural Networks API (NNAPI) and Apple Core ML), it is now possible to perform tasks such as keyword spotting, object detection and natural language reasoning locally. These advances allow a transition from unimodal apps to Multimodal AI Systems that can process audio, vision, and text together on-device.
 \section{Problem Statement}
-Modern AI assistants primarily depend on cloud-based processing for speech recognition, natural language understanding, and task execution. While cloud computation provides high accuracy, it introduces several critical limitations:
- 
+AI assistants today are mostly cloud-based, where speech recognition, natural language understanding and task execution happens. Cloud computation suffers from several critical limitations though it offers high accuracy. 
 \begin{itemize}
-    \item[1.] \textbf{Privacy Risks} The transmission of voice and visual data to remote servers poses a threat to user confidentiality, creating a trust barrier for sensitive environments like healthcare or personal homes.
-    \item[2.] \textbf{Latency} Cloud dependency results in ``round-trip'' delays, degrading the natural interaction experience required for real-time navigation or assistance.
-    \item[3.] \textbf{Connectivity Barriers} Reliance on the internet renders these assistants ineffective in rural regions, underground locations, or during travel.
-    \item[4.] \textbf{Device Constraints} Most multimodal AI models are too large for mid-range smartphones (3--4 GB RAM). Existing offline solutions often lack reasoning capabilities, providing only raw detection labels without context.
+    \item[1.] \textbf{Privacy Risks} The voice and visual data transmission to remote servers is a threat to user confidentiality creating a trust barrier for sensitive environments like healthcare or personal homes.
+    \item[2.] \textbf{Latency} Cloud dependence results in “round-trip” latencies, hindering the natural interaction experience required for real-time navigation or assistance.
+    \item[3.] \textbf{Connectivity Barriers} Barriers to Connectivity These helpers are useless as they depend on internet in the country, underground or on the move.
+    \item[4.] \textbf{Device Constraints} Device Limitations Most multimodal AI models are too large for mid-range smart phones (3-4 GB RAM). Existing offline solutions lack reasoning capabilities and provide raw detection labels without context.
 \end{itemize}
  
-Therefore, there is a critical need for an \textit{Intent-Based Multimodal Assistant} that operates entirely offline. Such a system must orchestrate specialized ``Tiny'' models to ensure privacy, low latency, and reliable performance while staying within strict mobile memory limits.
- 
+So a badly needed offline-only Intent Based Multimodal Assistant. Such a system calls for coordination of specialized “Tiny” models to achieve privacy, low latency and reliable performance under strict mobile memory barriers. 
 \subsection{Challenges in Medicine Identification for the Visually Impaired}
  
-\subsubsection{Physical and Geometric Constraints}
-The identification of pharmaceutical products represents one of the most critical daily living tasks for individuals with Visual Impairment (VI). Unlike general object recognition, medicine identification carries a high risk-to-reward ratio; a single misidentification of dosage or medication type can lead to severe Adverse Drug Events (ADEs), toxicity, or even mortality. 
+\subsubsection{Physical and Geometric Constraints} 
+Identification of pharmaceutical products is one of the most important daily living tasks for people with Visual Impairment (VI). In contrast to general object recognition, medicine identification has a high risk to reward ratio. A single misidentification of Incorrect dosage or type of medication can result in serious Adverse Drug Events (ADEs), toxicity or even death. 
+
+\noindent \textbf{The Non-Planar Surface Problem} Most pharmaceutical packaging, specifically pill bottles, vials, and tubes, are cylindrical or semi-cylindrical. Conventional Optical Character Recognition (OCR) engines are trained on planar (flat) surfaces like documents or street signs. When text wraps around a curved surface, the characters undergo geometric distortion, leading to “character skewing” where the edges of the text appear compressed. This makes it difficult for a standard vision pipeline to maintain a high Character Error Rate (CER).
  
-\noindent \textbf{The Non-Planar Surface Problem} Most pharmaceutical packaging, specifically pill bottles, vials, and tubes, are cylindrical or semi-cylindrical. Conventional Optical Character Recognition (OCR) engines are trained on planar (flat) surfaces like documents or street signs. When text wraps around a curved surface, the characters undergo geometric distortion, leading to ``character skewing'' where the edges of the text appear compressed. This makes it difficult for a standard vision pipeline to maintain a high Character Error Rate (CER).
- 
-\noindent \textbf{Small Font Size and High Density}
-Due to the legal requirements for medicine labeling (including ingredients, warnings, and manufacturer details), the font size on medicine bottles is often between 4pt and 6pt. For on-device mobile cameras, capturing clear, high-resolution features at this scale without significant motion blur is a major technical hurdle.
- 
+\noindent \textbf{Small Font Size and High Density} Medicine bottles will frequently use a font size of 4pt to 6pt. This is because medicine needs to be labeled according to law (ingredients, warnings, manufacturer details, etc.). The cameras on a mobile device can capture clear, high-resolution features at this scale without significant motion blur.
+
 \subsubsection{Visual and Environmental Interference}
  
-\noindent \textbf{Specular Reflection and Glossy Surfaces}
-Medicine packaging often utilizes plastic or foil materials that are highly reflective. Under standard indoor lighting, these surfaces create ``hotspots'' or specular reflections that wash out text features, rendering segments of the label unreadable for both the human eye and the AI model.
- 
+\noindent \textbf{Specular Reflection and Shiny Surfaces} The packaging of medicine is often made with very reflective plastic or foil. These surfaces create “hotspots” under normal indoor lighting i.e. specular reflections which wash out text features making parts of the label not readable for human eye and AI model. 
 \noindent \textbf{Label Occlusion and Damage}
-Medicines are frequently handled, leading to labels that may be torn, smudged by moisture, or partially occluded by the user's own fingers while holding the bottle. Developing a system that can perform ``Contextual Rebalancing''---using an SLM like Qwen 2.5 to guess missing letters based on pharmaceutical context---is essential.
- 
+Medicinesarefrequently handled, leading to labels that may be torn, smudged by moisture, or partially occluded by the user’s own fingers while holding the bottle. Developing a system that can perform “Contextual Rebalancing”—using an SLMlike Qwen 2.5 to guess missing letters based on pharmaceutical context—is essential. 
+
 \subsubsection{Cognitive and Ergonomic Barriers}
+\textbf{The Viewfinder Problem} One of the great challenges for visually impaired users is the “Viewfinder Problem” . It is hard to align the camera to the label perfectly because the user cannot see the screen. MIKA achieves this by providing the user with real-time haptic and audio feedback to guide the user’s hand until the medicine label is centered and in focus.
  
-\textbf{The Viewfinder Problem} A significant challenge for visually impaired users is the ``Viewfinder Problem.'' Since the user cannot see the screen, they often struggle to align the camera perfectly with the label. MIKA addresses this by providing real-time haptic and audio feedback to guide the user's hand until the medicine label is centered and in focus.
- 
-\noindent \textbf{Language and Technical Jargon}
-Even if text is recognized correctly, medicine names (e.g., ``Levothyroxine'' vs. ``Lisinopril'') are phonetically similar and complex. For a visually impaired user, hearing a raw OCR string is less helpful than an intelligent summary. MIKA utilizes the integrated SLM to translate recognized text into clear, spoken instructions regarding dosage and purpose.
- 
-\subsection{Computational Barriers in On-Device Multimodal AI}
- 
-The transition of Multimodal AI from high-performance cloud clusters to edge devices---specifically mid-range smartphones---is obstructed by a series of significant technical bottlenecks. While cloud-based AI enjoys virtually unlimited RAM and high-wattage Graphics Processing Units (GPUs), MIKA must operate within a ``constrained ecosystem'' where power, thermal, and memory resources are strictly finite.
- 
+\noindent \textbf{Language and Technical Jargon} Even if text is recognized correctly, medicinenames(e.g.,“Levothyroxine”vs.“Lisinopril”) are phonologically similar and complex. For a visually impaired user, a smart summary would be much more useful than hearing an OCR string as is. MIKA uses the SLM integrated in it to convert the detected text into clear spoken instructions as to the dosage and purpose. 
+
+\subsection{Computational Barriers in On-Device Multimodal AI} 
+The transition of Multimodal AI from high-performance cloud clusters to edge devices specifically mid-range smartphones is obstructed by a series of significant technical bottlenecks. While cloud-based AI enjoys virtually unlimited RAM and high-wattage Graphics Processing Units (GPUs), MIKA must operate within a ``constrained ecosystem'' where power, thermal, and memory resources are strictly finite. 
+
 \subsubsection{The Memory Bottleneck: RAM Fragmentation and Caps}
-The most immediate barrier in MIKA's development is the physical RAM limitation, commonly referred to as the ``4 GB Ceiling'' found in most mid-range Android devices. 
- 
+MIKA’s development has one major hurdle the physical RAM limitation, or the “4 GB Ceiling”, which is a characteristic feature of most mid-range Android devices. 
+
 \begin{itemize}
-    \item \textbf{Model Weights vs. Runtime Heap:} A quantized SLM like Qwen 2.5-0.5B requires approximately 350 MB to 500 MB of RAM just for its weights. When combined with the YOLOv8 segmentation head and the Whisper Speech-to-Text (STT) encoder, the baseline memory footprint often exceeds 1.2 GB.
-    \item \textbf{Operating System Overhead:} On a typical 4 GB device, the Android OS and background services consume up to 2.2 GB, leaving only 1.8 GB for the application. If MIKA attempts to load all multimodal engines (Vision, Speech, and Reasoning) simultaneously, the Android Low Memory Killer (LMK) will force-terminate the application process.
+    \item \textbf{Model Weights vs. Runtime Heap:} RAM needed for weights of a quantized SLM such as Qwen 2.5-0.5B is around 350 MB to 500 MB. The baseline memory footprint is often more than 1.2 GB with the YOLOv8 segmentation head and the Whisper Speech-to-Text (STT) encoder.
+    \item \textbf{Operating System Overhead:} Android OS and background services take up to 2.2 GB of a typical 4 GB device and leaves 1.8 GB for the application. If MIKA attempts to load all the multimodal engines (Vision, Speech and Reasoning) at once the Android Low Memory Killer (LMK) will kill the app process.
 \end{itemize}
  
 \subsubsection{The Heterogeneous Compute Challenge}
-Mobile System on Chips (SoCs) utilize ARM-based architectures that rely on Big.LITTLE core configurations. This creates a disparity in execution speed:
+Big architectures are used in mobile System on Chips (SoCs) based on ARM. LITTLE core configura­tions. This causes a difference in execution speed.
+
 \begin{itemize}
-    \item \textbf{CPU vs. NPU/GPU:} Standard Mobile Central Processing Units (CPUs) are inefficient at the matrix-matrix multiplications required for Deep Learning. While newer chips feature a Neural Processing Unit (NPU), the lack of standardized drivers for Flutter/Dart makes hardware acceleration difficult without complex Native Method Channels or Java Native Interface (JNI) bridging.
-    \item \textbf{Inference Latency:} Real-time assistance requires a latency of less than 200 ms for a ``fluid'' feel. Computational barriers often push this to 1.5s--3.0s on mobile CPUs, leading to a ``disconnected'' user experience for the visually impaired.
+    \item \textbf{CPU vs. NPU/GPU:} The usual Mobile Central Processing Unit (CPU) is not efficient for the matrix-matrix multiplications needed for Deep Learning. Newer chips come with a Neural Processing Unit (NPU) but without standard drivers for Flutter/Dart, doing hardware acceleration is hard without complex Native Method Channels or Java Native Interface (JNI) bridging.
+    \item \textbf{Inference Latency:} Real time support require a latency less than 200 ms to have a “fluid” feel. On mobile CPUs, this often pushes this to 1.5s-3.0s, creating a “disconnected” experience for the visually impaired.
 \end{itemize}
  
 \subsubsection{The Thermal-Power Trade-off}
-Unlike desktop GPUs, mobile chips face strict thermal limits. Continuous execution of the YOLOv8-seg model at 30 Frames Per Second (FPS) generates significant heat. Once the SoC reaches a critical temperature (typically 40--45°C), the OS reduces the clock speed (throttling), causing the frame rate to drop and the AI toolkit to become unresponsive.
- 
-\noindent Battery Depletion High-frequency polling of the camera sensor and the Digital Signal Processor (DSP) for wake-word detection is energy-intensive. MIKA must balance the ``Always-On'' requirement of a toolkit with the practical need to preserve the user's mobile battery life for the duration of a day.
+Unlike desktop GPUs, mobile chips face strict thermal limits. Continuous execution of the YOLOv8-seg model at 30 Frames Per Second (FPS) generates significant heat. Once the SoC reaches a critical temperature (typically 40–45°C), the OS reduces the clock speed (throttling), causing the frame rate to drop and the AI toolkit to become unresponsive. Battery Depletion High-frequency polling of the camera sensor and the Digital Signal Processor (DSP) for wake-word detection is energy-intensive. MIKA must balance the ``Always-On'' requirement of a toolkit with the practical need to preserve the user's mobile battery life for the duration of a day. Battery Depletion High-frequency polling of the camera sensor and the Digital Signal Processor (DSP) for wake-word detection is energy-intensive. MIKA must balance the ``Always-On'' requirement of a toolkit with the practical need to preserve the user's mobile battery life for the duration of a day.
  
 \subsubsection{Algorithmic Complexity and Quantization Loss}
-To fit these models on-device, they must undergo \textit{Quantization}---the process of reducing the precision of weights from 32-bit Floating Point (FP32) to 8-bit Integer (INT8) or 4-bit.
+To run these models on a device, they must be \textit{Quantized} (reduce the precision of the weights from 32-bit Floating Point (FP32) to 8-bit Integer (INT8) or 4-bit).
 \begin{equation}
     W_{quantized} = \text{round} \left( \frac{W_{float} - Z}{S} \right)
 \end{equation}
-Where $S$ is the scale factor and $Z$ is the zero-point. The mathematical barrier here is the ``Accuracy Drop.'' Reducing precision often leads to the loss of fine-grained features, which, in the case of MIKA, could mean the difference between correctly identifying a 1000 PKR note and misidentifying it as a 100 PKR note due to lost texture details.
- 
+Where $S$ is the scale factor and $Z$ is the zero-point. The mathematical barrier here is the “Accuracy Drop”. When we are going for lowering the precision we tend to lose fine grained features and in the case of MIKA this can be the difference of identifying a 1000 PKR note correctly and misidentifying it as a 100 PKR note due to texture details lost.
  
 \section{Aims and Objectives}
  
@@ -585,29 +574,27 @@ The primary aim of this research is to develop ``Mika'', a fully offline, intent
  
 \subsection{Objectives}
 \begin{enumerate}
-    \item \textbf{Development of a Robust Offline Wake-Word Engine} To implement a two-stage hierarchical KWS system for ``Hey Mika,'' utilizing custom-curated audio datasets to achieve low-latency activation with minimal false-trigger rates.
-    \item \textbf{Implementation of Optimized Visual Perception} To deploy a FP16 quantized YOLOv8n model for general object detection and a specialized YOLOv8\text{-}seg model for instance segmentation of Pakistani Currency, ensuring high-speed inference on mobile hardware.
- 
-    \item \textbf{Engineered Intent-Driven Orchestration} To develop an ``Intent Router'' within the Flutter framework that dynamically manages model lifecycles, optimizing RAM usage by loading specific AI pipelines only upon user demand.
- 
-    \item \textbf{Hardware-Accelerated System Optimization} To utilize quantization (FP16) and hardware delegation (NNAPI/GPU) to ensure the integrated multimodal stack operates within a strict 900 MB peak RAM footprint on mid-range devices.
+    \item \textbf{Development of a Robust Offline Wake-Word Engine} Building a Trusty Offline Wake-Word Engine Implement a two stage hierarchical KWS system for “Hey Mika” using custom curated audio datasets for low latency activation and minimal false trigger rates.
+    \item \textbf{Implementation of Optimized Visual Perception} Deploying FP16 quantized YOLOv8n model for generic object detection and custom YOLOv8-seg model for instance segmentation of Pakistani Currency for fast inference on mobile hardware.
+    \item \textbf{Engineered Intent-Driven Orchestration} Developed a "Intent Router" in Flutter that dynamically manages model lifecycle and decreases RAM usage by loading AI pipelines on demand. Optimizing Systems with Hardware Acceleration.
+    \item \textbf{Hardware-Accelerated System Optimization} The integrated multimodal stack is designed to fit within a tight 900 MB peak RAM footprint on mid-range devices, utilizing quantization (FP16) and hardware delegation (NNAPI / GPU).
     
 \end{enumerate}
  
 \section{Significance and Motivation}
-The motivation for this project is rooted in the \textit{Privacy by Design} and \textit{Inclusion} philosophies. By eliminating cloud communication, the proposed assistant ensures that user data remains entirely on-device. The specialized focus on Currency Detection via Segmentation and Intent Routing allows ``Mika'' to act not just as a detector, but as a ``Brain'' that understands user needs. This project proves that high-end AI accessibility is possible on mid-range smartphones, bridging the digital divide for users who cannot afford flagship devices or expensive data plans.
- 
+This project is motivated by the philosophy of Privacy by Design and Inclusion. The proposed assistant enables to remove the cloud communication and keep the user data fully on-device. Segmentation based Currency Detection with Specialized Attention and Intent Routing allows “Mika” to work as a “Brain” that understands user needs, not just as a detector. This project is proof that high-end AI accessibility is possible on mid-range smartphones, helping to bridge the digital divide for users who can’t afford flagship devices or expensive data plans. 
+
 \section{Project Scope \& Technical Stack}
-This project involves the development of a cross-platform mobile application using the Flutter framework.
- 
+The goal of this project is to develop a cross-platform mobile application with the use of the Flutter framework.
+
 \subsection{The ``Golden'' Tech Stack}
 \begin{itemize}
     \item[1.] \textbf{Logic Engine} IntentRouter (Dart-based) for parsing user commands and managing the model lifecycle.
-    \item[2.] \textbf{Wake-Word} Custom Convolutional Neural Network (CNN) (TFLite) trained on a 7,000+ sample proprietary dataset.
-    \item[3.] \textbf{Vision Core} YOLOv8n (General Detection) and YOLOv8-seg (Currency Segmentation).
-    \item[4.] \textbf{Brain (SLM)} Qwen 0.5B (selected for its superior RAM-to-performance ratio).
-    \item[5.] \textbf{Speech} Whisper Tiny (Offline STT) and Native Text-to-Speech (TTS) for output.
-    \item[6.] \textbf{Hardware} Optimized for Android devices with 3--4 GB RAM using TensorFlow Lite (TFLite) and Georgi Gerganov Machine Learning Library (GGML) acceleration.
+    \item[2.] \textbf{Wake-Word} Custom CNN (TFLite) trained on private dataset of 7k+ samples.
+    \item[3.] \textbf{Vision Core} YOLOv8n Vision Core (General Detection) & YOLOv8-seg (Currency Segmentation), both quantized to FP16 for mobile efficiency.
+    \item[4.] \textbf{Brain (SLM)} Qwen 0.5B (picked for good RAM to performance ratio). 
+    \item[5.] \textbf{Speech} Whisper Tiny (Offline STT) and Native TTS for Output
+    \item[6.] \textbf{Hardware} Hardware Optimized for Android devices with 3-4GB RAM with TensorFlow Lite (TFLite) and Georgi Gerganov Machine Learning Library (GGML) acceleration.
 \end{itemize}
  
 \hypertarget{fig:1.1}{}
@@ -945,22 +932,20 @@ Git LFS optimizes the \textbf{CI/CD} pipeline by fetching only required model bi
 \chapter{METHODOLOGY}
  
 \section{Introduction to Methodology}
-This chapter outlines the systematic approach used to design, develop, and evaluate the Mika assistant. The methodology is centered on the ``Privacy-by-Design'' principle, ensuring all processing occurs locally on mid-range mobile hardware (3--4 GB RAM) without cloud dependency.
- 
+This chapter describes the systematic process of designing, developing and evaluating the Mika The methodological approach follows the “Privacy-by-Design” principle and all processing is done locally on mid-range mobile hardware (3–4 GB RAM) without cloud dependence.
+
 \section{Proposed System Architecture}
-The system is designed as a modular, multimodal pipeline integrated within a Flutter framework. To address the strict memory limitations of 4 GB RAM devices, the architecture employs a \textbf{Dynamic Resource Orchestration} strategy. Instead of concurrent execution, the pipeline follows a \textbf{phased lifecycle} where models are loaded and purged from memory based on the active task.    
- 
+The system is a modular, multimodal pipeline integrated in a Flutter framework. The architecture uses a Dynamic Resource Orchestration approach to deal with the severe memory limitations of 4 GB RAM devices. The pipeline follows a phased lifecycle rather than a concurrent execution, with models being loaded and purged from memory depending on the active task 
 The pipeline follows these sequential stages:
 \begin{itemize}[label=\textbullet]
-    \item[1.] \textbf{Always-On Audio Sensing} A lightweight engine monitors for the ``Hey Mika'' wake word.
-    \item[2.] \textbf{STT} Upon activation, Whisper Tiny (INT8) is loaded to transcribe the user's verbal command.
-    \item[3.] \textbf{LLM-Based Intent Routing} The transcript is passed to the Qwen 2.5 (0.5B) model, which serves as the ``Intelligent Router'' to determine the user's specific goal.
-    \item[4.] \textbf{Specialized Execution} Based on the identified intent, the system unloads the STT/LLM and initializes either the general YOLOv8n detection model or the specialized YOLOv8-seg currency model.
+    \item[1.] \textbf{Always-On Audio Sensing} A lightweight engine listens for the wake word “Hey Mika”..
+    \item[2.] \textbf{STT} STT When enabled, Whisper Tiny (INT8) loads to transcribe the user’s spoken command into text.
+    \item[3.] \textbf{LLM-Based Intent Routing} Intent Routing Based on LLM Next, the transcript is fed into the “Intelligent Router” Qwen 2.5 (0.5B) model to ascertain the user’s particular goal.
+    \item[4.] \textbf{Specialized Execution} Implementation Customised Based on the detected intent, the system unloads the STT/LLM and loads either the general YOLOv8n detection model or the YOLOv8-seg currency model.
 \end{itemize}
  
 \subsection{MIKA Life-Cycle: From Wake-word to Descriptive Audio}
-The architecture of Mika is designed as a multimodal pipeline optimized for 4 GB RAM. The system employs a phased loading strategy to ensure only one memory-intensive model is active at a time. The high-level logic and data flow are illustrated in Figure \ref{fig:system_flowchart}.
- 
+Mika is a 4 GB RAM multimodal pipeline. The system ensures that only one memory intensive model is active at a time through a phased loading approach. Figure illustrates the high-level logic and data flow of the system, showing how the wake-word detection triggers the loading of the intent router, which then determines whether to load the general vision model or the specialized currency segmentation model based on user intent. 
  
 \hypertarget{fig:4.1}{}
 \begin{figure}[H]
@@ -994,7 +979,7 @@ The system uses a \textbf{Two-Stage Wake-Word Pipeline}:
 \section{Phase II: Vision System and Dynamic Routing}
  
 \subsection{Model Optimization: 320x320 YOLOv8n}
-While 640x640 is the standard input for YOLOv8n, the system utilizes a \textbf{320x320 resolution} for mobile inference. This optimization reduces the computational workload, ensuring a stable FPS and preventing thermal throttling.
+YOLOv8n uses 640x640 as standard input but for mobile inference the system uses 320x320 resolution. This optimization decreases the computational load, providing a stable FPS and avoiding thermal throttling.
  
 \hypertarget{fig:4.2}{}
 \begin{figure}[H]
@@ -1005,17 +990,17 @@ While 640x640 is the standard input for YOLOv8n, the system utilizes a \textbf{3
 \end{figure}
  
 \subsection{Qwen 2.5 as Intent Router: Logic for Switching Modules}
-A critical design shift replaced heuristic-based routing with the \textbf{Qwen 2.5 (0.5B) SLM}. Qwen parses natural language to identify complex intents, such as distinguishing between general object identification and financial queries. To stay within the 4 GB RAM budget, Qwen is purged before the Vision or Currency models are initialized.
- 
+The biggest design change was that the Qwen 2.5 (0.5B) SLM no longer uses heuristics to route. Qwen parses natural language to understand complex intents, such as the difference between identifying general objects vs financial questions. Qwen is flushed before Vision or Currency model initialization to fit within the 4GB RAM budget. 
+
 \subsection{Currency Detection: Instance Segmentation vs. Object Detection}
-For financial tasks, the system switches from generalized object detection to the specialized YOLOv8-seg model. While standard object detection is sufficient for general navigation, currency recognition for the visually impaired demands a higher degree of spatial precision. The choice to utilize Instance Segmentation over traditional Bounding Boxes (Object Detection) is a deliberate architectural decision based on the following technical requirements:
- 
+The system evolves from generic object detection to the specialized YOLOv8-seg model for financial tasks. Standard object detection suffices for general navigation, but currency recognition for the visually impaired demands a higher degree of spatial accuracy. The choice to use Instance Segmentation, instead of regular Bounding Boxes (Object Detection), is a conscious architectural choice based on the following technical requirements:  
+
 \noindent\textbf{A. Pixel-Level Precision and Masking}
  
-\noindent Standard object detection identifies an object within a rectangular boundary box. As illustrated in Figure 4.3, while a bounding box captures the general location of an object (such as the sheep or the dog), it also includes significant ``background noise''---pixels that do not belong to the object itself.
+\noindent Standard object detection finds an object in a rectangular boundary box. Figure 4.3 shows a bounding box that gives the general location of an object (the sheep or the dog) but also contains a lot of “background noise” – pixels that do not belong to the object itself. For a visually impaired user trying to identify a PKR note, this could lead to misidentification if the background contains similar colors or patterns (e.g., a colorful shirt or a patterned tablecloth).
  
-\noindent In contrast, Instance Segmentation creates a pixel-perfect colorful mask that identifies exactly which pixels belong to which specific instance. For currency, this means the system can ``see'' the exact shape and orientation of a PKR note. This precision is vital when a user is holding a bill at an angle or when the bill is partially folded.
- 
+\noindent Instance Segmentation, however, generates a colorful mask at the pixel level that shows which pixels belong to which exact instance. For currency, this means the system can “see” the precise shape and position of a PKR note. when a user has the bill at an angle or the bill is partially folded Occlusion, when one banknote occludes another, is one of the biggest challenges in currency identification. 
+
 \hypertarget{fig:4.3}{}
 \begin{figure}[H]
     \centering
@@ -1029,22 +1014,22 @@ For financial tasks, the system switches from generalized object detection to th
  
 \noindent One of the most significant challenges in currency identification is occlusion---where one banknote partially covers another.
  
-\noindent\textbf{The Bounding Box Failure:} When notes overlap, rectangular boxes often intersect or merge, making it difficult for a vision system to distinguish where one note ends and another begins. This can lead to double-counting or complete failure in identification.
+\noindent\textbf{The Bounding Box Failure:} When notes overlap, rectangular boxes often intersect or merge, making it difficult for a vision system to distinguish where one note ends and another begins. This can lead to double counting or not identifying at all. 
  
-\noindent The Segmentation Advantage: As shown in the PKR-3611 dataset samples (Figure 4.4), instance segmentation allows MIKA to isolate individual bills even in a cluttered pile. By assigning a unique mask to each instance (e.g., the 5000, 1000, and 500 PKR notes), the system can accurately count the total value of the currency present by identifying the distinct ``footprint'' of every bill.
+\noindent \textbf{Segmentation Advantage:} Instance segmentation allows MIKA to separate individual bills even in a cluttered pile, as seen in the samples from the PKR-3611 dataset (Figure 4.4). The system can identify the total value of the currency present by recognizing the unique “footprint” of each bill. Each bill has a unique mask like 5000, 1000 and 500 PKR notes.
  
 \noindent\textbf{C. Improved Reasoning for the Visually Impaired}
  
-\noindent For a user who cannot see the screen, accuracy is more important than mere speed. By using YOLOv8-seg, MIKA provides a more ``grounded'' understanding of the environment.
+\noindent For a user who cannot see the screen, accuracy is more important than mere speed. By using YOLOv8-seg, MIKA provides a more “grounded” understanding of the environment. 
+
+\noindent \textbf{Spatial Verification:} The system can verify if a note is fully in frame or cut off by analyzing the mask’s completeness.
  
-\noindent Spatial Verification: The system can verify if a note is fully in frame or cut off by analyzing the mask's completeness.
- 
-\noindent Background Rejection: Because the model ignores everything outside the mask, it reduces the risk of misidentifying a colorful background object as a banknote.
+\noindent \textbf{Background Rejection:} Because the model ignores everything outside the mask, it reduces the risk of misidentifying a colorful background object as a banknote.
  
 \noindent\textbf{D. Computational Justification}
  
-\noindent While instance segmentation is more computationally expensive than standard detection, the trade-off is justified for high-stakes financial tasks. To maintain performance on hardware-constrained devices (4 GB RAM), MIKA utilizes a Dynamic Routing approach: the segmentation model is only loaded into memory when the user specifically requests currency assistance or when the Qwen 2.5 ``router'' identifies a financial intent. This ensures that the system provides ``pixel-perfect'' reliability without sacrificing the overall battery life or responsiveness of the application.
- 
+\noindent While instance segmentation is more computationally expensive than standard detection, the trade-off is justified for high-stakes financial tasks. To maintain performance on hardware-constrained devices (4 GB RAM), MIKA utilizes a Dynamic Routing approach: the segmentation model is only loaded into memory when the user specifically requests currency assistance or when the Qwen 2.5 “router” identifies a financial intent. This ensures that the system provides “pixel-perfect” reliability without sacrificing the overall battery life or responsiveness of the application.
+
 \hypertarget{fig:4.4}{}
 \begin{figure}[H]
     \centering
