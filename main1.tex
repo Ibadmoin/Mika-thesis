@@ -1047,25 +1047,25 @@ The third phase of the MIKA framework addresses the critical task of medicine id
  
 \subsection{Challenges: Curved Surfaces, Glossy Labels, and Small Fonts}
  
-Medicine packaging presents a unique set of ``Vision Obstacles'' that typically cause standard OCR algorithms to fail.
- 
-\paragraph{Curved Surface Distortion} Most medicine containers are cylindrical (bottles and vials). When a camera captures a 2D image of a 3D cylinder, the text at the lateral edges of the bottle undergoes \textit{perspective foreshortening}. This results in ``character squeezing,'' where the aspect ratio of the letters is distorted, leading to high CER in the OCR engine's feature extractor.
- 
+Medicine packaging presents a unique set of “Vision Obstacles” that typically cause standard OCR algorithms to fail. 
+
+\paragraph{Curved Surface Distortion} Most medicine containers are cylindrical (bottles and vials). When acamera captures a 2D image of a 3D cylinder, the text at the lateral edges of the bottle undergoes perspective foreshortening. This results in “character squeezing,” where the aspect ratio of the letters is distorted, leading to high CER in the OCR engine’s feature extractor. 
+
 \paragraph{Specular Reflection and Gloss}
-Pharmaceutical labels are often coated with a protective glossy film. In indoor environments with overhead lighting, this results in specular highlights---bright white spots that ``wash out'' the pixel intensity of the text. This loss of contrast prevents the binarization layer of the OCR from distinguishing between the font and the background.
+Specular Reflection and Glossiness Pharmaceutical labels are usually laminated with a glossy film to protect them. This results in specular highlights under indoor overhead lighting, i.e. bright white spots that ”wash out” the pixel intensity of the text. This loss of ( The contrast makes it impossible for the OCR binarization layer to distinguish the font from the background. 
  
 \paragraph{Small-Scale Typography}
-Legal mandates require manufacturers to include extensive chemical and regulatory data on small containers. This necessitates the use of extremely small font sizes (often 4pt to 6pt). Capturing these requires a high-resolution sensor and sophisticated anti-blur algorithms, as even microscopic hand tremors can render the text unreadable at this scale.
- 
+
+Miniature Type Extensive chemical and regulatory data is required by law to be included on small containers. This means using very small font sizes (typically 4pt to 6pt). To capture these you need a high resolution sensor and some serious anti-blur algorithms . The tiniest tremor of the hand can make the text unreadable at this scale .
+
 \subsection{Implementation of Google ML Kit Text Recognition v2}
- 
-To overcome these challenges on a resource-constrained 4 GB RAM device, MIKA implements the Google ML Kit Text Recognition v2 API. This runtime was selected over Tesseract due to its optimized inference on mobile GPUs.
+To address these challenges on a resource-constrained 4 GB RAM device, MIKA uses the Google ML Kit Text Recognition v2 API. This runtime was chosen for its optimized inference for mobile GPUs, compared to Tesseract. 
  
 \paragraph{Integration Pipeline}
-The implementation utilizes the Flutter \texttt{google\_ml\_kit} package. The image stream from the camera is converted into an \texttt{InputImage} format. Instead of processing every frame, MIKA employs a ``Sharpness Filter'' to select only the clearest frames for inference, thereby saving battery and reducing thermal throttling.
+Implementation uses the flutter google ml kit package. The camera image stream is translated into an InputImage format. MIKA uses a “Sharpness Filter” to select the clearest frames for inference instead of running on every frame, saving battery and thermal throttling. 
  
 \paragraph{Cylindrical Unwarping Simulation}
-While ML Kit is robust, MIKA enhances the recognition by employing a dynamic cropping strategy. The vision system identifies the ``Center of Interest'' (COI) of the bottle where curvature is minimal, effectively bypassing the most distorted text on the edges of the cylinder.
+ML Kit is robust but MIKA improves the recognition with a dynamic cropping strategy. The vision system identifies the “Center of Interest” (COI) of the bottle where the curvature is minimal, thus effectively bypassing the most distorted text on the edges of the cylinder.
  
 \subsection{Logic for Extracting Expiry Dates and Dosage Information}
  
@@ -1078,8 +1078,7 @@ MIKA uses Regular Expressions (Regex) to scan the OCR output for critical patter
     \item \textbf{Dosage:} Patterns identifying numeric values followed by units like ``mg'', ``ml'', or instructions such as ``OD'' (Once Daily) and ``BD'' (Twice Daily).
 \end{itemize}
  
-\paragraph{Semantic Post-Processing with Qwen 2.5}
-When Regex patterns are insufficient due to OCR noise (e.g., a `0' recognized as an `O'), the text string is passed to the local \textbf{Qwen 2.5-0.5B} model. The SLM acts as a ``Medical Corrector,'' using its internal pharmaceutical knowledge to infer the correct medicine name and dosage instructions from the fragmented text. 
+\paragraph{Semantic Post-Processing with Qwen 2.5} Semantic Post-Processing with Qwen 2.5 When Regex patterns are insufficient due to OCRnoise (e.g., a ‘0’ recognized as an ‘O’), the text string is passed to the local Qwen 2.5-0.5B model. The SLM acts as a “Medical Corrector,” using its internal pharmaceutical knowledge to infer the correct medicine name and dosage instructions from the fragmented text.
  
 \begin{algorithm}
 \caption{Medicine Information Extraction Logic}
@@ -1181,26 +1180,24 @@ The system utilizes the Qwen 2.5-0.5B SLM as a semantic router to interpret user
 \end{itemize}
  
 \section{High-Fidelity Vision Pipeline}
-Once the intent is identified, MIKA activates specialized vision pipelines optimized for the high precision required by visually impaired users.
- 
+When the intent is recognized, MIKA launches specific vision pipelines tuned for the high accuracy needed by visually impaired users. For the PKR-3611 currency task, the system uses YOLOv8-seg as the financial accuracy cannot be achieved with ordinary bounding boxes.  
+
 \subsection{Instance Segmentation vs. Bounding Boxes}
 For the PKR-3611 currency task, the system utilizes YOLOv8-seg because standard bounding boxes are insufficient for financial accuracy.
  
 \begin{itemize}
-    \item[1.] \textbf{Pixel-Level Masks:} Unlike standard detection which uses rectangular boxes, instance segmentation generates a precise mask for every banknote. This is critical for counting overlapping notes where boxes would simply intersect and fail to distinguish individual bills.
+    \item[1.] \textbf{Pixel-Level Masks:} Unlike standard detection, which uses rectangular boxes, instance segmentation creates an accurate mask for each banknote. This is important for counting overlapping notes where boxes would simply intersect and not be able to distinguish individual bills. 
  
-    \item[2.] \textbf{Codebase Logic:} The updated implementation processes these masks through a custom ``Instance Counter'' that identifies the total value of currency in view by verifying the unique pixel-area of each denomination mask, providing a much higher confidence level for the user than traditional detection.
+    \item[2.] \textbf{Codebase Logic:} The updated implementation sends these masks through a custom “Instance Counter” which finds the total value of currency in view by verifying the unique pixel-area of each denomination mask, giving a much higher level of confidence to the user than traditional detection.
 \end{itemize}
  
 \subsection{Non-Planar OCR Strategy}
-Medicine identification presents a unique challenge: text is often printed on cylindrical or warped surfaces (bottles and vials) which causes traditional OCR to fail due to character distortion.
+One particular problem is the identification of medicines, since the text is usually printed on cylindrical or deformed surfaces (bottles and vials), which makes the traditional OCR fail due to the distortion of the characters. 
  
 \begin{itemize}
-    \item[1.] \textbf{Google ML Kit V2 Integration:} MIKA utilizes the advanced ML Kit Text Recognition v2 API, which is optimized for mobile hardware and offers superior perspective correction.
- 
-    \item[2.] \textbf{Cylindrical Handling:} The pipeline handles non-planar surfaces by capturing multiple frames and using a ``Text-Stitching'' logic that reconstructs the medicine name as the user slowly rotates the bottle.
- 
-    \item[3.] \textbf{Semantic Correction:} Once the raw text is extracted (e.g., ``P-anad-ol''), it is passed back to Qwen 2.5 for post-processing, where the SLM uses its internal knowledge base to correct the fragmented string into a recognizable medicine name for the user.
+    \item[1.] \textbf{Google ML Kit V2 Integration:} MIKA uses the latest ML Kit Text Recognition v2 API which is optimized for mobile hardware with improved perspective correction. 
+    \item[2.] \textbf{Cylindrical Handling:} The pipeline handles non-planar surfaces by capturing a number of frames and by applying a “Text-Stitching” logic that reconstructs the name of the medicine as the user rotates the bottle slowly. 
+    \item[3.] \textbf{Semantic Correction:} The extracted raw text (e.g., “P-anad-ol”) is sent back to Qwen 2.5 for post-processing . The SLM uses its internal knowledge base to correct the fragmented string to a recognizable medicine name for the user.
 \end{itemize}
  
 % -----------------------Implementation---------------------
