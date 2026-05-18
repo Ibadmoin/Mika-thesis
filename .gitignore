@@ -1,0 +1,39 @@
+# LaTeX build artifacts
+*.aux
+*.fdb_latexmk
+*.fls
+*.lot
+*.lof
+*.toc
+*.log
+*.out
+*.synctex.gz
+*.bbl
+*.blg
+*.fot
+*.cb
+*.cb2
+.latex/
+
+# PDF output (optional - comment out if you want to track PDFs)
+*.pdf
+
+# Backup files
+*.bak
+*~
+*.swp
+*.swo
+
+# Editor temporary files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Python cache and other build files
+__pycache__/
+*.pyc
+.env
+
+# OS specific
+.AppleDouble
+.LSOverride
