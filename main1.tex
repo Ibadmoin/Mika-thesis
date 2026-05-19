@@ -239,8 +239,7 @@
 
 \vspace{0.4cm}
 
-\noindent This is to certify that the Final Year Project titled \textbf{``Mika: A Fully Offline and Privacy Preserving AI Assistant for Voice Interaction and Real Time Visual Perception''} has been carried out by the following group members under the supervision of \textbf{Ms. Noor ul Huda}.
-
+\noindent This is to certify that the Final Year Project titled \textbf{“Mika: A Fully Offline and Privacy Preserving AI Assistant for Voice Interaction and Real Time Visual Perception”} has been carried out by the following group members under the supervision of \textbf{Ms. Noor ul Huda.}
 
 
 \begin{center}
@@ -263,9 +262,9 @@ Lecturer
 
 \end{center}
 
-\noindent
-\begin{tabular}{@{}l p{3cm} r@{}}
-    \rule{6cm}{0.4pt} & & \rule{6cm}{0.4pt} \\
+\hspace{1cm}
+\begin{tabular}{@{}l c r@{}}
+    \rule{5cm}{0.4pt} & & \rule{5cm}{0.4pt} \\
     \textbf{FYP Coordinator} & & \textbf{Chairperson} \\
     & & \\
     \textbf{RAHILA SHAH} & & \textbf{Dr. ADNAN WAQAR} \\
@@ -289,7 +288,7 @@ Lecturer
     \vspace{5cm}
     {\Large  \textbf{Dedication}}\\
     \vspace{1cm}
-    \textbf{We dedicate this project to our beloved parents, whose prayers and endless support have been our greatest strength. To our teachers, for lighting the path of knowledge, and to the visually impaired community, for whom this work was envisioned, may this small contribution help pave the way toward a more accessible and independent future.}
+    \textbf{This project is, for our parents who we love much. They always prayed for us. Supported us. This has given us the strength to keep going. We also want to thank our teachers for showing us the way to learn things. We want to thank the visually impaired community because we made this project for them. We hope this project will help make their lives a little easier and more independent.}
 \end{center}
 
 \vspace{0.8cm}
@@ -311,14 +310,14 @@ Lecturer
     \end{center}
     
 
-\noindent First and foremost, I express my deepest gratitude to \textbf{Almighty Allah} for providing me with the health, wisdom, and perseverance to complete this research.
+\noindent First of all we would like to thank \textbf{Almighty Allah} for providing us health, wisdom and perseverance to complete this research.
 
-\noindent Iwould like to extend my sincere thanks to my supervisor, \textbf{Ms. Noor ul Huda}, for her invaluable guidance and constant encouragement. Her technical insights into Edge AI and model optimization were instrumental in navigating the challenges of on-device orchestration and hardware constraints. I am also deeply grateful to the Head of Department, \textbf{Dr. Adnan Waqar}, and the FYP Coordinator, \textbf{Ms. Rahila Shah}, for their administrative support and for providing the academic environment necessary to pursue this work.
+\noindent We are thankful to our Supervisor \textbf{Ms. Noor ul Huda}, for her guidance and continuous help. Her knowledge in Edge AI and model optimization was very critical in addressing the issues of on-device orchestration and hardware constraints. We are also very thankful to Head of Department \textbf{Dr. Adnan Waqar} and FYP Coordinator \textbf{Ms. Rahila Shah} for their support and for providing us the academic environment needed for doing this work.
 
-\noindent To my teammates \textbf{Ibad Moin, Maryam Tariq, Khuzaima Irfan, and Abdul Wasay Sarwar}: thank you for the countless late-night debugging sessions and for being the best "sounding board" I could ask for. Together, we turned a complex vision into a functional reality through shared dedication and hard work.
+\noindent Thanks to our teammates \textbf{Ibad Moin, Maryam Tariq, Khuzaima Irfan, Abdul Wasay Sarwar} for all the late nights we spent fixing problems and for being a good team to work with. It was very hard to do research on Edge AI We both worked and we pulled it off.
 
-\noindent Finally, my heartiest thanks go to my \textbf{parents and family}. Their unwavering belief in my abilities, their prayers, and their constant motivation kept me focused during the most demanding phases of this project. I also thank my friends for their understanding and support throughout this journey.\vspace{1.5cm}
-
+\noindent Finally, my heartiest thanks go to my \textbf{parents and family}. Their unwavering belief in my abilities, their prayers, and their constant motivation kept me focused during the most demanding phases of this project. I also thank my friends for their understanding and support throughout this journey.
+\noindent And last but not least we want to thank our \textbf{parents and families} from the bottom of our heart. They always believed in us, prayed for us. They were always there to lean on through the toughest parts of this project. Our friends who were there with us all the way, for their support and understanding. We also wish to thank them.\vspace{1.5cm}
 %--------------------------Abstract---------------------
 \clearpage
 \thispagestyle{logoheader} 
@@ -336,15 +335,11 @@ Lecturer
 
 \vspace{0.3cm}
 
-\noindent The development of Mika is rooted in the philosophy of \textbf{Empathetic Engineering}—the belief that high-end AI should not be a privilege reserved for those with expensive hardware and high-speed internet. For a visually impaired individual, the digital world is often a landscape of ``broken promises'' where cloud-based latency can turn a simple task, like identifying a 500-rupee note in a bustling market, into a moment of public vulnerability. By ensuring that Mika operates entirely offline, we have transformed the smartphone from a mere communication device into a reliable, localized extension of the user’s biological senses. This work acknowledges that for an assistive tool to be truly empowering, it must be as steadfast and private as a human companion, functioning in the quiet of a pharmacy or the chaos of a connectivity-deprived street.
-
+\noindent Mika’s development is based on the philosophy of \textbf{Empathetic Engineering}: the concept that high-end AI should not be a privilege of those with expensive hardware and high-speed internet. For a visually impaired person, the digital world often translates into a landscape of “broken promises”. The latency of the cloud can make a simple task, such as identifying a 500-rupee note in a bustling market, a moment of public vulnerability. Through a complete offline operation of Mika, we have transformed the smartphone from a basic communication device into a reliable local extension of the user’s biological senses. This work recognizes that for an assistive tool to be truly empowering it needs to be as steadfast and private as a human companion, working in the quiet of a pharmacy or the chaos of a connectivity deprived street
 \vspace{0.4cm}
-
-\noindent A significant portion of this research was dedicated to solving the ``Tactile Reality'' of the user’s environment. Standard AI models are typically trained on idealized, flat datasets; however, the lived experience of the visually impaired involves interacting with a world that is often crumpled, curved, and dimly lit. The creation of the \textbf{PKR-3611} dataset and the development of the \textbf{Cylindrical Unwarping} logic for medicine labels were not merely technical milestones, but responses to the genuine risks of medication errors and financial misidentification. By optimizing these complex tasks for a 4GB RAM environment, Mika democratizes safety, proving that sophisticated reasoning can be distilled into a form factor that is accessible, affordable, and inclusive.
-
+\noindent Much of this research was devoted to the resolution of the “Tactile Reality” of the user environment. Standard AI models are usually trained on idealized, flat datasets; yet, the lived experience of the visually impaired is one in which the world is often crumpled, curved, and dimly lit. The construction of the \textbf{PKR-3611} dataset and design of the \textbf{Cylindrical Unwarping} logic for medicine labels were not only technical achievements but were reactions to the actual threats of medication errors and financial misidentification. Mika democratizes safety by optimizing these complex tasks for a 4GB RAM environment, showing that sophisticated reasoning can be distilled into a form factor that is accessible, affordable and inclusive.
 \vspace{0.4cm}
-
-\noindent Furthermore, the \textbf{Latency-First Design} of the Mika toolkit addresses the psychological aspect of assistive technology. When response times exceed a few hundred milliseconds, the ``Human-AI'' bond is fractured, and the tool becomes a burden rather than a help. By achieving sub-300ms inference, Mika provides a conversational flow that respects the user's pace of life. This research ultimately argues that the true measure of an AI’s intelligence is not found in the size of its parameters, but in its ability to fade into the background, providing the user with a seamless, unshakeable sense of security. Mika stands as a testament to a design approach where the human experience is the primary variable, ensuring that technology serves as a bridge to independence and a guardian of personal dignity.
+\noindent Furthermore, the \textbf{Latency-First Design} of the Mika toolkit takes into account the psychological aspect of assistive technology. If the response time exceeds a few hundred milliseconds, the “Human-AI” connection breaks down and the tool becomes a burden rather than a help. Mika offers a conversational flow with sub-300ms inference, to respect the user’s pace of life. In the end, this study suggests that the true measure of an AI’s intelligence is not in the size of the parameters but in its capacity to fade into the background, providing a seamless, unshakeable sense of security for the user. Mika is testament to a design approach where human experience is the primary variable, ensuring technology is a bridge to independence and a guardian of personal dignity.
 % -------------------- TABLE OF CONTENTS --------------------
 \clearpage
 \thispagestyle{logoheader} 
@@ -536,7 +531,7 @@ Medicinesarefrequently handled, leading to labels that may be torn, smudged by m
 \subsubsection{Cognitive and Ergonomic Barriers}
 \textbf{The Viewfinder Problem} One of the great challenges for visually impaired users is the “Viewfinder Problem” . It is hard to align the camera to the label perfectly because the user cannot see the screen. MIKA achieves this by providing the user with real-time haptic and audio feedback to guide the user’s hand until the medicine label is centered and in focus.
  
-\noindent \textbf{Language and Technical Jargon} Even if text is recognized correctly, medicinenames(e.g.,“Levothyroxine”vs.“Lisinopril”) are phonologically similar and complex. For a visually impaired user, a smart summary would be much more useful than hearing an OCR string as is. MIKA uses the SLM integrated in it to convert the detected text into clear spoken instructions as to the dosage and purpose. 
+\noindent \textbf{Language and Technical Jargon} Even if text is recognized correctly, medicine names (e.g., ``Levothyroxine'' vs. ``Lisinopril'') are phonologically similar and complex. For a visually impaired user, a smart summary is more useful than hearing an OCR string as is. MIKA uses the integrated SLM to convert the detected text into clear spoken instructions about dosage and purpose.
 
 \subsection{Computational Barriers in On-Device Multimodal AI} 
 The transition of Multimodal AI from high-performance cloud clusters to edge devices specifically mid-range smartphones is obstructed by a series of significant technical bottlenecks. While cloud-based AI enjoys virtually unlimited RAM and high-wattage Graphics Processing Units (GPUs), MIKA must operate within a ``constrained ecosystem'' where power, thermal, and memory resources are strictly finite. 
@@ -683,7 +678,7 @@ Our work is grounded in the \textbf{Privacy-by-Design} and \textbf{Edge-AI} fram
 \end{itemize}
 
  
-\subsection{Vision Theory: Math of $IoU$, NMS, and Instance Segmentation..}
+\subsection{Vision Theory: Math of IoU, NMS, and Instance Segmentation}
  
 The reliability of the MIKA toolkit depends on its ability to not only see objects but to localize them with mathematical precision. In the context of assistive technology, a ``near miss'' in detection---such as misidentifying the boundaries of a currency note or a medicine bottle---can lead to total system failure. To achieve the necessary robustness on-device, MIKA relies on three core mathematical pillars: Intersection over Union (IoU), Non-Maximum Suppression (NMS), and the mask-prediction logic of Instance Segmentation.
   
