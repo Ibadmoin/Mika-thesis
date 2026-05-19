@@ -16,6 +16,7 @@
   left=3.5cm,
   right=2.5cm,
   headheight=35pt}
+\setlength{\headheight}{92pt}
  
 % -------------------- Packages --------------------
 \usepackage{titlesec}
@@ -610,7 +611,7 @@ The goal of this project is to develop a cross-platform mobile application with 
 \section{Historical Overview}
  
 \noindent The evolution of assistive technology for the visually impaired has seen a paradigm shift from simple physical aids to the current frontier of on-device AI. Aid has generally been confined to mechanical devices like Braille, long canes, and optical zooming devices.the current frontier of on-device AI. Historically, assistance was limited to mechanical tools such as \textit{Braille}, long canes, and optical zooming The evolution of assistive technology for the visually impaired has seen a paradigm shift from simple physical aids to the current frontier of on-device AI. Aid has generally been confined to mechanical devices like Braille, long canes, and optical zooming devices.
-\noindent Evolution of Computer Vision \& Object DetectionThe first generation of digital assistance was the stationary computer-based technology. These systems were bulky and often consisted of a combination of flatbed scanners and desktop computers for performing OCR . These early systems were not portable and computationally expensive, and sensitive to high error rates with different fonts or poor lighting conditions.
+\noindent Evolution of Computer Vision and Object DetectionThe first generation of digital assistance was the stationary computer-based technology. These systems were bulky and often consisted of a combination of flatbed scanners and desktop computers for performing OCR . These early systems were not portable and computationally expensive, and sensitive to high error rates with different fonts or poor lighting conditions.
 \noindent The second generation of assistive technology was focused on mobile-based platforms with the global proliferation of smartphones . However, this was the era of the “Cloud-Client” architecture. Sending information to remote servers was heavily relied on for complex tasks. As noted in the literature, this reliance led to a “Connectivity Gap” in which users in low-bandwidth zones lost their independence. Also, transmitting real-time camera feeds to the cloud posed severe privacy risks to users capturing sensitive personal environments.
 \noindent The current historical phase is a movement to Edge Intelligence. Recent research focuses on bypassing the cloud by embedding deep learning models directly on mobile hardware. A “Hardware Bottleneck” initially limited this transition, in that heavy CNNs were larger than the memory capacity of standard devices. With the advent of “Modular Experts” (quantized, lightweight architectures such as YOLOv8 and SLMs that can co-exist within the limited RAM of mid-range smartphones), the field has grown up today. Mika is a system for this current milestone: portable, private, resilient to the lack of internet infrastructure.
 \subsection{Evolution of Computer Vision \& Object Detection}
@@ -782,12 +783,12 @@ Traditionally, Flutter utilized the \textbf{Skia Graphics Library} for its cross
 \noindent On the 4 GB RAM devices targeted by this project, this runtime compilation creates a phenomenon known as ``Shader Compilation Jitter'' or ``Jank.'' For MIKA, this means the first time a user identifies a 1000-rupee note, the app might freeze for 100--200 ms while the shader compiles. In an assistive context, this momentary freeze can lead to a loss of synchronization between the audio output and the camera feed.
  
 \paragraph{2. Impeller: Built-for-Performance Architecture}
-To solve this, the MIKA project leverages the \textbf{Impeller} engine. Unlike Skia, Impeller is designed with a ``Pre-compiled Shaders'' philosophy. Instead of waiting for the user to trigger a graphic to compile the code, Impeller pre-optimizes a smaller, simpler set of shaders during the build time of the application. 
- 
-\noindent Mathematically, Impeller optimizes the \textbf{Draw Call Pipeline}. By utilizing modern graphics APIs like Metal on iOS and Vulkan on Android, it moves away from the heavy overhead of OpenGL. This results in a much flatter execution curve:
+ The MIKA project uses the Impeller engine to solve this. \textbf{Impeller} is different from Skia because it is based on “Pre-compiled Shaders”. Instead of waiting for the user to invoke a graphic to compile thecode, Impeller pre-optimizes a smaller, simpler set of shaders at application build time.
+\noindent Mathematically Impeller is an optimized \textbf{Draw Call Pipeline}. It avoids the high overhead of OpenGL by using modern graphics APIs like Metal on iOS and Vulkan on Android. This gives a much flatter execution curve:
+
 \begin{itemize}
-    \item \textbf{Predictable Latency:} Impeller provides a consistent frame-time, which is essential when the CPU is already under heavy load from the Qwen 2.5 and YOLOv8-seg models.
-    \item \textbf{Concurrency Efficiency:} Impeller is designed to handle multiple rendering threads better than Skia, allowing MIKA to render a high-resolution camera preview while simultaneously drawing AI-predicted masks in a separate layer.
+    \item \textbf{Consistent Latency:} Impeller provides a consistent frame-time, which is vital when the CPU is already under heavy load with the Qwen 2.5 and YOLOv8-seg models.
+    \item \textbf{Concurrency Efficiency:} Impeller is designed to better utilize multiple rendering threads when compared to Skia . This allows MIKA to render a high-resolution camera preview and draw AI-predicted masks in a separate layer simultaneously.
 \end{itemize}
  
 \paragraph{3. Hardware Impact for MIKA}
@@ -796,10 +797,11 @@ For a device with 4 GB of RAM, the memory footprint of the graphics engine is as
 \subsection{Dart Isolates for Multi-threaded AI Inference}
 \subsubsection{Dart Isolates for Multi-threaded AI Inference}
  
-A fundamental challenge in developing the MIKA toolkit is the ``Single-Threaded'' nature of the Dart language. By default, Flutter executes all code from UI animations to button clicks---on a single Main Thread. When a computationally intensive task like running the \textbf{Qwen 2.5} reasoning engine or the \textbf{YOLOv8-seg} model is executed on this thread, it creates a ``blocking'' effect. For a visually impaired user, this would result in a frozen camera preview and delayed audio feedback, which is not only frustrating but potentially dangerous when identifying medication. 
+One of the main difficulties in the development of the MIKA tool kit is its "Single-Threaded" property of Dart programming language. Flutter runs all code in UI animations, to button taps, to network requests in the same thread by default. clicks-- on a single Main Thread. Executing a computationally intensive task such as this thread runs the Qwen 2.5 reasoning engine, or the YOLOv8-seg model, it has a ‘blocking’ effect.  For a blind user that would mean stuck camera preview and delayed audio feedback, not only frustrating, but possibly dangerous to identify medicine. 
  
-To overcome this, MIKA utilizes \textbf{Dart Isolates} to implement true multi-threaded AI inference. Unlike traditional threads in languages like Java or C++, Isolates do not share memory. Each Isolate has its own memory heap and its own event loop, ensuring that one task cannot accidentally interfere with another.
- 
+
+MIKA combats this by using \textbf{Dart Isolates} for actual multi-threaded AI induction.  Isolates don't have shared memory like the traditional threads in Java or C++ memory each isolate has its own memory heap, and its own event loop such that one task can’t accidentally step on another
+
 \hypertarget{fig:3.2}{}
 \begin{figure}[h]
     \centering
@@ -810,36 +812,34 @@ To overcome this, MIKA utilizes \textbf{Dart Isolates} to implement true multi-t
  
  
 \paragraph{1. The Multi-Isolate Architecture of MIKA}
-In the MIKA architecture, the application is divided into three distinct operational layers:
+In MIKA architecture the application is divided into three different operation layers:
+Main (UI Isolate): 
 \begin{itemize}
-    \item \textbf{The UI Isolate (Main):} Handles the Flutter rendering engine (Impeller), captures camera frames, and provides instantaneous TTS feedback.
-    \item \textbf{The Inference Isolate (Worker):} A dedicated, background Isolate where the TFLite and ML Kit interpreters reside. This is where the mathematical heavy-lifting occurs.
-    \item \textbf{The Audio Isolate:} A specialized worker for the \textbf{MFCC} feature extraction and Wake-word detection to ensure the ``Mika'' command is always being listened for without lagging the vision system.
+    \item \textbf{The UI Isolate (Main):} Manages the Flutter rendering engine (Impeller), captures camera frames, and offers immediate TTS feedback.
+    \item \textbf{The Inference Isolate (Worker):} A dedicated, background Isolate that executes the TFLite and ML Kit interpreters. This is where the heavy lifting of the math happens.
+    \item \textbf{The Audio Isolate:} A worker dedicated to the \textbf{MFCC} feature extraction and Wake-word detection, so the “Mika” command is always being listened for without lagging the vision system.
 \end{itemize}
  
 \paragraph{2. Zero-Copy Communication and Port Messaging}
-Because Isolates do not share memory, data must be passed between them using \textit{SendPorts} and \textit{ReceivePorts}. When the UI Isolate captures a high-resolution frame of a medicine bottle, it sends the raw byte data to the Inference Isolate. 
- 
-\noindent To maintain efficiency on 4 GB RAM hardware, MIKA utilizes \textbf{TransferableTypedData}. Instead of copying a 2 MB image---which would double the memory consumption and lead to a crash---this method allows the Isolate to ``transfer'' ownership of the memory buffer. Mathematically, this reduces the time complexity of data sharing from $O(n)$ to $O(1)$, as only the memory pointer is moved rather than the entire pixel array.
- 
+Isolates do not share memory, so data must be passed between them through \textit{SendPorts} and \textit{ReceivePorts}. When the UI Isolate takes a high resolution frame of medicine bottle, send the raw byte data to the Inference Isolate.
+\noindent MIKA leverages \textbf{TransferableTypedData} for efficiency on 4 GB RAM hardware. To copy a 2 MB image would double the memory consumption and lead instead of copying a 2 MB image to a crash. This technique enables the Isolate to “transfer” ownership of the memory buffer. Mathematically this reduces the time complexity of data sharing from O(n) to O(1) as the whole pixel array, but only the memory pointer is moved.
 \paragraph{3. Solving the 4 GB RAM ``Concurrency Crisis''}
-The primary advantage of this multi-threaded approach is the preservation of the \textbf{Frame-Budget}. Flutter requires the Main Isolate to finish its work every 16.6 ms to maintain 60 FPS. By offloading a YOLOv8 inference task (which may take 100--150 ms on a mid-range CPU) to a background Isolate, we ensure that the camera view remains fluid. This concurrency logic is the backbone of MIKA's reliability; it allows the system to perform complex reasoning and OCR in the background while the user continues to receive real-time, low-latency guidance from the interface.
- 
+The main benefit of this multi-threaded approach is that the \textbf{Frame-Budget} can be saved. Flutter needs the. Main Isolate to do its work every 16.6 ms to keep 60 FPS. Offload a YOLOv8 inference task (which might take 100–150 ms on a mid-range CPU) to a background Isolate We make sure to keep the camera movement smooth. This concurrent logic forms the backbone of MIKA's robustness. It allows the system to perform complex reasoning and OCR in the background, while the user continues to receive real-time, low latency guidance from the interface.”
+
 \section{On-Device AI Runtimes}
  
 \subsection{TensorFlow Lite (TFLite) Delegate Management}
 \subsubsection{TFLite Delegate Management}
  
-The performance of MIKA's vision-assisted features---such as real-time currency detection and medicine label reading---is entirely dependent on the efficiency of the inference engine. On mobile hardware, executing deep neural networks like \textbf{YOLOv8} solely on the CPU often leads to high latency and thermal throttling. To achieve sub-100 ms response times on a 4 GB RAM device, MIKA utilizes a sophisticated \textbf{Delegate Management} system within the TFLite runtime to bypass the CPU and leverage specialized hardware accelerators.
- 
+Only the performance of the inference engine can impact the success of MIKA’s vision-augmented capabilities, like real-time currency identification and medicine label reading. The CPU alone running deep neural networks like \textbf{YOLOv8} on mobile hardware usually results in high latency and thermal throttling. To get sub-100 ms response times on a 4 GB RAM device. MIKA uses a sophisticated \textbf{Delegate Management} system in the TFLite runtime to bypass the CPU and use specialized hardware accelerators.
+
 \paragraph{1. The GPU Delegate: Parallelism for Vision}
-For the \textbf{YOLOv8-seg} and \textbf{Qwen 2.5} vision components, MIKA prioritizes the \textbf{GPU Delegate}. Mobile GPUs are architecturally designed for high-throughput, massively parallel workloads, making them ideal for the thousands of simultaneous matrix multiplications required by a CNN. 
- 
-By employing the GPU delegate, MIKA realizes three distinct advantages:
+MIKA likes the \textbf{GPU Delegate} for \textbf{YOLOv8-seg} and \textbf{Qwen 2.5} vision The mobile GPUs, however, are architecturally different. optimized for massive parallel high throughput workloads and thus perfect for the thousands of parallel matrix multiplications a CNN needs.
+There are three unique benefits of using the GPU delegate for MIKA:
 \begin{itemize}
-    \item \textbf{Reduced Latency:} Inference speed is typically boosted by 2x to 5x compared to floating-point CPU execution.
-    \item \textbf{FP16 Precision:} MIKA enables \texttt{allow\_precision\_loss} within the GPU options. This forces the GPU to perform calculations in 16-bit half-precision (FP16), significantly reducing memory bandwidth and power consumption without a perceptible loss in object detection accuracy.
-    \item \textbf{Thermal Stability:} By offloading the math to the GPU, the CPU remains cool, preventing the system from slowing down during extended use (e.g., a user scanning multiple grocery items).
+    \item \textbf{Reduced Latency:} Inference latency is typically 2x to 5x better than Floating point CPU execution . . . . 
+    \item \textbf{FP16 Precision:}MIKA GPU options have precision loss. Which means performing calculations on the GPU in 16-bit half precision (FP16). This greatly reduces memory bandwidth and power consumption with no meaningful loss of accuracy in detecting objects.
+    \item \textbf{Thermal Stability:} The math is sent to the GPU , so the CPU stays cool and the system doesn ' t slow down from prolonged use ( e.g. a user scans multiple grocery items ) .
 \end{itemize}
  
 \paragraph{2. NNAPI and the ``Fall-back'' Strategy}
@@ -848,24 +848,24 @@ On Android devices within the 4 GB RAM tier, hardware capabilities vary signific
 \noindent A critical aspect of MIKA's reliability is the \textbf{Graceful Fall-back} mechanism. If the TFLite interpreter encounters an operator that the GPU cannot support (a common issue with custom layers in experimental models), the Delegate Manager automatically routes that specific operation back to the CPU. This ensures that the MIKA toolkit never crashes; it merely shifts between ``High-Performance'' and ``Compatibility'' modes based on the current hardware environment.
  
 \paragraph{3. Memory-Mapped Model Loading}
-To manage the 4 GB RAM constraint, the Delegate Manager utilizes \textbf{Memory Mapping (mmap)}. Instead of loading the entire 20 MB+ TFLite model into the active heap, MIKA maps the file directly into the virtual memory space. This allows the delegate to read only the weights it needs for the current inference layer. This ``Zero-Copy'' loading strategy ensures that MIKA leaves enough RAM available for the foreground camera stream and the Flutter rendering engine, preventing the Operating System from killing the app due to memory pressure.
- 
+The Delegate Manager uses \textbf{Memory Mapping (mmap)} to overcome the 4 GB RAM limitation. MIKA does not load the entire 20+ MB TFLite model into the active heap, but maps the file directly into the virtual memory space. This means that the delegate only needs to read the weights it needs for the current inference layer.
+This “Zero-Copy” loading strategy guarantees that MIKA has enough RAM for the foreground camera stream and the Flutter rendering engine, so that the Operating System does not kill the app due to memory pressure.
+
 \subsection{Google ML Kit: Optimized Text Recognition for Mobile}
 \subsubsection{Google ML Kit: Optimized Text Recognition for Mobile}
  
-For a multimodal assistant designed to support visually impaired users in real-world environments, the ability to extract text from physical objects such as medicine bottles, grocery labels, and street signs must be near-instantaneous. Within the MIKA toolkit, this responsibility is managed by \textbf{Google ML Kit's Text Recognition v2} API. Unlike cloud-based Vision APIs that require a persistent internet connection and incur significant data latency, ML Kit provides an optimized, on-device inference engine that aligns with MIKA's core philosophy of privacy and offline reliability.
- 
+To enable multimodal assistant to assist visually impaired users in the real-world environment, the ability to extract text on physical objects such as medicine bottles, grocery labels, and street signs, has to be near-instantaneous. In the MIKA toolkit, this is taken care of by the \textbf{Google ML Kit's Text Recognition v2}. Not like cloud-based Vision APIs that require a constant internet connection and are troubled by significant data latency, ML Kit also provides an optimized on-device inference engine that matches. The core philosophy of MIKA is privacy and offline reliability.
+
 \paragraph{1. The Pipeline: Detection, Script Identification, and Recognition}
-Google ML Kit utilizes a multi-stage deep learning pipeline specifically tuned for mobile ARM architectures. When MIKA passes a camera frame to the ML Kit isolate, the engine performs three simultaneous operations:
-\begin{itemize}
-    \item \textbf{Text Detection:} The model identifies regions of interest (ROI) that contain text-like features, creating a hierarchical structure of Blocks, Lines, and Elements.
-    \item \textbf{Script Identification:} MIKA leverages ML Kit's ability to detect different scripts (Latin, Devanagari, etc.) automatically. This is vital for the toolkit's future scalability in multi-lingual environments.
-    \item \textbf{Recognition:} The engine runs a specialized CNN combined with an LSTM decoder to convert visual patterns into a digital string.
+Google ML Kit uses a multi-stage deep learning pipeline optimized for mobile ARM architectures. When MIKA passes a camera frame to the ML Kit isolate, the engine does three concurrent operations:\begin{itemize}
+    \item \textbf{Text Detection:} The model identifies Regions of Interest (ROI) with text-like features, resulting in a hierarchy of Blocks, Lines and Elements.
+    \item \textbf{Script Identification:} MIKA utilizes ML Kit’s script identification to identify different scripts automatically (Latin, Devanagari etc. This is important for future scalability of the toolkit. in multilingual environments.
+    \item \textbf{Recognition:} The engine employs a proprietary CNN coupled with an LSTM decoder for transducing visual patterns into a digital string.
 \end{itemize}
  
 \paragraph{2. Optimization for Mid-Range Hardware}
-To operate within the strict 4 GB RAM threshold of the target hardware, ML Kit employs a \textbf{Quantized Model Architecture}. By using INT8 for the underlying neural weights, the engine reduces the memory footprint of the OCR module to a fraction of its original size. Furthermore, ML Kit leverages the \textbf{NNAPI} to utilize the device's DSP for text extraction, ensuring that the main CPU remains available for the Qwen 2.5 reasoning tasks.
- 
+To meet the strict 4 GB RAM limit of the target hardware, ML Kit employs a \textbf{Quantized Model Architecture}. Through the engine reduces the memory footprint of the OCR module to a fraction of its original size by using INT8 for the underlying neural weights. Also, ML Kit uses the \textbf{NNAPI} to offload text extraction to the device's DSP, so that the main CPU stays for Qwen 2.5 reasoning tasks.
+
 \paragraph{3. Integration with the MIKA Reasoning Layer}
 A unique feature of the MIKA implementation is how ML Kit interacts with the \textbf{SLM}. Raw OCR output is often ``noisy,'' especially when dealing with the cylindrical distortion of medicine bottles. ML Kit provides not just the text, but also the \textbf{Confidence Scores} and \textbf{Corner Points} (coordinates) of each detected block. 
  
@@ -875,41 +875,43 @@ A unique feature of the MIKA implementation is how ML Kit interacts with the \te
  
 \subsection{Containerization with Docker}
  
-Developing a multimodal AI system like MIKA involves a complex web of dependencies, including specific versions of the Flutter Software Development Kit (SDK), Android NDK, Python runtimes for model quantization, and various C++ headers for TFLite delegates. A common challenge in large-scale academic projects---often referred to as ``Environment Drift''---occurs when code works on one developer's machine but fails on another due to subtle differences in local configurations. To eliminate this bottleneck and ensure a consistent Development-to-Deployment pipeline, the MIKA project utilizes \textbf{Docker} for environment containerization.
- 
+Building a multimodal AI system like MIKA is a complex web of dependencies, including specific versions of the Flutter Software Development Kit (SDK), Android NDK, Python runtimes for model quantization, and various C++ headers for TFLite delegates. A frequent problem with large scale academic projects is “Environment Drift”, where code will work on one developer’s machine but not another’s, due to subtle differences between local configurations. To remove this bottleneck and establish a consistent Development-to-Deployment pipeline, the MIKA project leverages \textbf{Docker} for environment containerization.
+
 \paragraph{1. The Virtualized Development Environment}
-Docker allows the MIKA team to encapsulate the entire development stack into a lightweight, portable \textbf{Container}. Unlike a traditional Virtual Machine (VM) that requires a full guest operating system, Docker shares the host's kernel, making it significantly more efficient for the 4 GB RAM constraints of our target environment. 
- 
+Mika team can use Docker to package the entire development stack into a lightweight, portable \textbf{Container}. Rather than a Unlike the traditional Virtual Machine (VM) that requires a full guest operating system, Docker shares the host’s kernel and is therefore significantly more efficient for the 4 GB RAM constraints of the our target environment .
+In our project, the Docker image is set up to have:
+
 In our project, the Docker image is configured to include:
 \begin{itemize}
-    \item \textbf{Pre-configured Toolchains:} The exact versions of the Android SDK and NDK required for TFLite C++ builds.
-    \item \textbf{Consistent Python Environment:} A locked environment for model conversion (using \texttt{onnx2tf} or \texttt{tflite-support}) to ensure that quantization results for YOLOv8 and Qwen 2.5 are identical across all developer machines.
-    \item \textbf{Headless Build Services:} Automated scripts that compile the Flutter application into a release APK without the overhead of a graphical interface.
+    \item \textbf{Pre-configured Toolchains:} Exact versions of the Android SDK and NDK required for TFLite C++ build.
+    \item \textbf{Consistent Python Environment:} Fixed environment for model conversion (using \texttt{onnx2tf} or \texttt{tflite-support}) to guarantee the quantization results for YOLOv8 and Qwen 2.5 are the same on all developer machines.
+    \item \textbf{Headless Build Services:} Automated scripts that build the Flutter application to an APK release without the overhead of a graphical interface.
 \end{itemize}
  
 \paragraph{2. Streamlining Collaboration and CI/CD}
-Since MIKA is a collaborative effort involving multiple group members, Docker serves as the ``Source of Truth.'' By sharing a single \texttt{Dockerfile}, every contributor---including Ibad Moin and Maryam Tariq---can spin up an identical workspace in seconds. This eliminates the ``It works on my machine'' syndrome. 
+Docker is the “Source of Truth” as MIKA is a collaborative effort by a number of members of the group. By sharing. single Dockerfile, all the contributors like Ibad Moin and Maryam Tariq can spin up an identical workspace in seconds. This removes the “It works on my machine” syndrome. 
  
-Furthermore, containerization facilitates a robust \textbf{Continuous Integration / Continuous Deployment (CI/CD)} pipeline. When a new version of the PKR-3611 currency dataset is integrated or a new OCR unwarping logic is committed, the Docker container automatically builds and tests the code in an isolated environment. This ensures that any memory leaks or hardware delegation errors are caught in the virtualized space before they ever reach the physical Android device.
+Also, containerization makes it possible to have a robust \textbf{Continuous Integration / Continuous Deployment (CI/CD)} pipeline. When the new version of currency PKR-3611
+dataset is committed or a new OCR unwarping logic is committed, the Docker container automatically builds and tests the code in a sandboxed environment This makes sure that any hardware delegation errors or memory leaks are caught in the virtualized space before ever reach the actual Android device.
  
 \paragraph{3. Bridging to Edge-Deployment}
-While Docker is primarily used in the development phase of MIKA, its principles of isolation influence the app's final architecture. The deterministic nature of a containerized build ensures that the \textbf{TFLite Model Metadata} and the \textbf{Flutter Native Assets} are bundled with byte-perfect accuracy. For a mission-critical tool like a medicine recognition assistant, this level of infrastructure reliability is not just a convenience---it is a technical requirement to ensure that the AI model behaves predictably in the hands of the end-user.
- 
+Docker is used mainly in the development phase of MIKA, but the principles of isolation affect the final architecture of the app. The A containerized build is deterministic, i.e., the \textbf{TFLite Model Metadata} and the \textbf{Flutter Native Assets} are packaged with byte-perfect accuracy. For mission-critical or tool such as a medicine recognition assistant, this level of infrastructure reliability is not the convenience. It is a technical necessity to ensure the AI model behaves predictably. in the hands of the end user.
+
 \subsection{Data Management with Git LFS (Large File Storage)}
  
-A significant technical hurdle in the development of the MIKA toolkit is the management of large-scale binary assets. Unlike traditional software projects that consist primarily of text-based source code, the MIKA project involves high-density weights for the \textbf{Qwen 2.5 (0.5B)} model, quantized \textbf{YOLOv8-seg} TFLite files, and the extensive \textbf{PKR-3611} currency dataset. Standard version control systems like Git are not natively designed to handle large binary files, as they attempt to store every version of the file in the project history, leading to an exponential increase in repository size and cripplingly slow clone times. To resolve this, we implemented \textbf{Git LFS (Large File Storage)}.
- 
+Management of large scale binary assets is a major technological challenge in the development of the MIKA toolkit. Unlike traditional software projects that are mostly made up of text-based source code, the MIKA project includes high-density weights for the \textbf{Qwen 2.5 (0.5B)} model, quantized \textbf{YOLOv8-seg} TFLite files, and the massive \textbf{PKR-3611} currency dataset. Standard version control systems such as Git are not natively designed to handle large binary files, as they attempt to store every version of the file in the project history, leading to an exponential increase in repository size and cripplingly slow clone times. To solve this we created \textbf{Git LFS (Large File Storage)} .
+
 \paragraph{1. Decoupling Logic from Assets}
-Git LFS operates by replacing large files within the repository with lightweight ``pointer files.'' While the actual 200 MB+ model weights are stored on a remote LFS server, the local Git repository only tracks a tiny text file containing the file's metadata and a unique SHA-256 hash. 
- 
-\noindent Mathematically, this changes the repository's growth complexity from $O(n \times v)$---where $n$ is the file size and $v$ is the number of versions---to $O(n + v)$, as only the current version of the large asset is downloaded during a checkout. For the MIKA team, this ensures that the repository remains lean and that collaborators like Ibad Moin and Abdul Wasay can pull the latest code updates without being forced to re-download massive model files that have not changed.
+Git LFS replaces large files in the repository with lightweight “pointer files.” The actual 200 MB+ model weights are stored on a remote LFS server, but locally the Git repo only knows about a small text file with the file’s metadata and a unique SHA-256 hash. 
+
+\noindent From a mathematical point of view, this reduces the growth complexity of the repository from $O(n \times v)$ (where $n$ is the size of the file and $v$ is the number of versions) to $O(n + v)$ because a checkout only downloads the current version of the large asset. This ensures that the repository stays lightweight for the MIKA team and collaborators such as Ibad Moin and Abdul Wasay can pull the latest code without needing to redownload large model files that have not changed.
  
 \paragraph{2. Integrated Dataset Versioning}
-For the \textbf{PKR-3611} dataset, Git LFS serves as a critical versioning tool. As we refine the currency detection models---moving from initial training to fine-tuned segmentation---we frequently update the underlying training data. By using the \texttt{git lfs track "*.tflite"} and \texttt{git lfs track "*.zip"} commands, we ensure that every version of the model is backed up and linked to a specific commit. This provides a clear audit trail; if a new model version introduces a regression in medicine OCR accuracy, the team can instantly roll back to a previous, stable version of the binary weights using standard Git commands.
- 
+Git LFS is a vital versioning tool for the \textbf{PKR-3611} dataset. As we improve the models for detecting currencies, from the initial training to the fine-tuned segmentation, we often update the underlying training data. We use the git \texttt{git lfs track "*.tflite"} and git \texttt{git lfs track "*.zip"} commands to ensure that every version of the model is backed up and associated with a particular commit. This provides a clean audit trail, if a new model version introduces a regression in medicine For OCR accuracy, the team can immediately revert to an older, more stable version of the binary weights with normal Git commands.
+
 \paragraph{3. Streamlining the Deployment Pipeline}
 Git LFS optimizes the \textbf{CI/CD} pipeline by fetching only required model binaries during Docker builds. This reduces build time and bandwidth usage, enabling an efficient and scalable workflow for on-device AI.
- 
+
 % ----------------------------- Methodology ----------------------------
 \chapter{METHODOLOGY}
  
