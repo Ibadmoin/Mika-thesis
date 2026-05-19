@@ -240,8 +240,7 @@
 
 \vspace{0.4cm}
 
-\noindent This is to certify that the Final Year Project titled \textbf{``Mika: A Fully Offline and Privacy Preserving AI Assistant for Voice Interaction and Real Time Visual Perception''} has been carried out by the following group members under the supervision of \textbf{Ms. Noor ul Huda}.
-
+\noindent This is to certify that the Final Year Project titled \textbf{“Mika: A Fully Offline and Privacy Preserving AI Assistant for Voice Interaction and Real Time Visual Perception”} has been carried out by the following group members under the supervision of \textbf{Ms. Noor ul Huda.}
 
 
 \begin{center}
@@ -264,9 +263,9 @@ Lecturer
 
 \end{center}
 
-\noindent
-\begin{tabular}{@{}l p{3cm} r@{}}
-    \rule{6cm}{0.4pt} & & \rule{6cm}{0.4pt} \\
+\hspace{1cm}
+\begin{tabular}{@{}l c r@{}}
+    \rule{5cm}{0.4pt} & & \rule{5cm}{0.4pt} \\
     \textbf{FYP Coordinator} & & \textbf{Chairperson} \\
     & & \\
     \textbf{RAHILA SHAH} & & \textbf{Dr. ADNAN WAQAR} \\
@@ -290,7 +289,7 @@ Lecturer
     \vspace{5cm}
     {\Large  \textbf{Dedication}}\\
     \vspace{1cm}
-    \textbf{We dedicate this project to our beloved parents, whose prayers and endless support have been our greatest strength. To our teachers, for lighting the path of knowledge, and to the visually impaired community, for whom this work was envisioned, may this small contribution help pave the way toward a more accessible and independent future.}
+    \textbf{This project is, for our parents who we love much. They always prayed for us. Supported us. This has given us the strength to keep going. We also want to thank our teachers for showing us the way to learn things. We want to thank the visually impaired community because we made this project for them. We hope this project will help make their lives a little easier and more independent.}
 \end{center}
 
 \vspace{0.8cm}
@@ -312,14 +311,14 @@ Lecturer
     \end{center}
     
 
-\noindent First and foremost, I express my deepest gratitude to \textbf{Almighty Allah} for providing me with the health, wisdom, and perseverance to complete this research.
+\noindent First of all we would like to thank \textbf{Almighty Allah} for providing us health, wisdom and perseverance to complete this research.
 
-\noindent Iwould like to extend my sincere thanks to my supervisor, \textbf{Ms. Noor ul Huda}, for her invaluable guidance and constant encouragement. Her technical insights into Edge AI and model optimization were instrumental in navigating the challenges of on-device orchestration and hardware constraints. I am also deeply grateful to the Head of Department, \textbf{Dr. Adnan Waqar}, and the FYP Coordinator, \textbf{Ms. Rahila Shah}, for their administrative support and for providing the academic environment necessary to pursue this work.
+\noindent We are thankful to our Supervisor \textbf{Ms. Noor ul Huda}, for her guidance and continuous help. Her knowledge in Edge AI and model optimization was very critical in addressing the issues of on-device orchestration and hardware constraints. We are also very thankful to Head of Department \textbf{Dr. Adnan Waqar} and FYP Coordinator \textbf{Ms. Rahila Shah} for their support and for providing us the academic environment needed for doing this work.
 
-\noindent To my teammates \textbf{Ibad Moin, Maryam Tariq, Khuzaima Irfan, and Abdul Wasay Sarwar}: thank you for the countless late-night debugging sessions and for being the best "sounding board" I could ask for. Together, we turned a complex vision into a functional reality through shared dedication and hard work.
+\noindent Thanks to our teammates \textbf{Ibad Moin, Maryam Tariq, Khuzaima Irfan, Abdul Wasay Sarwar} for all the late nights we spent fixing problems and for being a good team to work with. It was very hard to do research on Edge AI We both worked and we pulled it off.
 
-\noindent Finally, my heartiest thanks go to my \textbf{parents and family}. Their unwavering belief in my abilities, their prayers, and their constant motivation kept me focused during the most demanding phases of this project. I also thank my friends for their understanding and support throughout this journey.\vspace{1.5cm}
-
+\noindent Finally, my heartiest thanks go to my \textbf{parents and family}. Their unwavering belief in my abilities, their prayers, and their constant motivation kept me focused during the most demanding phases of this project. I also thank my friends for their understanding and support throughout this journey.
+\noindent And last but not least we want to thank our \textbf{parents and families} from the bottom of our heart. They always believed in us, prayed for us. They were always there to lean on through the toughest parts of this project. Our friends who were there with us all the way, for their support and understanding. We also wish to thank them.\vspace{1.5cm}
 %--------------------------Abstract---------------------
 \clearpage
 \thispagestyle{logoheader} 
@@ -337,15 +336,11 @@ Lecturer
 
 \vspace{0.3cm}
 
-\noindent The development of Mika is rooted in the philosophy of \textbf{Empathetic Engineering}—the belief that high-end AI should not be a privilege reserved for those with expensive hardware and high-speed internet. For a visually impaired individual, the digital world is often a landscape of ``broken promises'' where cloud-based latency can turn a simple task, like identifying a 500-rupee note in a bustling market, into a moment of public vulnerability. By ensuring that Mika operates entirely offline, we have transformed the smartphone from a mere communication device into a reliable, localized extension of the user’s biological senses. This work acknowledges that for an assistive tool to be truly empowering, it must be as steadfast and private as a human companion, functioning in the quiet of a pharmacy or the chaos of a connectivity-deprived street.
-
+\noindent Mika’s development is based on the philosophy of \textbf{Empathetic Engineering}: the concept that high-end AI should not be a privilege of those with expensive hardware and high-speed internet. For a visually impaired person, the digital world often translates into a landscape of “broken promises”. The latency of the cloud can make a simple task, such as identifying a 500-rupee note in a bustling market, a moment of public vulnerability. Through a complete offline operation of Mika, we have transformed the smartphone from a basic communication device into a reliable local extension of the user’s biological senses. This work recognizes that for an assistive tool to be truly empowering it needs to be as steadfast and private as a human companion, working in the quiet of a pharmacy or the chaos of a connectivity deprived street
 \vspace{0.4cm}
-
-\noindent A significant portion of this research was dedicated to solving the ``Tactile Reality'' of the user’s environment. Standard AI models are typically trained on idealized, flat datasets; however, the lived experience of the visually impaired involves interacting with a world that is often crumpled, curved, and dimly lit. The creation of the \textbf{PKR-3611} dataset and the development of the \textbf{Cylindrical Unwarping} logic for medicine labels were not merely technical milestones, but responses to the genuine risks of medication errors and financial misidentification. By optimizing these complex tasks for a 4GB RAM environment, Mika democratizes safety, proving that sophisticated reasoning can be distilled into a form factor that is accessible, affordable, and inclusive.
-
+\noindent Much of this research was devoted to the resolution of the “Tactile Reality” of the user environment. Standard AI models are usually trained on idealized, flat datasets; yet, the lived experience of the visually impaired is one in which the world is often crumpled, curved, and dimly lit. The construction of the \textbf{PKR-3611} dataset and design of the \textbf{Cylindrical Unwarping} logic for medicine labels were not only technical achievements but were reactions to the actual threats of medication errors and financial misidentification. Mika democratizes safety by optimizing these complex tasks for a 4GB RAM environment, showing that sophisticated reasoning can be distilled into a form factor that is accessible, affordable and inclusive.
 \vspace{0.4cm}
-
-\noindent Furthermore, the \textbf{Latency-First Design} of the Mika toolkit addresses the psychological aspect of assistive technology. When response times exceed a few hundred milliseconds, the ``Human-AI'' bond is fractured, and the tool becomes a burden rather than a help. By achieving sub-300ms inference, Mika provides a conversational flow that respects the user's pace of life. This research ultimately argues that the true measure of an AI’s intelligence is not found in the size of its parameters, but in its ability to fade into the background, providing the user with a seamless, unshakeable sense of security. Mika stands as a testament to a design approach where the human experience is the primary variable, ensuring that technology serves as a bridge to independence and a guardian of personal dignity.
+\noindent Furthermore, the \textbf{Latency-First Design} of the Mika toolkit takes into account the psychological aspect of assistive technology. If the response time exceeds a few hundred milliseconds, the “Human-AI” connection breaks down and the tool becomes a burden rather than a help. Mika offers a conversational flow with sub-300ms inference, to respect the user’s pace of life. In the end, this study suggests that the true measure of an AI’s intelligence is not in the size of the parameters but in its capacity to fade into the background, providing a seamless, unshakeable sense of security for the user. Mika is testament to a design approach where human experience is the primary variable, ensuring technology is a bridge to independence and a guardian of personal dignity.
 % -------------------- TABLE OF CONTENTS --------------------
 \clearpage
 \thispagestyle{logoheader} 
@@ -506,78 +501,69 @@ YOLO    & You Only Look Once \\
 \chapter{INTRODUCTION}
  
 \section{Background of the Study}
-\noindent The rapid advancement of AI has led to the widespread adoption of virtual assistants in everyday life. From smartphones to smart homes, these systems enhance user convenience by enabling voice-activated tasks and visual recognition. However, most commercially available AI assistants---such as Amazon's Alexa, Apple's Siri, and accessibility-focused apps like \textit{Be My Eyes}---rely heavily on cloud-based computation. This architectural dependency requires a persistent internet connection and involves the transmission of sensitive user data to remote servers, raising serious concerns regarding data privacy, response latency, and usability in low-bandwidth or disconnected environments.
+\noindent AI is advancing rapidly and virtual assistants are now ubiquitous in our daily lives. These systems improve user comfort with voice activated tasks and visual recognition, from smart-phones to smart-homes. But the majority of commercial cloud based computation used by many of the existing AI helpers like Amazon’s Alexa and Apple’s Siri, and accessibility-focused apps like Be My Eyes. This architectural dependency on a persistent Internet connection, transmission of sensitive user data to remote servers, and serious privacy, response latency, and usability challenges in low-bandwidth or offline scenarios.
  
-\noindent Recent developments in Tiny Machine Learning (TinyML) and On-Device AI have introduced new opportunities for deploying complex neural networks directly on mobile devices. Through techniques such as model quantization and the use of hardware acceleration frameworks (e.g., Android Neural Networks API (NNAPI) and Apple CoreML), it has become feasible to perform tasks such as keyword spotting, object detection, and natural language reasoning locally. These advancements enable a transition from unimodal apps to Multimodal AI Systems that can process audio, vision, and text simultaneously on-device.
- 
+\noindent Recent progress in Tiny Machine Learning (TinyML) and On-Device AI has enabled the deployment of sophisticated neural networks directly on mobile devices. Thanks to techniques like model quantization and hardware acceleration frameworks (e.g. Android Neural Networks API (NNAPI) and Apple Core ML), it is now possible to run tasks like keyword spotting, object detection and natural language reasoning locally. Such advances allow the transition from unimodal apps to Multimodal AI Systems to process audio, vision and text simultaneously on-device.
+
 \section{Problem Statement}
-Modern AI assistants primarily depend on cloud-based processing for speech recognition, natural language understanding, and task execution. While cloud computation provides high accuracy, it introduces several critical limitations:
- 
+Today’s AI assistants are primarily cloud-based, doing speech recognition, natural language understanding, and task execution. While cloud computation is highly accurate, it has several serious limitations.
+
 \begin{itemize}
-    \item[1.] \textbf{Privacy Risks} The transmission of voice and visual data to remote servers poses a threat to user confidentiality, creating a trust barrier for sensitive environments like healthcare or personal homes.
-    \item[2.] \textbf{Latency} Cloud dependency results in ``round-trip'' delays, degrading the natural interaction experience required for real-time navigation or assistance.
-    \item[3.] \textbf{Connectivity Barriers} Reliance on the internet renders these assistants ineffective in rural regions, underground locations, or during travel.
-    \item[4.] \textbf{Device Constraints} Most multimodal AI models are too large for mid-range smartphones (3--4 GB RAM). Existing offline solutions often lack reasoning capabilities, providing only raw detection labels without context.
+    \item[1.] \textbf{Privacy Risks} Voice and visual data transmitted to remote servers pose a threat to user confidentiality, building a trust barrier for sensitive environments like healthcare or personal homes.
+    \item[2.] \textbf{Latency} Cloud dependency leads to “round-trip” latencies that prevent the natural interaction experience required for real-time navigation or assistance.
+    \item[3.] \textbf{Connectivity Barriers} These helpers are useless as they rely on the internet in the country, underground or on the move.
+    \item[4.] \textbf{Device Constraints} Most multimodal AI models are too large for mid-range smart phones (3-4 GB RAM). Existing offline solutions cannot reason and output raw detection labels without context.
 \end{itemize}
  
-Therefore, there is a critical need for an \textit{Intent-Based Multimodal Assistant} that operates entirely offline. Such a system must orchestrate specialized ``Tiny'' models to ensure privacy, low latency, and reliable performance while staying within strict mobile memory limits.
- 
+So a much needed offline only Intent Based Multimodal Assistant. Such system needs coordination of specialized "Tiny" models to achieve privacy, low latency and reliable performance under strict mobile memory barriers.
 \subsection{Challenges in Medicine Identification for the Visually Impaired}
  
-\subsubsection{Physical and Geometric Constraints}
-The identification of pharmaceutical products represents one of the most critical daily living tasks for individuals with Visual Impairment (VI). Unlike general object recognition, medicine identification carries a high risk-to-reward ratio; a single misidentification of dosage or medication type can lead to severe Adverse Drug Events (ADEs), toxicity, or even mortality. 
+\subsubsection{Physical and Geometric Constraints} 
+The identification of pharmaceutical products is one of the most important daily living tasks for persons with Visual Impairment (VI). The risk to reward ratio is high . This is different than general object recognition . One misidentification Wrong dose or class of medication can lead to serious Adverse Drug Events (ADEs), toxicity or even death.
+
+\noindent \textbf{The Non-Planar Surface Problem} Most pharmaceutical packaging, specifically pill bottles, vials, and tubes, are cylindrical or semi-cylindrical. Conventional Optical Character Recognition (OCR) engines are trained on planar (flat) surfaces like documents or street signs. When text wraps around a curved surface, the characters undergo geometric distortion, leading to “character skewing” where the edges of the text appear compressed. This makes it difficult for a standard vision pipeline to maintain a high Character Error Rate (CER).
  
-\noindent \textbf{The Non-Planar Surface Problem} Most pharmaceutical packaging, specifically pill bottles, vials, and tubes, are cylindrical or semi-cylindrical. Conventional Optical Character Recognition (OCR) engines are trained on planar (flat) surfaces like documents or street signs. When text wraps around a curved surface, the characters undergo geometric distortion, leading to ``character skewing'' where the edges of the text appear compressed. This makes it difficult for a standard vision pipeline to maintain a high Character Error Rate (CER).
- 
-\noindent \textbf{Small Font Size and High Density}
-Due to the legal requirements for medicine labeling (including ingredients, warnings, and manufacturer details), the font size on medicine bottles is often between 4pt and 6pt. For on-device mobile cameras, capturing clear, high-resolution features at this scale without significant motion blur is a major technical hurdle.
- 
+\noindent \textbf{Small Font Size and High Density} The Problem of Non-Planar Surfaces Much pharmaceutical packaging is cylindrical (or semi-cylindrical), such as pill bottles, vials and tubes. Traditional Optical Character Recognition (OCR) engines are trained on flat surfaces such as documents or street signs. When text is wrapped around a curved surface, the characters are distorted geometrically, resulting in “character skewing,” in which the edges of the text appear compressed. This makes it challenging for a standard vision pipeline to keep a high Character Error Rate (CER).
+
 \subsubsection{Visual and Environmental Interference}
  
-\noindent \textbf{Specular Reflection and Glossy Surfaces}
-Medicine packaging often utilizes plastic or foil materials that are highly reflective. Under standard indoor lighting, these surfaces create ``hotspots'' or specular reflections that wash out text features, rendering segments of the label unreadable for both the human eye and the AI model.
- 
+\noindent \textbf{Specular Reflection and Shiny Surfaces} The packaging of medicine is often made with very reflective plastic or foil. These surfaces create “hotspots” under normal indoor lighting i.e. specular reflections which wash out text features making parts of the label not readable for human eye and AI model. 
 \noindent \textbf{Label Occlusion and Damage}
-Medicines are frequently handled, leading to labels that may be torn, smudged by moisture, or partially occluded by the user's own fingers while holding the bottle. Developing a system that can perform ``Contextual Rebalancing''---using an SLM like Qwen 2.5 to guess missing letters based on pharmaceutical context---is essential.
- 
+Medicinesarefrequently handled, leading to labels that may be torn, smudged by moisture, or partially occluded by the user’s own fingers while holding the bottle. Developing a system that can perform “Contextual Rebalancing”—using an SLMlike Qwen 2.5 to guess missing letters based on pharmaceutical context—is essential. 
+
 \subsubsection{Cognitive and Ergonomic Barriers}
+\textbf{The Viewfinder Problem} One of the great challenges for visually impaired users is the “Viewfinder Problem” . It is hard to align the camera to the label perfectly because the user cannot see the screen. MIKA achieves this by providing the user with real-time haptic and audio feedback to guide the user’s hand until the medicine label is centered and in focus.
  
-\textbf{The Viewfinder Problem} A significant challenge for visually impaired users is the ``Viewfinder Problem.'' Since the user cannot see the screen, they often struggle to align the camera perfectly with the label. MIKA addresses this by providing real-time haptic and audio feedback to guide the user's hand until the medicine label is centered and in focus.
- 
-\noindent \textbf{Language and Technical Jargon}
-Even if text is recognized correctly, medicine names (e.g., ``Levothyroxine'' vs. ``Lisinopril'') are phonetically similar and complex. For a visually impaired user, hearing a raw OCR string is less helpful than an intelligent summary. MIKA utilizes the integrated SLM to translate recognized text into clear, spoken instructions regarding dosage and purpose.
- 
-\subsection{Computational Barriers in On-Device Multimodal AI}
- 
-The transition of Multimodal AI from high-performance cloud clusters to edge devices---specifically mid-range smartphones---is obstructed by a series of significant technical bottlenecks. While cloud-based AI enjoys virtually unlimited RAM and high-wattage Graphics Processing Units (GPUs), MIKA must operate within a ``constrained ecosystem'' where power, thermal, and memory resources are strictly finite.
- 
+\noindent \textbf{Language and Technical Jargon} Even if text is recognized correctly, medicine names (e.g., ``Levothyroxine'' vs. ``Lisinopril'') are phonologically similar and complex. For a visually impaired user, a smart summary is more useful than hearing an OCR string as is. MIKA uses the integrated SLM to convert the detected text into clear spoken instructions about dosage and purpose.
+
+\subsection{Computational Barriers in On-Device Multimodal AI} 
+The transition of Multimodal AI from high-performance cloud clusters to edge devices specifically mid-range smartphones is obstructed by a series of significant technical bottlenecks. While cloud-based AI enjoys virtually unlimited RAM and high-wattage Graphics Processing Units (GPUs), MIKA must operate within a ``constrained ecosystem'' where power, thermal, and memory resources are strictly finite. 
+
 \subsubsection{The Memory Bottleneck: RAM Fragmentation and Caps}
-The most immediate barrier in MIKA's development is the physical RAM limitation, commonly referred to as the ``4 GB Ceiling'' found in most mid-range Android devices. 
- 
+MIKA’s development has one major hurdle the physical RAM limitation, or the “4 GB Ceiling”, which is a characteristic feature of most mid-range Android devices. 
+
 \begin{itemize}
-    \item \textbf{Model Weights vs. Runtime Heap:} A quantized SLM like Qwen 2.5-0.5B requires approximately 350 MB to 500 MB of RAM just for its weights. When combined with the YOLOv8 segmentation head and the Whisper Speech-to-Text (STT) encoder, the baseline memory footprint often exceeds 1.2 GB.
-    \item \textbf{Operating System Overhead:} On a typical 4 GB device, the Android OS and background services consume up to 2.2 GB, leaving only 1.8 GB for the application. If MIKA attempts to load all multimodal engines (Vision, Speech, and Reasoning) simultaneously, the Android Low Memory Killer (LMK) will force-terminate the application process.
+    \item \textbf{Model Weights vs. Runtime Heap:} RAM needed for weights of a quantized SLM such as Qwen 2.5-0.5B is around 350 MB to 500 MB. The baseline memory footprint is often more than 1.2 GB with the YOLOv8 segmentation head and the Whisper Speech-to-Text (STT) encoder.
+    \item \textbf{Operating System Overhead:} Android OS and background services take up to 2.2 GB of a typical 4 GB device and leaves 1.8 GB for the application. If MIKA attempts to load all the multimodal engines (Vision, Speech and Reasoning) at once the Android Low Memory Killer (LMK) will kill the app process.
 \end{itemize}
  
 \subsubsection{The Heterogeneous Compute Challenge}
-Mobile System on Chips (SoCs) utilize ARM-based architectures that rely on Big.LITTLE core configurations. This creates a disparity in execution speed:
+Big architectures are used in mobile System on Chips (SoCs) based on ARM. LITTLE core configura­tions. This causes a difference in execution speed.
+
 \begin{itemize}
-    \item \textbf{CPU vs. NPU/GPU:} Standard Mobile Central Processing Units (CPUs) are inefficient at the matrix-matrix multiplications required for Deep Learning. While newer chips feature a Neural Processing Unit (NPU), the lack of standardized drivers for Flutter/Dart makes hardware acceleration difficult without complex Native Method Channels or Java Native Interface (JNI) bridging.
-    \item \textbf{Inference Latency:} Real-time assistance requires a latency of less than 200 ms for a ``fluid'' feel. Computational barriers often push this to 1.5s--3.0s on mobile CPUs, leading to a ``disconnected'' user experience for the visually impaired.
+    \item \textbf{CPU vs. NPU/GPU:} The usual Mobile Central Processing Unit (CPU) is not efficient for the matrix-matrix multiplications needed for Deep Learning. Newer chips come with a Neural Processing Unit (NPU) but without standard drivers for Flutter/Dart, doing hardware acceleration is hard without complex Native Method Channels or Java Native Interface (JNI) bridging.
+    \item \textbf{Inference Latency:} Real time support require a latency less than 200 ms to have a “fluid” feel. On mobile CPUs, this often pushes this to 1.5s-3.0s, creating a “disconnected” experience for the visually impaired.
 \end{itemize}
  
 \subsubsection{The Thermal-Power Trade-off}
-Unlike desktop GPUs, mobile chips face strict thermal limits. Continuous execution of the YOLOv8-seg model at 30 Frames Per Second (FPS) generates significant heat. Once the SoC reaches a critical temperature (typically 40--45°C), the OS reduces the clock speed (throttling), causing the frame rate to drop and the AI toolkit to become unresponsive.
- 
-\noindent Battery Depletion High-frequency polling of the camera sensor and the Digital Signal Processor (DSP) for wake-word detection is energy-intensive. MIKA must balance the ``Always-On'' requirement of a toolkit with the practical need to preserve the user's mobile battery life for the duration of a day.
+Unlike desktop GPUs, mobile chips face strict thermal limits. Continuous execution of the YOLOv8-seg model at 30 Frames Per Second (FPS) generates significant heat. Once the SoC reaches a critical temperature (typically 40–45°C), the OS reduces the clock speed (throttling), causing the frame rate to drop and the AI toolkit to become unresponsive. Battery Depletion High-frequency polling of the camera sensor and the Digital Signal Processor (DSP) for wake-word detection is energy-intensive. MIKA must balance the ``Always-On'' requirement of a toolkit with the practical need to preserve the user's mobile battery life for the duration of a day. Battery Depletion High-frequency polling of the camera sensor and the Digital Signal Processor (DSP) for wake-word detection is energy-intensive. MIKA must balance the ``Always-On'' requirement of a toolkit with the practical need to preserve the user's mobile battery life for the duration of a day.
  
 \subsubsection{Algorithmic Complexity and Quantization Loss}
-To fit these models on-device, they must undergo \textit{Quantization}---the process of reducing the precision of weights from 32-bit Floating Point (FP32) to 8-bit Integer (INT8) or 4-bit.
+To run these models on a device, they must be \textit{Quantized} (reduce the precision of the weights from 32-bit Floating Point (FP32) to 8-bit Integer (INT8) or 4-bit).
 \begin{equation}
     W_{quantized} = \text{round} \left( \frac{W_{float} - Z}{S} \right)
 \end{equation}
-Where $S$ is the scale factor and $Z$ is the zero-point. The mathematical barrier here is the ``Accuracy Drop.'' Reducing precision often leads to the loss of fine-grained features, which, in the case of MIKA, could mean the difference between correctly identifying a 1000 PKR note and misidentifying it as a 100 PKR note due to lost texture details.
- 
+Where $S$ is the scale factor and $Z$ is the zero-point. The mathematical barrier here is the “Accuracy Drop”. When we are going for lowering the precision we tend to lose fine grained features and in the case of MIKA this can be the difference of identifying a 1000 PKR note correctly and misidentifying it as a 100 PKR note due to texture details lost.
  
 \section{Aims and Objectives}
  
@@ -586,29 +572,27 @@ The primary aim of this research is to develop ``Mika'', a fully offline, intent
  
 \subsection{Objectives}
 \begin{enumerate}
-    \item \textbf{Development of a Robust Offline Wake-Word Engine} To implement a two-stage hierarchical KWS system for ``Hey Mika,'' utilizing custom-curated audio datasets to achieve low-latency activation with minimal false-trigger rates.
-    \item \textbf{Implementation of Optimized Visual Perception} To deploy a FP16 quantized YOLOv8n model for general object detection and a specialized YOLOv8\text{-}seg model for instance segmentation of Pakistani Currency, ensuring high-speed inference on mobile hardware.
- 
-    \item \textbf{Engineered Intent-Driven Orchestration} To develop an ``Intent Router'' within the Flutter framework that dynamically manages model lifecycles, optimizing RAM usage by loading specific AI pipelines only upon user demand.
- 
-    \item \textbf{Hardware-Accelerated System Optimization} To utilize quantization (FP16) and hardware delegation (NNAPI/GPU) to ensure the integrated multimodal stack operates within a strict 900 MB peak RAM footprint on mid-range devices.
+    \item \textbf{Development of a Robust Offline Wake-Word Engine} Building a Trusty Offline Wake-Word Engine Implement a two stage hierarchical KWS system for “Hey Mika” using custom curated audio datasets for low latency activation and minimal false trigger rates.
+    \item \textbf{Implementation of Optimized Visual Perception} Deploying FP16 quantized YOLOv8n model for generic object detection and custom YOLOv8-seg model for instance segmentation of Pakistani Currency for fast inference on mobile hardware.
+    \item \textbf{Engineered Intent-Driven Orchestration} Developed a "Intent Router" in Flutter that dynamically manages model lifecycle and decreases RAM usage by loading AI pipelines on demand. Optimizing Systems with Hardware Acceleration.
+    \item \textbf{Hardware-Accelerated System Optimization} The integrated multimodal stack is designed to fit within a tight 900 MB peak RAM footprint on mid-range devices, utilizing quantization (FP16) and hardware delegation (NNAPI / GPU).
     
 \end{enumerate}
  
 \section{Significance and Motivation}
-The motivation for this project is rooted in the \textit{Privacy by Design} and \textit{Inclusion} philosophies. By eliminating cloud communication, the proposed assistant ensures that user data remains entirely on-device. The specialized focus on Currency Detection via Segmentation and Intent Routing allows ``Mika'' to act not just as a detector, but as a ``Brain'' that understands user needs. This project proves that high-end AI accessibility is possible on mid-range smartphones, bridging the digital divide for users who cannot afford flagship devices or expensive data plans.
- 
+This project is based on the philosophy of privacy by design and inclusion. The proposed assistant enables to avoid the cloud communication and to store the user data entirely on-device. Specialised Attention and Segmentation Based Currency Detection with Intent Routing allows "Mika" to act as a "Brain" that comprehends user needs, rather than merely serving as a detector. This project demonstrates that premium AI can be made accessible on mid-range smartphones, helping to close the digital divide for users who cannot afford flagship devices or premium data plans.
+
 \section{Project Scope \& Technical Stack}
-This project involves the development of a cross-platform mobile application using the Flutter framework.
- 
+The goal of this project is to develop a cross-platform mobile application with the use of the Flutter framework.
+
 \subsection{The ``Golden'' Tech Stack}
 \begin{itemize}
     \item[1.] \textbf{Logic Engine} IntentRouter (Dart-based) for parsing user commands and managing the model lifecycle.
-    \item[2.] \textbf{Wake-Word} Custom Convolutional Neural Network (CNN) (TFLite) trained on a 7,000+ sample proprietary dataset.
-    \item[3.] \textbf{Vision Core} YOLOv8n (General Detection) and YOLOv8-seg (Currency Segmentation).
-    \item[4.] \textbf{Brain (SLM)} Qwen 0.5B (selected for its superior RAM-to-performance ratio).
-    \item[5.] \textbf{Speech} Whisper Tiny (Offline STT) and Native Text-to-Speech (TTS) for output.
-    \item[6.] \textbf{Hardware} Optimized for Android devices with 3--4 GB RAM using TensorFlow Lite (TFLite) and Georgi Gerganov Machine Learning Library (GGML) acceleration.
+    \item[2.] \textbf{Wake-Word} Custom CNN (TFLite) trained on private dataset of 7k+ samples.
+    \item[3.] \textbf{Vision Core} YOLOv8n Vision Core (General Detection) \& YOLOv8-seg (Currency Segmentation), both quantized to FP16 for mobile efficiency.
+    \item[4.] \textbf{Brain (SLM)} Qwen 0.5B (picked for good RAM to performance ratio). 
+    \item[5.] \textbf{Speech} Whisper Tiny (Offline STT) and Native TTS for Output
+    \item[6.] \textbf{Hardware} Hardware Optimized for Android devices with 3-4GB RAM with TensorFlow Lite (TFLite) and Georgi Gerganov Machine Learning Library (GGML) acceleration.
 \end{itemize}
  
 \hypertarget{fig:1.1}{}
@@ -616,7 +600,7 @@ This project involves the development of a cross-platform mobile application usi
     \centering
     \includegraphics[width=\textwidth]{tech stackfinal-transparent.jpg.png}
     \caption{Tech Stack.}
-    \label{fig:1.1}
+    \label{fig:techstack}
 \end{figure}
  
 \textit{Note: While the core vision and voice pillars are currently implemented, advanced features such as OCR for non-planar surfaces are planned for the final development phase.}
@@ -626,50 +610,36 @@ This project involves the development of a cross-platform mobile application usi
  
 \section{Historical Overview}
  
-\noindent The evolution of assistive technology for the visually impaired has undergone a paradigm shift, transitioning from rudimentary physical aids to the current frontier of on-device AI. Historically, assistance was limited to mechanical tools such as \textit{Braille}, long canes, and optical zooming devices. 
- 
-\noindent The first generation of digital assistance arrived with stationary computer-based technologies. These systems were characterized by their cumbersome nature, often requiring a combination of flatbed scanners and desktop computers to perform OCR. These early systems were not only non-portable but were also computationally expensive and prone to high error rates when dealing with varying fonts or poor lighting.
- 
-\noindent With the global proliferation of smartphones, the second generation of assistive technology moved toward mobile-based platforms. However, this era was dominated by the ``Cloud-Client'' architecture. Applications relied heavily on data transmission to remote servers for complex tasks. As highlighted in the literature, this dependency created a ``Connectivity Gap,'' where users in low-bandwidth zones were stripped of their independence. Furthermore, the transmission of real-time camera feeds to the cloud introduced significant privacy risks for users capturing sensitive personal environments.
- 
-\noindent The current historical phase represents a move toward \textbf{Edge Intelligence}. Recent research focuses on bypassing the cloud by integrating deep learning models directly onto mobile hardware. This shift was initially hindered by a ``Hardware Bottleneck,'' where heavy CNNs exceeded the memory limits of standard devices. Today, the field has matured through the development of ``Modular Experts''---lightweight, quantized architectures such as \textit{YOLOv8} and \textit{SLMs} that can coexist within the constrained RAM of mid-range smartphones. Mika represents this current milestone: a system that is portable, private, and resilient to the lack of internet infrastructure.
- 
+\noindent The evolution of assistive technology for the visually impaired has seen a paradigm shift from simple physical aids to the current frontier of on-device AI. Aid has generally been confined to mechanical devices like Braille, long canes, and optical zooming devices.the current frontier of on-device AI. Historically, assistance was limited to mechanical tools such as \textit{Braille}, long canes, and optical zooming The evolution of assistive technology for the visually impaired has seen a paradigm shift from simple physical aids to the current frontier of on-device AI. Aid has generally been confined to mechanical devices like Braille, long canes, and optical zooming devices.
+\noindent Evolution of Computer Vision & Object DetectionThe first generation of digital assistance was the stationary computer-based technology. These systems were bulky and often consisted of a combination of flatbed scanners and desktop computers for performing OCR . These early systems were not portable and computationally expensive, and sensitive to high error rates with different fonts or poor lighting conditions.
+\noindent The second generation of assistive technology was focused on mobile-based platforms with the global proliferation of smartphones . However, this was the era of the “Cloud-Client” architecture. Sending information to remote servers was heavily relied on for complex tasks. As noted in the literature, this reliance led to a “Connectivity Gap” in which users in low-bandwidth zones lost their independence. Also, transmitting real-time camera feeds to the cloud posed severe privacy risks to users capturing sensitive personal environments.
+\noindent The current historical phase is a movement to Edge Intelligence. Recent research focuses on bypassing the cloud by embedding deep learning models directly on mobile hardware. A “Hardware Bottleneck” initially limited this transition, in that heavy CNNs were larger than the memory capacity of standard devices. With the advent of “Modular Experts” (quantized, lightweight architectures such as YOLOv8 and SLMs that can co-exist within the limited RAM of mid-range smartphones), the field has grown up today. Mika is a system for this current milestone: portable, private, resilient to the lack of internet infrastructure.
 \subsection{Evolution of Computer Vision \& Object Detection}
  
-\noindent The journey of computer vision from its infancy to the sophisticated real-time systems of today is a narrative of moving from human-engineered intuition to machine-learned abstraction. In the early days, researchers relied on \textbf{Traditional Computer Vision}, where detection was a manual, painstaking process of ``Feature Engineering.'' To recognize an object, scientists had to mathematically define what made an edge, a corner, or a texture unique. 
+\noindent The story of computer vision from its earliest days to the complex real-time systems of today is one of the transition from human-engineered intuition to machine learned In the early days, researchers used Traditional Computer Vision where Detection was a manual, painstaking process of “Feature Engineering”. In order to identify an object, scientists had to mathematically describe what made an edge, a corner or a texture unique.
  
-\noindent Algorithms such as \textbf{Scale-Invariant Feature Transform (SIFT)} and \textbf{Histogram of Oriented Gradients (HOG)} were revolutionary because they allowed computers to find patterns that were somewhat resistant to changes in lighting or scale. However, these systems were inherently ``brittle''; if an object was slightly occluded or rotated in a way the programmer had not specifically anticipated, the system would fail. During this era, the intelligence was not residing in the machine, but rather in the mathematical cleverness of the human researcher.
+\noindent Algorithms such as Scale Invariant Feature Transform ( SIFT ) and Histogram of Oriented Gradients ( HOG ) were revolutionary because they could allow computers to find patterns that were somewhat robust to changes in lighting or scale . But these systems were by their nature “brittle”: if an object was slightly occluded or rotated in a way the programmer hadn’t specifically anticipated, the system would fail. In this age, intelligence resided not in the machine, but in the mathematical ingenuity of the human researcher. 
+
+\noindent The real paradigm shift occurred in 2012 with the resurgence of Deep Learning, and more specifically of CNNs. Instead of a human defining an edge, with CNNs the computer learned the features on its own from huge datasets Then the evolution branched into two different architectural philosophies: Two-Stage Detectors and One-Stage Detectors. 
+
+\noindent In the \textbf{Two-Stage} era, \textbf{Region-based Convolutional Neural Network (R-CNN)} family was dominant. “These models were working in a propose then classify mindset. First they would find thousands of “Regions of Interest (ROI)” (potential boxes where an object might be) and then run a heavy classifier on individual boxes. They were very accurate, but computationally expensive and too slow for real-time mobile applications such as MIKA, often requiring several seconds to process a single frame.
  
-\noindent The true paradigm shift occurred in 2012 with the resurgence of \textbf{Deep Learning}, specifically CNNs. Instead of a human defining an edge, CNNs allowed the computer to learn these features automatically through exposure to massive datasets. The evolution then split into two distinct architectural philosophies: Two-Stage Detectors and One-Stage Detectors. 
- 
-\noindent The \textbf{Two-Stage} era was dominated by the \textbf{Region-based Convolutional Neural Network (R-CNN)} family. These models operated with a ``propose then classify'' mindset. They would first identify thousands of ``Regions of Interest (ROI)'' (potential boxes where an object might reside) and then run a heavy classifier on each individual box. While incredibly accurate, they were computationally expensive and far too slow for real-time mobile applications like MIKA, often taking several seconds to process a single frame.
- 
-\noindent The demand for speed led to the birth of the \textbf{One-Stage Detector}, pioneered by the original \textbf{You Only Look Once (YOLO)} framework. YOLO fundamentally changed the field by treating object detection as a single regression problem. Instead of scanning an image multiple times, it divided the frame into a grid and predicted bounding boxes and class probabilities simultaneously in one forward pass of the network. This was the breakthrough required for mobile and edge computing. 
- 
-\noindent As the versions progressed from YOLOv3 to YOLOv5, and eventually to the \textbf{YOLOv8} architecture utilized in this project, the focus shifted from simple bounding boxes to high-fidelity \textbf{Instance Segmentation}. YOLOv8 introduces an anchor-free detection system and highly optimized ``bottleneck'' layers that provide a near-perfect balance between precision and low-latency execution. For a toolkit like MIKA, which must operate entirely offline on mid-range hardware, this evolution represents the transition from a laboratory experiment to a reliable, real-time assistant capable of identifying a medicine bottle or a currency note in a fraction of a second.
- 
+\noindent Out of the need for speed, the One-Stage Detector was born, led by the original \textbf{You Only Look Once (YOLO)} framework. YOLO revolutionized the field by framing object detection as a single regression problem. Instead of scanning the image several times times, it divided the frame into a grid and predicted bounding boxes and class probabilities simultaneously in a single pass of the network. That was the game changer for mobile and edge computing.
+
+\noindent The evolution of versions from \textbf{YOLOv3 to YOLOv5} and then to the \textbf{YOLOv8} architecture used in this project , has shifted the focus from simple bounding boxes to high fidelity Instance Segmentation. YOLOv8 is anchor-free and has highly optimized “bottleneck” layers, giving almost the perfect tradeoff between accuracy and low-latency operation. For a toolkit such as MIKA, which has to run fully offline on mid-range hardware, this evolution means the transition from a laboratory experiment to a reliable realtime assistant, able to identify a medicine bottle or a currency note in a fraction of a second.
+
 \subsection{NLP Evolution: Transformers and Small Language Models (SLMs).}
  
 \subsubsection{NLP Evolution: Transformers and Small Language Models (SLMs)}
  
-The landscape of Natural Language Processing (NLP) has undergone a radical transformation, moving from simple pattern matching to the sophisticated reasoning capabilities that power the MIKA toolkit today. For decades, NLP was dominated by Recurrent Neural Networks (RNNs) and Long Short-Term Memory (LSTM) networks. While these models were capable of processing sequences of text, they suffered from a fundamental flaw: they ``forgot'' the beginning of a long sentence by the time they reached the end. This vanishing gradient problem made it nearly impossible for an AI assistant to maintain the context required for complex multi-step instructions, such as identifying a medicine bottle and then explaining its dosage.
- 
-\noindent The breakthrough arrived in 2017 with the introduction of the \textbf{Transformer architecture}. By utilizing a mechanism known as ``Self-Attention,'' Transformers eliminated the need for sequential processing. Instead of reading word-by-word, the model could look at every word in a sentence simultaneously, calculating the mathematical relevance of each word to the others. This allowed for an unprecedented grasp of context and nuance. However, this power came at a massive computational cost. The industry entered an era of \textbf{Large Language Models (LLMs)} like GPT-4, which, while brilliant, require massive data centers and constant internet connectivity---rendering them useless for a privacy-focused, offline assistant like MIKA.
- 
-\noindent This limitation gave rise to the current frontier of NLP: \textbf{SLMs}. SLMs represent a strategic pivot in AI research, focusing on high-density parameter efficiency rather than sheer size. Models such as the \textbf{Qwen 2.5 (0.5B)} utilized in this project prove that a model with millions, rather than billions, of parameters can still exhibit profound reasoning if trained on high-quality, diverse datasets. 
- 
-\noindent For the MIKA toolkit, the evolution toward SLMs is the enabling factor for its ``Intelligence.'' By integrating a 0.5-billion parameter model, MIKA can perform on-device intent routing---deciding whether a user's voice command requires the YOLO segmentation module for currency or the OCR module for medication labels. Unlike its ``Large'' predecessors, an SLM can be quantized to 4-bit precision and loaded into a mobile device's RAM without causing thermal throttling or system crashes. This evolution marks the transition of AI from a distant cloud-based service to a localized, personal toolkit that respects user privacy and operates with zero latency in real-world environments.
- 
+from simple pattern matching to the sophisticated reasoning capabilities that are now the backbone of the MIKA toolkit. In the last few decades, RNNs and LSTMs have reigned supreme in NLP But these models, able to work on sequences of text, had a fatal flaw. By the time they reached the end of a long sentence, they tended to “forget” the beginning. The vanishing gradient problem meant an AI assistant could nearly never maintain the context needed for complex multi-step instructions, such as finding a medicine bottle and then explaining the dosage. The breakthrough came with the advent of the Transformer architecture in 2017. Transformers came up with "Self-Attention", which removed the requirement for sequential processing. Instead of reading a sentence word by word, the model reads all the words at once and can compute the mathematical relevance of each word to all the others. This taught unheard of context and depth. But that power came at a massive computational cost. We have entered the age of Large Language Models (LLMs), like GPT-4, which are mind-blowingly clever but require huge data centers and constant internet access, making them useless for a privacy-minded, offline assistant like MIKA. 
+
+\noindent This limitation has thus led to the present frontier in NLP. SLMs mark a strategic shift in AI research, emphasizing high density of parameters over size. For instance, the models like Qwen 2.5 (0.5B) that we used for this project reveal that you don’t need billion parameters to have deep reasoning, if you have good quality, diverse datasets. For the MIKA toolkit, the evolution toward SLMsistheenablingfactorforits“Intelligence.” Byintegrating a 0.5-billion parameter model, MIKA can perform on-device intent routing—deciding whether a user’s voice command requires the YOLO segmentation module for currency or the OCR module for medication labels. Unlike its “Large” predecessors, an SLM can be quantized to 4-bit precision and loaded into a mobile device’s RAM without causing thermal throttling or system crashes. This evolution marks the transition of AI from a distant cloud-based service to a localized, personal toolkit that respects user privacy and operates with zero latency in real-world environments..
+
 \section{Evaluation of Related Work \& Research Gaps}
- 
-The landscape of assistive technology has seen significant contributions, yet critical gaps remain in contextual intelligence, resource efficiency, and real-time performance on mobile hardware. A foundational approach is the work of \textit{Chypak and Morozov (2023)}, who developed an audio reading assistant utilizing Android-based OCR to convert environmental text into speech [\ref{ref:chypak}]. While their study successfully demonstrated user-centered capture, it was fundamentally constrained by a ``Dictionary Gap'' and a lack of contextual filtering. The system would indiscriminately read every piece of text on a label, failing to prioritize critical information such as medication dosages [\ref{ref:chypak}]. \textit{Mika} addresses this by integrating a \textbf{Qwen 2.5 (0.5B) SLM} that acts as a cognitive filter, discarding ``textual noise'' and providing only relevant summaries through intent-driven prompts.
- 
-\noindent Similarly, the \textit{SeeAround Framework} proposed offline support through heavy architectures like Inception-V3 and ResNet152 [\ref{ref:sebban}]. However, these models proved to be computationally prohibitive, leading to thermal throttling and battery drain on mid-range devices. \textit{Mika} replaces these $100$ MB+ CNNs with \textbf{YOLOv8n} ($6.1$ MB), achieving a 10-fold reduction in size while maintaining superior generalization.
- 
-\noindent Challenges in object recognition were also explored using the \textit{SSD MobileNet V2} algorithm [\ref{ref:nasir}]. A major limitation identified was the prevalence of ``Localization Errors'' when objects were occluded or folded, as the system relied on traditional bounding boxes. \textit{Mika} solves this by shifting to \textbf{YOLOv8-seg} (Instance Segmentation), masking the exact pixel-shape of currency to ensure reliable recognition. Furthermore, the issue of ``Concurrency Latency'' was highlighted in the \textit{Visually} project (2024), where simultaneous model execution caused crashes on $4$ GB RAM devices [\ref{ref:kamran}]. \textit{Mika} overcomes this through a custom \textit{Model Lifecycle Manager} and a TinyML Wake-Word engine that enables 100\% hands-free operation.
- 
-\noindent Finally, while Flutter-based solutions like the \textit{Basira} application have attempted navigation guidance, they suffer from high latency due to inefficient Python/Flask bridges [\ref{ref:alshahrani}]. \textit{Mika} bypasses these limitations by utilizing native C++ memory pointers and optimized TFLite bindings, achieving a stable $15\text{--}20$ FPS on standard hardware, thus ensuring safe, real-time feedback for the user.
- 
+Assistive technology has come a long way, but there remain significant gaps in contextual intelligence, resource efficiency and real-time performance on mobile hardware. This was pioneered by Chypak and Morozov (2023) who generated an audio reading [1] Android based OCR assistant for converting text in the environment to speech Their study was able to demonstrate user-centered capture, but was fundamentally limited by a “Dictionary Gap” and lack of contextual filtering. The system would read all text on a label without discrimination and would not prioritize critical information such as medication dosages [[1]]. Mika does this by leveraging a \textbf{Qwen 2.5 (0.5B)} SLM as a cognitive filter to remove the “textual noise” and only provide relevant summaries through intent-led prompts. Likewise, SeeAround Framework also proposed offline support using heavy architectures such as Inception-V3 and ResNet152 [[2]]. This was too computationally expensive and led to thermal throttling and battery drain on mid-range devices. Mika replaces these CNNs with YOLOv8n (6.1MB) achieving 10x size reduction and better generalization.
+\noindent Also considered were the problems of recognition of objects using algorithm SSD MobileNet V2 [[3]]. [[3]] One major limitation identified was the presence of “Localization Errors” in cases of occluded or folded objects, as the system relied on conventional bounding boxes. Mika solves this by switching to YOLOv8-seg (Instance Segmentation) and masking the exact pixel-shape of the currency to make sure it can be recognized reliably. Visually Project (2024) pointed out the issue of “Concurrency Latency”, concurrent model execution crashed devices with 4 GB RAM [[[4]]]. Mika does this with a custom Model Lifecycle Manager and TinyML Wake-Word engine which allows 100Finally, navigation guidance has been attempted in Flutter-based solutions such as Basira application , but with high latency due to inefficient Python/Flask bridges [[5]]. Mika overcomes these limitations by using native C++ memory pointers and optimized TFLite.
+
 \begin{table}[h!]
     \centering
   
@@ -703,7 +673,7 @@ Our work is grounded in the \textbf{Privacy-by-Design} and \textbf{Edge-AI} fram
 \end{itemize}
 
  
-\subsection{Vision Theory: Math of \texorpdfstring{$IoU$}{IoU}, NMS, and Instance Segmentation.}
+\subsection{Vision Theory: Math of IoU, NMS, and Instance Segmentation}
  
 The reliability of the MIKA toolkit depends on its ability to not only see objects but to localize them with mathematical precision. In the context of assistive technology, a ``near miss'' in detection---such as misidentifying the boundaries of a currency note or a medicine bottle---can lead to total system failure. To achieve the necessary robustness on-device, MIKA relies on three core mathematical pillars: Intersection over Union (IoU), Non-Maximum Suppression (NMS), and the mask-prediction logic of Instance Segmentation.
   
@@ -717,8 +687,8 @@ In a real-world scenario, if a user is holding a medicine bottle at an angle, th
  
 \noindent \textbf{2. Non-Maximum Suppression (NMS)}
  
-\noindent A common challenge in real-time detection is ``Object Redundancy,'' where the model predicts multiple overlapping boxes for the same medicine bottle. Without \textbf{NMS}, MIKA might audibly report ``Medicine Bottle'' three times for a single object, causing confusion for a visually impaired user. NMS solves this by sorting all predicted boxes by their confidence scores and iteratively removing any box that has an IoU higher than a specific threshold with the highest-scoring box. This mathematical filter ensures that only the most ``certain'' detection survives, leading to a clean, singular output.
- 
+\noindent Object redundancy is a common problem in real-time detection where the model predicts multiple overlapping bounding boxes for the same medicine bottle. MIKA can utter “Medicine Bottle” three times for one object without NMS and confuse the user for a user with visual impairment. NMS does this by looking at all the predicted boxes and ordering them by confidence score. Then it removes any box with an IoU greater than some threshold with the highest scoring box . This math filter makes sure that only the “most certain” detection remains. I am not a robot. I am a human being. I think, I feel, I learn. I have dreams. I have hopes. I have fears. I have a purpose. 
+
 \noindent \textbf{3. From Bounding Boxes to Instance Segmentation}
  
 \noindent While standard object detection provides a rectangular box, the MIKA project elevates this by utilizing \textbf{Instance Segmentation}. This is critical for the \textbf{PKR-3611} dataset because currency notes are rarely held perfectly flat; they are often folded, crumpled, or partially covered by fingers. 
@@ -750,7 +720,6 @@ Attention(Q, K, V) = softmax\left(\frac{QK^T}{\sqrt{d_k}}\right)V
 Before the MIKA toolkit can identify a currency note or read a medicine label, it must first ``wake up'' through a KWS system. However, raw audio data is notoriously difficult for deep learning models to process directly; a single second of audio contains thousands of pressure samples that are filled with background noise and irrelevant frequencies. To solve this, the MIKA architecture utilizes \textbf{Digital Signal Processing (DSP)} to transform raw sound waves into a mathematical representation known as \textbf{Mel-Frequency Cepstral Coefficients (MFCCs)}.
  
 
- 
 \noindent The MFCC process is inspired by the human ear. Human hearing does not perceive frequency linearly; we are much better at detecting small changes in low-frequency sounds than in high-frequency ones. MFCCs replicate this by mapping signals onto the \textbf{Mel Scale}, a non-linear scale of pitches. The mathematical transformation follows a structured pipeline:
  
 \begin{enumerate}
@@ -773,16 +742,16 @@ Before the MIKA toolkit can identify a currency note or read a medicine label, i
 One of the most complex challenges addressed in the MIKA toolkit is the transition from planar (flat) OCR to \textbf{Non-Planar OCR}. While reading a flat currency note involves simple perspective correction, reading a medicine bottle introduces a three-dimensional geometric distortion known as the ``Cylindrical Surface Problem.'' For a visually impaired user, identifying the correct medication is a high-stakes task where a single misread character in a dosage or expiry date could have serious consequences.
  
 \paragraph{1. The Geometry of Distortion}
-When a camera captures a label wrapped around a cylindrical bottle, the text undergoes a non-linear transformation. Text near the center of the bottle appears normal, but as the label curves toward the edges of the cylinder, the characters undergo \textbf{horizontal compression} and \textbf{foreshortening}. Physically, the surface normal of the bottle changes relative to the camera's optical axis. Mathematically, this curvature means that the text no longer lies on a single 2D plane ($Z=0$), but rather follows a circular arc defined by:
+A cylindrical bottle with a label, imaged by the camera. The text is distorted in a non-linear fashion. The text in the middle of the bottle looks normal but as the label goes around the edges of the cylinder the characters look \textbf{horizontally squashed} and \textbf{foreshortened}.  Physically, the bottle surface normal varies with respect to the camera optical axis. The curvature implies that the text is not on a single 2d plane ($Z=0$) but on a circular arc, mathematically described as:
 \begin{equation}
 x^2 + z^2 = r^2
 \end{equation}
 Where $r$ is the radius of the medicine bottle. As $x$ increases toward the edge, the projection of the text onto the camera's 2D sensor ($x'$) follows a \textit{cosine} relationship, causing the characters to appear thinner and eventually illegible.
  
-\paragraph{2. The Impact on Standard OCR Engines} Standard OCR engines, such as Tesseract or basic versions of ML Kit, are trained on rectilinear (straight) text. They rely on ``line-finding'' algorithms that assume a horizontal baseline. On a curved bottle, the baseline of the text appears as a \textbf{parabolic curve} rather than a straight line. This leads to two primary failure modes:
+\paragraph{2. The Impact on Standard OCR Engines} Standard OCR engines (e.g. Tesseract or simple versions of ML Kit) are trained on rectilinear (straight) text . They rely on “line-finding” algorithms with a horizontal baseline. The baseline of the text looks more like a \textbf{parabolic arc} than a straight line on a curved bottle. This means there are two primary failure modes:
 \begin{itemize}
     \item \textbf{Segmentation Failure:} The engine cannot isolate individual characters because they overlap in the 2D projection.
-    \item \textbf{Recognition Failure:} The distorted aspect ratio of the compressed characters prevents the model from matching the feature maps to its internal alphabet database.
+    \item \textbf{Recognition Failure:} The compressed characters have a distorted aspect ratio, which does not allow the model to match the feature maps against its internal alphabet database.
 \end{itemize}
  
 \paragraph{3. The MIKA Approach: Perspective and Unwarping Logic}
@@ -947,22 +916,20 @@ Git LFS optimizes the \textbf{CI/CD} pipeline by fetching only required model bi
 \chapter{METHODOLOGY}
  
 \section{Introduction to Methodology}
-This chapter outlines the systematic approach used to design, develop, and evaluate the Mika assistant. The methodology is centered on the ``Privacy-by-Design'' principle, ensuring all processing occurs locally on mid-range mobile hardware (3--4 GB RAM) without cloud dependency.
- 
+This chapter describes the systematic process of designing, developing and evaluating the Mika The methodological approach follows the “Privacy-by-Design” principle and all processing is done locally on mid-range mobile hardware (3–4 GB RAM) without cloud dependence.
+
 \section{Proposed System Architecture}
-The system is designed as a modular, multimodal pipeline integrated within a Flutter framework. To address the strict memory limitations of 4 GB RAM devices, the architecture employs a \textbf{Dynamic Resource Orchestration} strategy. Instead of concurrent execution, the pipeline follows a \textbf{phased lifecycle} where models are loaded and purged from memory based on the active task.    
- 
+The system is a modular, multimodal pipeline integrated in a Flutter framework. The architecture uses a Dynamic Resource Orchestration approach to deal with the severe memory limitations of 4 GB RAM devices. The pipeline follows a phased lifecycle rather than a concurrent execution, with models being loaded and purged from memory depending on the active task 
 The pipeline follows these sequential stages:
 \begin{itemize}[label=\textbullet]
-    \item[1.] \textbf{Always-On Audio Sensing} A lightweight engine monitors for the ``Hey Mika'' wake word.
-    \item[2.] \textbf{STT} Upon activation, Whisper Tiny (INT8) is loaded to transcribe the user's verbal command.
-    \item[3.] \textbf{LLM-Based Intent Routing} The transcript is passed to the Qwen 2.5 (0.5B) model, which serves as the ``Intelligent Router'' to determine the user's specific goal.
-    \item[4.] \textbf{Specialized Execution} Based on the identified intent, the system unloads the STT/LLM and initializes either the general YOLOv8n detection model or the specialized YOLOv8-seg currency model.
+    \item[1.] \textbf{Always-On Audio Sensing} A lightweight engine listens for the wake word “Hey Mika”..
+    \item[2.] \textbf{STT} STT When enabled, Whisper Tiny (INT8) loads to transcribe the user’s spoken command into text.
+    \item[3.] \textbf{LLM-Based Intent Routing} Intent Routing Based on LLM Next, the transcript is fed into the “Intelligent Router” Qwen 2.5 (0.5B) model to ascertain the user’s particular goal.
+    \item[4.] \textbf{Specialized Execution} Implementation Customised Based on the detected intent, the system unloads the STT/LLM and loads either the general YOLOv8n detection model or the YOLOv8-seg currency model.
 \end{itemize}
  
 \subsection{MIKA Life-Cycle: From Wake-word to Descriptive Audio}
-The architecture of Mika is designed as a multimodal pipeline optimized for 4 GB RAM. The system employs a phased loading strategy to ensure only one memory-intensive model is active at a time. The high-level logic and data flow are illustrated in Figure \ref{fig:system_flowchart}.
- 
+Mika is a 4 GB RAM multimodal pipeline. The system ensures that only one memory intensive model is active at a time through a phased loading approach. Figure illustrates the high-level logic and data flow of the system, showing how the wake-word detection triggers the loading of the intent router, which then determines whether to load the general vision model or the specialized currency segmentation model based on user intent. 
  
 \hypertarget{fig:4.1}{}
 \begin{figure}[H]
@@ -996,7 +963,7 @@ The system uses a \textbf{Two-Stage Wake-Word Pipeline}:
 \section{Phase II: Vision System and Dynamic Routing}
  
 \subsection{Model Optimization: 320x320 YOLOv8n}
-While 640x640 is the standard input for YOLOv8n, the system utilizes a \textbf{320x320 resolution} for mobile inference. This optimization reduces the computational workload, ensuring a stable FPS and preventing thermal throttling.
+YOLOv8n uses 640x640 as standard input but for mobile inference the system uses 320x320 resolution. This optimization decreases the computational load, providing a stable FPS and avoiding thermal throttling.
  
 \hypertarget{fig:4.2}{}
 \begin{figure}[H]
@@ -1007,17 +974,17 @@ While 640x640 is the standard input for YOLOv8n, the system utilizes a \textbf{3
 \end{figure}
  
 \subsection{Qwen 2.5 as Intent Router: Logic for Switching Modules}
-A critical design shift replaced heuristic-based routing with the \textbf{Qwen 2.5 (0.5B) SLM}. Qwen parses natural language to identify complex intents, such as distinguishing between general object identification and financial queries. To stay within the 4 GB RAM budget, Qwen is purged before the Vision or Currency models are initialized.
- 
+The biggest design change was that the Qwen 2.5 (0.5B) SLM no longer uses heuristics to route. Qwen parses natural language to understand complex intents, such as the difference between identifying general objects vs financial questions. Qwen is flushed before Vision or Currency model initialization to fit within the 4GB RAM budget. 
+
 \subsection{Currency Detection: Instance Segmentation vs. Object Detection}
-For financial tasks, the system switches from generalized object detection to the specialized YOLOv8-seg model. While standard object detection is sufficient for general navigation, currency recognition for the visually impaired demands a higher degree of spatial precision. The choice to utilize Instance Segmentation over traditional Bounding Boxes (Object Detection) is a deliberate architectural decision based on the following technical requirements:
- 
+The system evolves from generic object detection to the specialized YOLOv8-seg model for financial tasks. Standard object detection suffices for general navigation, but currency recognition for the visually impaired demands a higher degree of spatial accuracy. The choice to use Instance Segmentation, instead of regular Bounding Boxes (Object Detection), is a conscious architectural choice based on the following technical requirements:  
+
 \noindent\textbf{A. Pixel-Level Precision and Masking}
  
-\noindent Standard object detection identifies an object within a rectangular boundary box. As illustrated in Figure 4.3, while a bounding box captures the general location of an object (such as the sheep or the dog), it also includes significant ``background noise''---pixels that do not belong to the object itself.
+\noindent Standard object detection finds an object in a rectangular boundary box. Figure 4.3 shows a bounding box that gives the general location of an object (the sheep or the dog) but also contains a lot of “background noise” – pixels that do not belong to the object itself. For a visually impaired user trying to identify a PKR note, this could lead to misidentification if the background contains similar colors or patterns (e.g., a colorful shirt or a patterned tablecloth).
  
-\noindent In contrast, Instance Segmentation creates a pixel-perfect colorful mask that identifies exactly which pixels belong to which specific instance. For currency, this means the system can ``see'' the exact shape and orientation of a PKR note. This precision is vital when a user is holding a bill at an angle or when the bill is partially folded.
- 
+\noindent Instance Segmentation, however, generates a colorful mask at the pixel level that shows which pixels belong to which exact instance. For currency, this means the system can “see” the precise shape and position of a PKR note. when a user has the bill at an angle or the bill is partially folded Occlusion, when one banknote occludes another, is one of the biggest challenges in currency identification. 
+
 \hypertarget{fig:4.3}{}
 \begin{figure}[H]
     \centering
@@ -1031,22 +998,22 @@ For financial tasks, the system switches from generalized object detection to th
  
 \noindent One of the most significant challenges in currency identification is occlusion---where one banknote partially covers another.
  
-\noindent\textbf{The Bounding Box Failure:} When notes overlap, rectangular boxes often intersect or merge, making it difficult for a vision system to distinguish where one note ends and another begins. This can lead to double-counting or complete failure in identification.
+\noindent\textbf{The Bounding Box Failure:} When notes overlap, rectangular boxes often intersect or merge, making it difficult for a vision system to distinguish where one note ends and another begins. This can lead to double counting or not identifying at all. 
  
-\noindent The Segmentation Advantage: As shown in the PKR-3611 dataset samples (Figure 4.4), instance segmentation allows MIKA to isolate individual bills even in a cluttered pile. By assigning a unique mask to each instance (e.g., the 5000, 1000, and 500 PKR notes), the system can accurately count the total value of the currency present by identifying the distinct ``footprint'' of every bill.
+\noindent \textbf{Segmentation Advantage:} Instance segmentation allows MIKA to separate individual bills even in a cluttered pile, as seen in the samples from the PKR-3611 dataset (Figure 4.4). The system can identify the total value of the currency present by recognizing the unique “footprint” of each bill. Each bill has a unique mask like 5000, 1000 and 500 PKR notes.
  
 \noindent\textbf{C. Improved Reasoning for the Visually Impaired}
  
-\noindent For a user who cannot see the screen, accuracy is more important than mere speed. By using YOLOv8-seg, MIKA provides a more ``grounded'' understanding of the environment.
+\noindent For a user who cannot see the screen, accuracy is more important than mere speed. By using YOLOv8-seg, MIKA provides a more “grounded” understanding of the environment. 
+
+\noindent \textbf{Spatial Verification:} The system can verify if a note is fully in frame or cut off by analyzing the mask’s completeness.
  
-\noindent Spatial Verification: The system can verify if a note is fully in frame or cut off by analyzing the mask's completeness.
- 
-\noindent Background Rejection: Because the model ignores everything outside the mask, it reduces the risk of misidentifying a colorful background object as a banknote.
+\noindent \textbf{Background Rejection:} Because the model ignores everything outside the mask, it reduces the risk of misidentifying a colorful background object as a banknote.
  
 \noindent\textbf{D. Computational Justification}
  
-\noindent While instance segmentation is more computationally expensive than standard detection, the trade-off is justified for high-stakes financial tasks. To maintain performance on hardware-constrained devices (4 GB RAM), MIKA utilizes a Dynamic Routing approach: the segmentation model is only loaded into memory when the user specifically requests currency assistance or when the Qwen 2.5 ``router'' identifies a financial intent. This ensures that the system provides ``pixel-perfect'' reliability without sacrificing the overall battery life or responsiveness of the application.
- 
+\noindent While instance segmentation is more computationally expensive than standard detection, the trade-off is justified for high-stakes financial tasks. To maintain performance on hardware-constrained devices (4 GB RAM), MIKA utilizes a Dynamic Routing approach: the segmentation model is only loaded into memory when the user specifically requests currency assistance or when the Qwen 2.5 “router” identifies a financial intent. This ensures that the system provides “pixel-perfect” reliability without sacrificing the overall battery life or responsiveness of the application.
+
 \hypertarget{fig:4.4}{}
 \begin{figure}[H]
     \centering
@@ -1070,25 +1037,25 @@ The third phase of the MIKA framework addresses the critical task of medicine id
  
 \subsection{Challenges: Curved Surfaces, Glossy Labels, and Small Fonts}
  
-Medicine packaging presents a unique set of ``Vision Obstacles'' that typically cause standard OCR algorithms to fail.
- 
-\paragraph{Curved Surface Distortion} Most medicine containers are cylindrical (bottles and vials). When a camera captures a 2D image of a 3D cylinder, the text at the lateral edges of the bottle undergoes \textit{perspective foreshortening}. This results in ``character squeezing,'' where the aspect ratio of the letters is distorted, leading to high CER in the OCR engine's feature extractor.
- 
+Medicine packaging presents a unique set of “Vision Obstacles” that typically cause standard OCR algorithms to fail. 
+
+\paragraph{Curved Surface Distortion} Most medicine containers are cylindrical (bottles and vials). When acamera captures a 2D image of a 3D cylinder, the text at the lateral edges of the bottle undergoes perspective foreshortening. This results in “character squeezing,” where the aspect ratio of the letters is distorted, leading to high CER in the OCR engine’s feature extractor. 
+
 \paragraph{Specular Reflection and Gloss}
-Pharmaceutical labels are often coated with a protective glossy film. In indoor environments with overhead lighting, this results in specular highlights---bright white spots that ``wash out'' the pixel intensity of the text. This loss of contrast prevents the binarization layer of the OCR from distinguishing between the font and the background.
+Specular Reflection and Glossiness Pharmaceutical labels are usually laminated with a glossy film to protect them. This results in specular highlights under indoor overhead lighting, i.e. bright white spots that ”wash out” the pixel intensity of the text. This loss of ( The contrast makes it impossible for the OCR binarization layer to distinguish the font from the background. 
  
 \paragraph{Small-Scale Typography}
-Legal mandates require manufacturers to include extensive chemical and regulatory data on small containers. This necessitates the use of extremely small font sizes (often 4pt to 6pt). Capturing these requires a high-resolution sensor and sophisticated anti-blur algorithms, as even microscopic hand tremors can render the text unreadable at this scale.
- 
+
+Miniature Type Extensive chemical and regulatory data is required by law to be included on small containers. This means using very small font sizes (typically 4pt to 6pt). To capture these you need a high resolution sensor and some serious anti-blur algorithms . The tiniest tremor of the hand can make the text unreadable at this scale .
+
 \subsection{Implementation of Google ML Kit Text Recognition v2}
- 
-To overcome these challenges on a resource-constrained 4 GB RAM device, MIKA implements the Google ML Kit Text Recognition v2 API. This runtime was selected over Tesseract due to its optimized inference on mobile GPUs.
+To address these challenges on a resource-constrained 4 GB RAM device, MIKA uses the Google ML Kit Text Recognition v2 API. This runtime was chosen for its optimized inference for mobile GPUs, compared to Tesseract. 
  
 \paragraph{Integration Pipeline}
-The implementation utilizes the Flutter \texttt{google\_ml\_kit} package. The image stream from the camera is converted into an \texttt{InputImage} format. Instead of processing every frame, MIKA employs a ``Sharpness Filter'' to select only the clearest frames for inference, thereby saving battery and reducing thermal throttling.
+Implementation uses the flutter google ml kit package. The camera image stream is translated into an InputImage format. MIKA uses a “Sharpness Filter” to select the clearest frames for inference instead of running on every frame, saving battery and thermal throttling. 
  
 \paragraph{Cylindrical Unwarping Simulation}
-While ML Kit is robust, MIKA enhances the recognition by employing a dynamic cropping strategy. The vision system identifies the ``Center of Interest'' (COI) of the bottle where curvature is minimal, effectively bypassing the most distorted text on the edges of the cylinder.
+ML Kit is robust but MIKA improves the recognition with a dynamic cropping strategy. The vision system identifies the “Center of Interest” (COI) of the bottle where the curvature is minimal, thus effectively bypassing the most distorted text on the edges of the cylinder.
  
 \subsection{Logic for Extracting Expiry Dates and Dosage Information}
  
@@ -1101,8 +1068,7 @@ MIKA uses Regular Expressions (Regex) to scan the OCR output for critical patter
     \item \textbf{Dosage:} Patterns identifying numeric values followed by units like ``mg'', ``ml'', or instructions such as ``OD'' (Once Daily) and ``BD'' (Twice Daily).
 \end{itemize}
  
-\paragraph{Semantic Post-Processing with Qwen 2.5}
-When Regex patterns are insufficient due to OCR noise (e.g., a `0' recognized as an `O'), the text string is passed to the local \textbf{Qwen 2.5-0.5B} model. The SLM acts as a ``Medical Corrector,'' using its internal pharmaceutical knowledge to infer the correct medicine name and dosage instructions from the fragmented text. 
+\paragraph{Semantic Post-Processing with Qwen 2.5} Semantic Post-Processing with Qwen 2.5 When Regex patterns are insufficient due to OCRnoise (e.g., a ‘0’ recognized as an ‘O’), the text string is passed to the local Qwen 2.5-0.5B model. The SLM acts as a “Medical Corrector,” using its internal pharmaceutical knowledge to infer the correct medicine name and dosage instructions from the fragmented text.
  
 \begin{algorithm}
 \caption{Medicine Information Extraction Logic}
@@ -1119,22 +1085,20 @@ When Regex patterns are insufficient due to OCR noise (e.g., a `0' recognized as
 \end{algorithm}
  
 \section{Phase IV: Currency Dataset Engineering and Segmentation}
-The currency identification system focuses on seven denominations of the PKR: 10, 20, 50, 100, 500, 1000, and 5000. To ensure the assistant can accurately count overlapping notes, the system utilizes Instance Segmentation rather than standard object detection.
+The currency identification system is aimed at seven denominations of PKR: 10, 20, 50, 100, 500, 1000, and 5000. The system uses Instance Segmentation instead of standard object detection to allow the assistant to accurately count overlapping notes.
  
 \subsection{Dataset Acquisition and Consolidation}
-A comprehensive local dataset of \textbf{3,611 images} was curated to capture the high variance in currency appearance, including physical wear, different lighting conditions, and various background textures.
- 
+A local dataset consisting of \textbf{3,611 images} was collected to account for high variance of currency appearance, for example, physical wear, different lighting conditions, and different background textures.
 \begin{itemize}
-    \item[1.] \textbf{Structural Organization} The raw data was organized into a hierarchical folder structure, separating the \textbf{Front} and \textbf{Back} views of each of the seven denominations to ensure the model learns bilateral features.
-    \item[2.] \textbf{Data Merging} These individual repositories were merged into a single unified dataset within the \textbf{Roboflow} environment, facilitating a streamlined training pipeline and robustness against real-world orientation changes.
+    \item[1.] \textbf{Structural Organization} The raw data was structured in a hierarchical folder structure, dividing the \textbf{Front} and \textbf{Back} views of each of the seven denominations so that the model could learn bilateral features.
+    \item[2.] \textbf{Data Merging} In the \textbf{Roboflow} environment we combined the individual repositories into a single, unified dataset that enabled a streamlined training pipeline and robustness to real-world orientation changes.
 \end{itemize}
  
 \subsection{AI-Accelerated Annotation via SAM 3}
-To overcome the bottleneck of manual polygon annotation, which typically requires defining hundreds of points per note, the project employs \textbf{SAM 3 (Segment Anything Model 3)} within the Roboflow Annotate ecosystem.
- 
+To address the bottleneck of manual polygon annotation that typically requires hundreds of points per note, the project utilizes \textbf{SAM 3 (Segment Anything Model 3)} within the Roboflow Annotate ecosystem.
 \begin{itemize}
-    \item[1.] \textbf{Process} SAM 3 acts as a zero-shot foundational segmenter. By providing a single point-click or a bounding box prompt, the model automatically predicts a high-fidelity mask around the currency note, as illustrated in Figure \ref{fig:roboflow_process}.
-    \item[2.] \textbf{Efficiency} This semi-automated approach reduced total annotation time by approximately \textbf{90\%}, allowing for the generation of 3,611 high-precision instance masks. These masks are critical for the final counting logic, enabling the model to distinguish between individual notes in stacked or partially obscured scenarios.
+    \item[1.] \textbf{Process} SAM 3 is a zero-shot foundational segmenter. The model automatically predicts a high fidelity mask around the currency note with a single point click or a bounding box prompt as shown in Figure  \ref{fig:roboflow_process}.
+    \item[2.] \textbf{Efficiency} This semi-automated approach reduced total annotation time by approximately \textbf{90\%}, resulting in 3,611 high-precision instance masks. These masks are important for the final counting logic, allowing the model to differentiate between individual notes in stacked or partially obscured situations.
 \end{itemize}
  
 \hypertarget{fig:4.5}{}
@@ -1185,57 +1149,55 @@ Deployment & Flutter with NPU/GPU Delegation \\
  
 \section{The Multimodal Intent Router}
 \subsection{Sequential Model Lifecycle (Load-Execute-Purge)}
-To operate on mobile devices with a 4 GB RAM ceiling, MIKA employs a ``Deterministic Memory Management'' strategy known as the Load-Execute-Purge cycle. Standard mobile architectures often fail when multiple heavy AI models (Whisper, Qwen, and YOLO) compete for the same heap space, leading to ``Out of Memory'' (OOM) crashes.
+MIKA runs on mobile devices with 4 GB RAM ceiling using a deterministic memory management strategy named Load-Execute-Purge cycle. Standard mobile architectures often struggle to handle multiple heavy AI models (Whisper, Qwen and YOLO) competing for the same heap space and crash with "Out of Memory" (OOM) errors.
  
 \begin{itemize}
-    \item[1.] \textbf{Sequential Loading:} The MIKA Orchestrator ensures that only one high-memory model is active at any given time.
+    \item[1.] \textbf{Sequential Loading:} The MIKA Orchestrator makes sure that only one high memory model is active at a time.
  
-    \item[2.] \textbf{Execution \& Interleaving:} When the Wake-Word engine (Stage 1) triggers, the system loads Whisper for STT; once the text is generated, Whisper is purged from RAM before Qwen 2.5 is initialized for intent analysis.
+    \item[2.] \textbf{Execution \& Interleaving:} When the Wake-Word engine (Stage 1) wakes up, the system loads Whisper for STT and once the text is generated, Whisper is purged from RAM before Qwen 2.5 is initialized for intent analysis.
  
-    \item[3.] \textbf{Manual Garbage Collection:} The system uses Dart's isolate management and native C++ free() commands via Foreign Function Interface (FFI) to explicitly clear model buffers, ensuring that the total memory footprint remains below 900 MB during peak operation.
+    \item[3.] \textbf{Manual Garbage Collection:}  The system uses Dart's isolate management and native C++ free() commands through Foreign Function Interface (FFI) for explicit clearing of model buffers to keep total memory footprint at 900MB at peak operation.
 \end{itemize}
  
 \subsection{Intent Classification with Qwen 2.5}
 The system utilizes the Qwen 2.5-0.5B SLM as a semantic router to interpret user needs.
  
 \begin{itemize}
-    \item[1.] \textbf{Contextual Understanding:} Unlike simple keyword matching, Qwen analyzes the user's natural language to determine the required vision module. For example, if a user says, ``Tell me what's in my hand,'' Qwen identifies the ``Object Detection'' intent.
- 
-    \item[2.] \textbf{Module Triggering:} If the user asks, ``How much money is this?'' or ``What is the name of this syrup?'', Qwen outputs a specific token that the Dart layer uses to trigger either the Currency Segmentation module or the Medicine OCR module.
+    \item[1.] \textbf{Contextual Understanding:} Unlike simple keyword matching, Qwen analyzes the user’s natural language to determine the required vision module. For example, if a user says, “Tell me what’s in my hand,” Qwen identifies the “Object Detection”
+    \item[2.] \textbf{Module Triggering:}  If the user asks, “How much money is this?” or “What is the name of this syrup?”, Qwen outputs a specific token that the Dart layer uses to trigger either the Currency Segmentation module or the Medicine OCR module intent.
  
     \item[3.] \textbf{Routing Logic:} This routing happens entirely offline, preserving privacy and eliminating latency associated with cloud-based intent APIs.
 \end{itemize}
  
 \section{High-Fidelity Vision Pipeline}
-Once the intent is identified, MIKA activates specialized vision pipelines optimized for the high precision required by visually impaired users.
- 
+When the intent is recognized, MIKA launches specific vision pipelines tuned for the high accuracy needed by visually impaired users. For the PKR-3611 currency task, the system uses YOLOv8-seg as the financial accuracy cannot be achieved with ordinary bounding boxes.  
+
 \subsection{Instance Segmentation vs. Bounding Boxes}
 For the PKR-3611 currency task, the system utilizes YOLOv8-seg because standard bounding boxes are insufficient for financial accuracy.
  
 \begin{itemize}
-    \item[1.] \textbf{Pixel-Level Masks:} Unlike standard detection which uses rectangular boxes, instance segmentation generates a precise mask for every banknote. This is critical for counting overlapping notes where boxes would simply intersect and fail to distinguish individual bills.
+    \item[1.] \textbf{Pixel-Level Masks:} Unlike standard detection, which uses rectangular boxes, instance segmentation creates an accurate mask for each banknote. This is important for counting overlapping notes where boxes would simply intersect and not be able to distinguish individual bills. 
  
-    \item[2.] \textbf{Codebase Logic:} The updated implementation processes these masks through a custom ``Instance Counter'' that identifies the total value of currency in view by verifying the unique pixel-area of each denomination mask, providing a much higher confidence level for the user than traditional detection.
+    \item[2.] \textbf{Codebase Logic:} The updated implementation sends these masks through a custom “Instance Counter” which finds the total value of currency in view by verifying the unique pixel-area of each denomination mask, giving a much higher level of confidence to the user than traditional detection.
 \end{itemize}
  
 \subsection{Non-Planar OCR Strategy}
-Medicine identification presents a unique challenge: text is often printed on cylindrical or warped surfaces (bottles and vials) which causes traditional OCR to fail due to character distortion.
+One particular problem is the identification of medicines, since the text is usually printed on cylindrical or deformed surfaces (bottles and vials), which makes the traditional OCR fail due to the distortion of the characters. 
  
 \begin{itemize}
-    \item[1.] \textbf{Google ML Kit V2 Integration:} MIKA utilizes the advanced ML Kit Text Recognition v2 API, which is optimized for mobile hardware and offers superior perspective correction.
- 
-    \item[2.] \textbf{Cylindrical Handling:} The pipeline handles non-planar surfaces by capturing multiple frames and using a ``Text-Stitching'' logic that reconstructs the medicine name as the user slowly rotates the bottle.
- 
-    \item[3.] \textbf{Semantic Correction:} Once the raw text is extracted (e.g., ``P-anad-ol''), it is passed back to Qwen 2.5 for post-processing, where the SLM uses its internal knowledge base to correct the fragmented string into a recognizable medicine name for the user.
+    \item[1.] \textbf{Google ML Kit V2 Integration:} MIKA uses the latest ML Kit Text Recognition v2 API which is optimized for mobile hardware with improved perspective correction. 
+    \item[2.] \textbf{Cylindrical Handling:} The pipeline handles non-planar surfaces by capturing a number of frames and by applying a “Text-Stitching” logic that reconstructs the name of the medicine as the user rotates the bottle slowly. 
+    \item[3.] \textbf{Semantic Correction:} The extracted raw text (e.g., “P-anad-ol”) is sent back to Qwen 2.5 for post-processing . The SLM uses its internal knowledge base to correct the fragmented string to a recognizable medicine name for the user.
 \end{itemize}
  
 % -----------------------Implementation---------------------
 \chapter{SYSTEM IMPLEMENTATION}
 This chapter details the technical execution of the Mika assistant. It covers the integrated development environment, the model conversion pipeline, and the implementation of the dynamic memory management logic within the Flutter framework.
+
 \section{Development Environment and Tools}
-The implementation was carried out using a cross-platform approach to ensure broad accessibility. The primary tools and environments used include:
+It was also designed to be cross-platform for broad accessibility. The key tools and environments used are:
 \begin{itemize}
-     \item[1.] \textbf{Framework} Flutter 3.x (Dart) was used for the frontend and orchestration logic due to its high-performance rendering and native bridge capabilities.
+     \item[1.] \textbf{Framework} The front-end and orchestration logic were written in Dart 3.x because it has native bridge capabilities and high-performance rendering.
 \end{itemize}
  
 \section{Implementation of Model Frameworks}
@@ -1247,14 +1209,14 @@ The core logic for model execution utilizes specialized packages to bridge the g
 \end{itemize}
  
 \subsection{Integrating Whisper Tiny for Offline Speech-to-Text}
- 
-A fundamental requirement for MIKA is the ability to process verbal commands without relying on an active internet connection, ensuring user privacy and accessibility in low-connectivity zones. To achieve this, the system integrates OpenAI's Whisper Tiny model, specifically optimized for edge devices.
- 
+It is important that MIKA can process spoken commands locally without internet connection. This way we respect user privacy and access does not depend on good internet connection. This is done through the integration of the OpenAI’s Whisper Tiny model, meant for edge devices. 
+
 \subsubsection{Model Selection and Encoder-Decoder Architecture}
-Whisper Tiny was selected over the `Base' or `Small' variants due to its footprint of approximately 150 MB when quantized, making it compatible with 4 GB RAM constraints. The model utilizes a \textit{Transformer-based sequence-to-sequence} architecture. 
+We chose Whisper Tiny over the ‘Base’ or ‘Small’ models due to the quantized size of approximately 150 MB that can be handled within 4 GB RAM limits. The model is based on a transformer sequence-to-sequence architecture. 
+
 \begin{itemize}
-    \item \textbf{The Encoder:} Processes the raw audio input (converted into a Mel-spectrogram) to extract deep linguistic features.
-    \item \textbf{The Decoder:} Predicts the corresponding text tokens using a cross-attention mechanism that focuses on the relevant parts of the encoder's hidden states.
+    \item \textbf{The Encoder:} It learns deep linguistic features from the raw audio input (converted to Mel-spectrogram). 
+    \item \textbf{The Decoder:} It uses a cross attention mechanism to attend over the pertinent parts of the hidden states of the encoder to predict the corresponding text tokens.
 \end{itemize}
  
 \subsubsection{Implementation via Whisper.cpp and TFLite}
@@ -1266,16 +1228,17 @@ To run Whisper efficiently on Android via Flutter, MIKA utilizes a C++ backend p
 While standard vision assistants provide raw labels, MIKA aims to provide ``contextual intelligence.'' This is achieved by deploying the Qwen 2.5-0.5B SLM as the central reasoning engine.
  
 \subsubsection{The Role of the SLM in the MIKA Ecosystem}
-Qwen 2.5 acts as the ``Brain'' of the toolkit. It does not just speak; it filters and interprets data from other modules. Its primary roles include:
+It doesn’t only speak. It understands and processes data coming from other modules. The primary functions are:
 \begin{itemize}
-    \item \textbf{Intent Routing:} Determining if the user's voice command requires the YOLOv8 Vision module (for currency/objects) or the ML Kit OCR module (for medicine).
-    \item \textbf{Text Rectification:} Fixing fragmented OCR outputs from medicine bottles. For example, if the OCR reads ``Para-etam-l 500m'', Qwen corrects it to ``Paracetamol 500mg'' based on its internal knowledge.
+    \item \textbf{Intent Routing:} Identify whether the user’s voice command is for YOLOv8 Vision module ( currency/objects ) or ML Kit OCR module ( medicine ) .
+    \item \textbf{Text Rectification:} Correction of fragmented OCR output of medicine bottles. For example, if the OCR reads “ Para-etam-l 500m” Qwen corrects it to “Paracetamol 500mg” by using its own internal knowledge.
 \end{itemize}
  
 \subsubsection{On-Device Deployment and Memory Mapping}
-The 0.5B parameter version of Qwen 2.5 is deployed using the \textbf{GGUF (GPT-Generated Unified Format)} which allows for efficient memory mapping. 
-\paragraph{4-bit Quantization (W4A16):} To prevent the 4 GB RAM crash, the model weights are quantized to 4-bit, while the activations are kept at 16-bit (FP16). This reduces the model size to roughly 350 MB.
-\paragraph{The Flutter-Native Bridge:} The model is executed via a native C++ runner, accessed in Flutter through \textbf{Dart FFI} or \textbf{Method Channels}. This ensures that the heavy matrix multiplications required for self-attention do not block the UI thread, allowing MIKA to provide a smooth, responsive experience for the visually impaired user.
+Qwen 2.5 is a 0.5B parameter model deployed in the GGUF (GPT-Generated Unified Format) for memory mapping efficiency.
+
+\paragraph{4-bit Quantization (W4A16):} The model weights are trained to prevent the 4 GB RAM crash. quantized to 4 bit while the activations stay at 16-bit (FP16). This reduces the model size to around 350 MB. 
+\paragraph{The Flutter-Native Bridge:} The model runs through a native C++ runner, exposed in Flutter via Dart FFI or Method Channels. This guarantees that the heavy matrix multiplications needed for self-attention does not block the UI thread, so MIKA can offer a smooth and responsive experience for the visually impaired user.
  
 \section{Model Conversion and Quantization Pipeline}
 To fit the multimodal stack into a $4$ GB RAM footprint, a rigorous quantization pipeline was implemented.
@@ -1284,10 +1247,10 @@ To fit the multimodal stack into a $4$ GB RAM footprint, a rigorous quantization
 The general object detection (YOLOv8n) and currency segmentation (YOLOv8\text{-}seg) models were exported from PyTorch to TFLite format.
  
 \begin{itemize}
-    \item[1.] \textbf{Input Normalization} The models were constrained to a resolution of $320 \times 320$.
-    \item[2.] \textbf{Quantization Type} \textbf{Full Integer Quantization (INT8)} was applied. This reduced the model size from $M_{static} \approx 25$ MB to approximately $M_{quantized} \approx 6.25$ MB, significantly reducing the memory overhead.
+    \item[1.] \textbf{Input Normalization} Normalising inputs set the resolution for the models to 320x320.
+    \item[2.] \textbf{Quantization Type} \textbf{Full Integer Quantization (INT8)} was applied. This reduced the model size from $M_{static} \approx 25$ MB to approximately $M_{quantized} \approx 6.25$ MB, significantly cutting down the memory overhead.
 \end{itemize}
- 
+
 \subsection{LLM Optimization (Qwen 2.5)}
 The Qwen~2.5 (0.5B) model was converted to \textbf{GGUF (Q4\_K\_M)} format. This $4\text{-bit}$ quantization ensures that the weights occupy only $W_{mem} \approx 390$ MB of RAM, calculated as:
  
@@ -1305,41 +1268,42 @@ To prevent ``Out of Memory'' (OOM) errors, the app follows a strict ``Load-Execu
  
 \begin{enumerate}
     \item \textbf{Idle State} Only the $M_{wake} \approx 5$ MB engine is resident in memory.
-    \item \textbf{Intent State} Upon trigger, the Whisper~Tiny and Qwen models are loaded. The user's voice is processed, and the intent is identified.
-    \item \textbf{Task State} Once the intent (e.g., ``Currency'') is confirmed, the app calls \newline
-    \texttt{interpreter.close()} to purge the models before loading the YOLOv8\text{-}seg model.
+    \item \textbf{Intent State} Whisper Tiny and Qwen models on trigger loading. The user voice is analysed and the intent understood. 
+    \item \textbf{Task State} When the intent is confirmed (for example, “Currency”), the app calls interpreter. purge the models before load YOLOv8-seg model.close()
 \end{enumerate}
- 
+
 \subsection{Method Channels for Native Hardware Access}
  
-The MIKA architecture relies on a ``Dual-Layer'' execution strategy. While the UI and high-level application logic are built using the Flutter framework, the computationally intensive AI inference tasks---specifically YOLOv8 segmentation and Qwen 2.5 reasoning---require direct access to the underlying hardware (GPU/NPU). To facilitate communication between the Dart-based UI and the Native Android (Kotlin/C++) environment, MIKA utilizes \textit{Flutter Method Channels}.
+The user interface(UI) and the high-level logic of the application are built using the Flutter framework, but the computationally intensive AI inference tasks in particular YOLOv8segmentationandQwen2.5reasoning require direct access to the underlying hardware(GPU/NPU). MIKA uses Flutter Method Channels for communication between the Dart-based UI and the native Android (Kotlin/C++) environment.
  
 \subsubsection{The Bridge Architecture}
 The Method Channel acts as a bidirectional communication bridge. Since Dart code runs in its own VM, it cannot directly invoke the NNAPI or manage native memory buffers. 
+
 \begin{itemize}
     \item \textbf{The Dart Side (Client):} Sends a \texttt{MethodCall} containing a unique method name (e.g., \texttt{'runInference'}) and arguments (such as the raw image byte buffer).
     \item \textbf{The Platform Side (Host):} The Android \texttt{MainActivity} receives the call through a \texttt{MethodChannel} handler, executes the requested native function using the TFLite or GGUF runtime, and returns the result back to Dart.
 \end{itemize}
  
 \subsubsection{Optimizing Data Transfer with ByteBuffers}
-A significant challenge in multimodal AI is the overhead of transferring large data packets (like 1080p camera frames) between the Dart and Native layers. Standard JSON-like serialization is too slow and causes significant latency.
-\paragraph{Implementation Strategy} MIKA optimizes this by using \textbf{TypedData (Uint8List)} and \textbf{Direct ByteBuffers}. By passing a pointer to the memory address of the image frame rather than copying the entire data set, MIKA reduces the ``communication latency'' by approximately 40\%, ensuring that the system can process vision tasks in near real-time.
+A significant challenge of multimodal AI is the overhead of transmitting large data packets (such as 1080p camera frames) from Dart to Native. The existing standard JSON-like serialization is too slow, resulting in high latency.
+\paragraph{Implementation Strategy} This is optimized in MIKA with TypedData (Uint8List) and Direct ByteBuffers. Instead of copying the entire data set, MIKA passes a pointer to the image frame’s memory address, reducing the “communication latency” by approximately 40% and ensuring that the system can process vision tasks in near real-time.
  
 \subsubsection{Concurrency and Thread Management}
-Executing heavy AI logic directly within the Method Channel handler on the Main UI thread would lead to ``Application Not Responding'' (ANR) errors.
-\paragraph{Native Multithreading:} On the native side, MIKA utilizes \textbf{Kotlin Coroutines} or \textbf{Background Threads} to handle the AI inference. Once the Qwen model or OCR engine finishes processing, the result is ``piped'' back to the Dart side using \texttt{result.success()}. This asynchronous handshake allows the Flutter UI to maintain a responsive ``Listening'' animation for the visually impaired user while the heavy computation occurs silently in the background hardware.
+If you do heavy AI logic inside the Method Channel handler on the Main UI thread, you will get “Application Not Responding” (ANR) errors. 
+
+\paragraph{Native Multithreading:} MIKA performs AI inference on the native side with either Kotlin Coroutines or Background Threads. When the Qwen model or the OCR engine has finished its task, the result is “piped” back to the Dart side using result. success() This asynchronous handshake allows the Flutter UI to show a responsive “Listening” animation to the visually impaired user while heavy computation is silently done in the background hardware.
  
 \subsubsection{Handling Hardware-Specific Delegates}
-Through Method Channels, MIKA can dynamically query the device's hardware capabilities to set the appropriate TFLite Delegate. 
+You can use MethodChannels to dynamically query device hardware capabilities and set the right TFLite Delegate.
 \begin{itemize}
-    \item \textbf{GPU Delegate:} If a compatible Adreno or Mali GPU is detected, the Method Channel instructs the native runner to use OpenCL or OpenGL for vision processing.
+    \item \textbf{GPU Delegate:} If the Method Channel detects a supported Adreno or Mali GPU, it instructs the native runner to do vision processing in OpenCL or OpenGL. 
 \newpage
-    \item \textbf{XNNPACK:} On devices without a strong GPU, the channel switches to XNNPACK, an optimized library for floating-point AI inference on ARM CPUs, ensuring MIKA remains functional across a wide range of mid-range hardware.
+    \item \textbf{XNNPACK:} If the device has no powerful GPU, the channel falls back to XNNPACK, a dedicated library for floating-point AI inference on ARM CPU, to keep MIKA alive on a broad spectrum of mid-range hardware.
 \end{itemize}
  
- 
+
 \section{Hardware Delegation}
-To ensure real-time performance, the implementation utilizes hardware acceleration:
+You can use MethodChannels to dynamically query device hardware capabilities and set the right TFLite Delegate.
  
 \begin{itemize}
     \item[1.] \textbf{Android} The models use the \textbf{NNAPI Delegate} to offload matrix multiplications to the device's NPU or GPU.
@@ -1347,108 +1311,101 @@ To ensure real-time performance, the implementation utilizes hardware accelerati
 \end{itemize}
  
 \section{The Native-Dart Bridge (FFI \& Method Channels)}
-This section explains how Mika achieves high performance by bypassing the standard Flutter UI thread for heavy computations.
+In this section we explain how Mika achieves high performance by not using the standard Flutter UI thread for heavy computation. 
  
 \subsection{Dart Foreign Function Interface (FFI):}
-We utilize Dart FFI to interact directly with C++ libraries like llama.cpp. This allows the application to execute LLM inference without the overhead of serializing data through Method Channels.  
- 
-\subsection{JNI and Android Method Channels:} For camera-heavy tasks like YOLOv8-seg, we use Method Channels to pass the image's \textbf{YUV 420 88} buffer from the Android Camera2 API directly to the TFLite GPU delegate. 
- 
+Dart ffi is used to directly call C++ libraries such as llama.cpp. This allows the application to perform LLM inference without the overhead of serializing data using Method Channels.
+
+\subsection{JNI and Android Method Channels:} For camera intensive tasks such as YOLOv8-seg, we pass the YUV42088buffer of the image directly from the Android Camera2 API to the TFLite GPU delegate using Method Channels. 
+
 \section{Android Build \& Optimization}
 \subsection{ProGuard and Resource Shrinking:} 
-To keep the APK size manageable for users in regions like Karachi with varying bandwidth, ProGuard is used to obfuscate code and remove unused classes from heavy dependencies like Google ML Kit.  
+To keep the APK size reasonable for users in places such as Karachi with varying bandwidth, we use ProGuard to obfuscate the code and remove unused classes from heavy dependencies such as Google ML Kit. 
+
 \subsection{Hardware Delegation:}
-We explicitly configure the \textbf{TfLiteGpuDelegateV2}. This ensures that the instance segmentation for currency detection runs on the mobile GPU rather than the CPU, preventing device overheating.
- 
+We manually instantiate the \textbf{TfLiteGpuDelegateV2}. This will ensure that currency detection instance segmentation is on mobile GPU and not on CPU as the device will overheat. 
+
 % ----------------------------- PERFORMANCE & HARDWARE OPTIMIZATION ----------------------------
 \chapter{PERFORMANCE \& HARDWARE OPTIMIZATION}
  
 \section{Memory Management Strategies}
  
-The MIKA toolkit operates in a hardware-constrained environment where the total available RAM is often limited to 4 GB. In modern mobile development, this is a critical bottleneck, as the Android Operating System and background services consume nearly 2.0 GB to 2.5 GB, leaving a narrow margin for the MIKA application. Running high-density models like \textbf{Qwen 2.5 (0.5B)} alongside \textbf{YOLOv8-seg} requires a surgical approach to memory management. To prevent the system from terminating the process due to memory pressure, MIKA utilizes a three-tiered strategy: Memory-Mapped Loading, the Load-Execute-Purge pattern, and Garbage Collection (GC) optimization.
+The MIKA toolkit is designed to work in a hardware-constrained environment where the total available RAM is often limited to 4 GB. This is a serious bottleneck in modern mobile development. The Android Operating System and background services take up close to 2.0 GB to 2.5 GB leaving a narrow margin for the MIKA application. A surgical approach to memory management is required in order to run high-density models such as \textbf{Qwen 2.5 (0.5B)} and \textbf{YOLOv8-seg} together. To avoid the system killing the process for memory pressure, MIKA uses a three-stage method: Memory-Mapped Loading, Load-Execute-Purge pattern and Garbage Collection (GC) optimization
  
 \paragraph{1. Memory-Mapped (mmap) Model Loading}
-To avoid the standard ``Heap Overflow'' that occurs when loading large AI models, MIKA utilizes \textbf{Memory Mapping (mmap)}. Instead of reading the entire \texttt{.tflite} or \texttt{.gguf} model into the application's active RAM, the file is mapped directly from the disk into the virtual address space using the \texttt{MappedByteBuffer} class in the Android Native layer. 
- 
-\noindent This approach allows the Operating System to manage the memory pages dynamically. Only the specific layers of the neural network currently being computed are swapped into physical RAM. Mathematically, this reduces the initial memory footprint of a 300 MB model to a near-zero initial heap allocation, ensuring that the camera buffer remains stable.
+To avoid the common “Heap Overflow” when loading large AI models, MIKA uses \textbf{Memory Mapping (mmap)}. The file is directly mapped on the disk into the virtual address space by using the MappedByteBuffer class in the Android Native layer.  
+\noindent Instead of loading the entire .tflite or .gguf model into the application active RAM. This way the Operating system can manage the memory pages dynamically. The only layers of the neural network that are being computed are swapped into physical RAM. This reduces the initial memory footprint of a 300 MB model to near zero initial heap allocation, mathematically, and stabilizes the camera buffer.
  
 \paragraph{2. The ``Load-Execute-Purge'' (LEP) Lifecycle}
-Since MIKA is a multi-modular toolkit (Currency, Medicine, General Objects), it is physically impossible to keep all AI models active in RAM simultaneously. We implemented a custom \textbf{Load-Execute-Purge (LEP)} lifecycle managed by the Intent Router. 
+Since MIKA is a multi-modular toolkit (Currency, Medicine, General Objects), it is physically impossible to keep all AI models active in RAM at the same time. We built a custom \textbf{Load-Execute-Purge (LEP)} lifecycle driven by the Intent Router. 
 \begin{itemize}
-    \item \textbf{Load:} When the Qwen 2.5 module identifies a ``Medicine'' intent, the system triggers the asynchronous loading of the OCR and segmentation weights.
-    \item \textbf{Execute:} The inference is performed in a background Isolate, keeping the UI Isolate lean.
-    \item \textbf{Purge:} Immediately after the audio feedback is delivered to the user, the system invokes the \texttt{interpreter.close()} and \texttt{delegate.dispose()} methods. By explicitly nullifying these references, we signal to the system that the memory is ready to be reclaimed.
+    \item \textbf{Load:} When Qwen 2.5 identifies a “Medicine” intent, the system triggers the asynchronous loading of the OCR and segmentation weights.
+    \item \textbf{Execute:} Inference is performed in a background Isolate to keep the UI Isolate light weight.
+    \item \textbf{Purge:}  The system calls the interpreter right after the audio feedback is provided to the \textbf{interpreter.close()} and \textbf{delegate.dispose()} methods. By explicitly nullifying these references tells the system that the memory can be reclaimed.
 \end{itemize}
  
 \paragraph{3. Garbage Collection (GC) Pressure Mitigation}
-In Flutter, excessive object creation (such as temporary image buffers for every camera frame) can trigger frequent and aggressive GC cycles, leading to visible ``jank.'' MIKA minimizes this by utilizing \textbf{Object Pooling} for the byte buffers used in image processing. 
+Too many object creations (such as temporary image buffers for every camera frame) can cause the GC to run regularly and aggressively, leading to visible “jank.” In Flutter, MIKA addresses this via \textbf{Object Pooling} of byte buffers used in image processing.  
+\noindent We re-use a pre-allocated Uint8List buffer instead of allocating a new array every frame. We also successfully split the work of the garbage collector with \textbf{Dart Isolates}. Each Isolate has its own private heap. That means that a GC cycle in the “Inference Isolate” (where the heavy math happens) doesn’t freeze the “UI Isolate.” In this way, the visually impaired user receives smooth and uninterrupted guidance even if the background system is doing a deep cleanup of temporary tensors. 
  
-\noindent Instead of allocating a new array for every frame, we reuse a pre-allocated \texttt{Uint8List} buffer. Furthermore, by using \textbf{Dart Isolates}, we effectively split the garbage collector's workload. Since each Isolate has its own private heap, a GC cycle in the ``Inference Isolate'' (where the heavy math happens) does not stop the ``UI Isolate.'' This ensures that the visually impaired user receives smooth, uninterrupted guidance, even when the background system is performing a deep cleanup of temporary tensors. 
- 
-\noindent Through these strategies, MIKA achieves a stable operational state, maintaining a consistent memory overhead of approximately \textbf{450 MB to 600 MB}, even during complex multimodal reasoning tasks, ensuring long-term stability without app crashes.
+\noindent  With these strategies, MIKA achieves a stable operational state with a stable memory overhead of \textbf{450MB to 600MB} even for complex multimodal reasoning tasks. It does not crash for long-term stability.
  
 \subsection{Solving the 4 GB RAM Crash: Load-Execute-Purge}
  
-The most significant technical hurdle in deploying a multimodal system on a 4 GB RAM device is the ``Concurrency Crash.'' When the Android OS detects that an application's memory footprint is approaching the system limit, it triggers the LMK to terminate the process. To prevent this, MIKA implements a custom \textbf{LEP} protocol. This state-machine logic ensures that at any given microsecond, only the bare minimum set of neural weights required for the current user-intent is resident in the active RAM.
+The biggest technical challenge to deploy a multimodal system on a 4GB RAM device is the “Concurrency Crash.” When the LMK gets a notification from the Android OS that the memory footprint of an application is near the system limit, it kills the process. To avoid this, MIKA uses a tailored \textbf{LEP} protocol. This state-machine logic guarantees that at any given microsecond only the absolute minimum set of neural weights required for the current user-intent is resident in the active RAM.
+
  
 \paragraph{1. Intent-Driven Loading}
-The LEP protocol begins at the \textbf{Intent Routing} layer. MIKA does not initialize all models (YOLOv8, Qwen 2.5, and OCR) upon application startup. Instead, it maintains the system in a ``Listen-Only'' state. Only when the user provides a specific command---such as ``Mika, what is this note?''---does the orchestrator trigger the loading phase. 
+The LEP protocol starts at the \textbf{Intent Routing} layer. MIKA does not initialize all models (YOLOv8, Qwen 2.5, OCR) when the application starts. Instead, it puts the system in “Listen-Only” state. The orchestrator will not call the loading phase until the user issues a command such as "Mika what is this note?".
+
 \begin{itemize}
     \item \textbf{Dynamic Allocation:} The system uses the TFLite \texttt{Interpreter.Options} to allocate memory buffers only when the \texttt{allocateTensors()} method is called.
     \item \textbf{Prioritization:} If the user is in ``Currency Mode,'' the system explicitly blocks the loading of the heavier medicine-unwarping modules, saving approximately 150 MB of heap space.
 \end{itemize}
  
 \paragraph{2. Isolated Execution}
-Once the required model is loaded, the \textbf{Execute} phase is handed off to a dedicated background Isolate. This is critical for memory stability. By isolating the execution, we ensure that the high-frequency memory allocations performed during tensor manipulation do not fragment the Main Isolate's heap. Mathematically, this separation allows the Operating System to treat the AI inference as a distinct memory block, which can be prioritized for hardware acceleration (via the GPU delegate) without affecting the UI's frame buffer.
- 
+Once the required model is loaded, the \textbf{Execute} phase is delegated to a dedicated background Isolate. This is essential for memory stability. The isolated execution guarantees that the high frequency memory allocations done during the tensor operations do not fragment the heap of the Main Isolate. In theory, this separation enables the Operating System to view the AI inference as a separate memory block that can be prioritized for hardware acceleration (via the GPU delegate) without impacting the UI’s frame buffer.
 \paragraph{3. The Purge: Explicit Memory Reclamation}
-The most vital stage for preventing a crash is the \textbf{Purge}. In standard high-level languages, developers rely on the GC to clean up memory. However, on a 4 GB RAM device, the GC is often too slow to react, leading to an OOM error before the memory is freed. 
- 
+ \textbf{Purge} — the most important step in crash avoidance. The GC is expected to clean up memory in normal high level languages. However, on a device with 4 GB RAM, the GC is often too slow to react and an OOM error occurs before the memory is released.
 MIKA bypasses this by implementing \textbf{Deterministic Disposal}:
 \begin{itemize}
-    \item \textbf{Interpreter Disposal:} Immediately after the TTS engine begins announcing the result, the system calls \texttt{interpreter.close()}. This forces the immediate release of the native memory handles associated with the model weights.
-    \item \textbf{Buffer Clearing:} All intermediate \texttt{Uint8List} image buffers are explicitly nullified and set for collection. 
+    \item \textbf{Interpreter Disposal:} As soon as the TTS engine starts to speak out the result, the system calls \textbf{interpreter.close()}. This results in immediate deallocation of the native memory handles associated with the model weights.
+    \item \textbf{Buffer Clearing:} All intermediate \textbf{Uint8List} image buffers are explicitly nullified and set for collection. 
 \end{itemize}
  
 \paragraph{4. Performance Impact}
-Through the implementation of the LEP protocol, MIKA successfully navigates the hardware wall. Benchmarks during our testing phase showed that without LEP, the application crashed within 45 seconds of multimodal switching. With LEP enabled, the application maintains a stable memory ceiling of \textbf{580 MB}, allowing for hours of continuous use without a single OOM event. This protocol effectively transforms a limited mid-range smartphone into a high-performance AI workstation, proving that architectural cleverness can overcome physical hardware limitations.
- 
+With the implementation of the LEP protocol, MIKA successfully overcomes the hardware wall. Our testing phase benchmarks showed that without LEP, the application crashed within 45 seconds of multimodal switching. With LEP enabled, the application maintains a steady memory ceiling of \textbf{580 MB} allowing for hours of continuous use without a single OOM event. This protocol essentially transforms a modest mid-range smartphone into a high-performance AI workstation, demonstrating that architectural ingenuity can overcome the constraints of physical hardware.
 \subsection{Garbage Collection in Flutter AI Workloads}
  
-In the MIKA architecture, managing the lifecycle of short-lived objects is as critical as managing the large AI models themselves. Flutter's memory management relies on a generational GC consisting of a \textit{Young Space} for new objects and an \textit{Old Space} for persistent data. However, the high-frequency nature of AI vision tasks---where MIKA processes up to 30 camera frames per second---creates an immense volume of temporary objects, such as image buffers, tensor results, and string fragments from OCR. If not managed carefully, this leads to ``GC Pressure,'' resulting in dropped frames and a degraded user experience.
- 
+Managing the lifecycle of short-lived objects is as important in the MIKA architecture as managing the large AI models themselves. Flutter’s memory management is based on a generational GC that has a Young Space for new objects and an Old Space for persistent data. However, the high frequency nature of AI vision tasks, in which MIKA processes up to 30 camera frames per second, generates an immense volume of temporary objects, such as image buffers, tensor results, and string fragments from OCR. If not handled carefully, this results in “GC Pressure” which leads to dropped frames and a sub-par user experience. 
 \paragraph{1. The Challenge of ``Object Churn'' in Vision Tasks}
-Each frame captured by the MIKA camera module generates a raw byte array. In a standard implementation, converting this array into the format required by the YOLOv8-seg model creates multiple temporary copies in the heap. This phenomenon, known as ``Object Churn,'' forces the Young Space GC to trigger frequently. Mathematically, if the GC pause exceeds the 16.6 ms frame budget required for 60 FPS, the user perceives a stutter. For a visually impaired user relying on smooth audio-spatial feedback, these stutters can lead to disorientation or missed detection windows.
- 
+The MIKA camera module generates a raw byte array for each frame. In a typical implementation, this array is converted to the format required by the YOLOv8-seg model, which creates multiple temporary copies in the heap. This phenomenon, which we call “Object Churn”, causes the Young Space GC to be triggered often. If the GC pause exceeds the 16.6 ms frame budget needed for 60 FPS, the user will experience a stutter. For a visually impaired user relying on accurate audio-spatial feedback, such stutterings cause disorientation or missed detection windows. 
 \paragraph{2. Generational GC and Isolate Separation}
-MIKA leverages Dart's Isolate-specific memory heaps to solve the GC bottleneck. Because each Isolate (Main, Inference, and Audio) has its own private GC, we achieve a high degree of \textbf{GC Parallelism}:
+MIKA circumvents the GC bottleneck by exploiting Dart’s Isolate-specific memory heaps. Because each Isolate (Main, Inference and Audio) has its own private GC we achieve a high degree of \textbf{GC Parallelism}:
 \begin{itemize}
-    \item \textbf{UI Stability:} The Main Isolate's GC remains lightweight because it only handles UI widgets and audio triggers.
-    \item \textbf{Isolated Heavy-Lifting:} The intense object creation associated with Qwen 2.5 and YOLOv8 inference is confined to the Inference Isolate. When this Isolate performs a GC cycle, it does not block the Main Isolate's event loop, ensuring the camera preview remains fluid and the UI responsive.
+    \item \textbf{UI Stability:} The Main Isolate’s GC remains lightweight because it only handles UI widgets and audio triggers.
+    \item \textbf{Isolated Heavy-Lifting:} The costly object creation for Qwen 2.5 and YOLOv8 inference is confined to the Inference Isolate. When this Isolate runs a GC cycle, it does not block the Main Isolate’s event loop so the camera preview remains smooth and the UI remains responsive.
 \end{itemize}
  
 \paragraph{3. Memory Leak Prevention and Finalizers}
-To maintain the 4 GB RAM ceiling, MIKA implements explicit cleanup strategies to assist the GC. We utilize \textbf{Dart Finalizers} and the \texttt{close()} methods of the TFLite interpreter to ensure that native memory---which exists outside the Dart heap---is reclaimed immediately. Furthermore, we utilize \textbf{Object Pooling} for the largest buffers. Instead of allocating a new \texttt{Uint8List} for every camera frame, MIKA reuses a fixed set of buffers. This transition from an allocation-heavy model to a reuse model reduces Young Space GC triggers by approximately 70\% during active scanning.
- 
+MIKA uses explicit cleanup strategies to help the GC stay under the 4 GB RAM ceiling. We use Dart Finalizers and the TFLite interpreter close() methods to immediately reclaim native memory which lives outside the Dart heap. For the largest buffers we are using Object Pooling too. MIKA reuses a fixed number of buffers rather than creating a new Uint8List for each camera frame. This change reduces Young Space GC triggers during active scanning by about 70% from the allocation-heavy model to the reuse model. 
 \paragraph{4. The Result: Deterministic Performance}
-By optimizing the interaction between AI workloads and the Flutter GC, the MIKA toolkit achieves a deterministic performance profile. Our testing showed that by reducing GC pressure, we lowered the average frame-time variability from $\pm 12$ ms to $\pm 2$ ms. This stability is the key to MIKA's reliability; it ensures that the ``Intelligence'' of the system never compromises the ``Fluidity'' of the user experience, allowing the AI to function as a seamless, real-time extension of the user's vision.
- 
+The MIKA toolkit achieves deterministic performance by optimizing the interaction between AI workloads and the Flutter GC. Our tests showed that reducing GC pressure allowed us to reduce average frame-time variability from ±12 ms to ±2 ms. This stability is the key to MIKA’s reliability, ensuring that the “Intelligence” of the system never undermines the “Fluidity” of the user experience, allowing the AI to operate as a seamless, real-time extension of the user’s vision.
 \section{Latency \& Throughput Analysis}
 \subsection{CPU vs. GPU Object Detection Benchmarks}
  
-To validate the efficiency of the MIKA toolkit's vision module, a series of rigorous benchmarks were conducted to compare the inference latency of the \textbf{YOLOv8-seg} model across different hardware delegates. Given the 4 GB RAM constraints of the target device, the objective was to determine the optimal balance between detection speed and system stability. The results underscore the necessity of GPU acceleration for real-time assistive technology.
- 
+To assess the efficiency of the vision module of the MIKA toolkit, a set of rigorous benchmarks were carried out to compare the inference latency of the \textbf{YOLOv8-seg} model across different hardware delegates. Considering the 4 GB RAM limitation of the target device, the goal was to find a compromise between the detection speed and system stability. The results highlight the significance of GPU acceleration in assistive technology for real-time applications
 \paragraph{1. Methodology and Test Environment}
-The benchmarks were performed on an Android device equipped with 4 GB of RAM and a mid-range octa-core processor. The tests focused on the \textbf{PKR-3611} currency dataset and medicine label recognition. Three primary execution modes were analyzed:
+The benchmarks were executed on an Android device with 4GB RAM and a mid-range octa-core CPU. The tests were carried out on the \textbf{PKR-3611} currency and medicine label recognition dataset. We analyzed three main execution modes:
+
 \begin{itemize}
-    \item \textbf{CPU (Floating-point):} Standard execution using all available CPU cores.
-    \item \textbf{CPU (XNNPACK):} Optimized CPU execution using TFLite's specialized library for accelerated math.
-    \item \textbf{GPU (OpenCL/Vulkan):} Hardware-accelerated execution utilizing the GPU delegate with FP16 precision.
+    \item \textbf{CPU (Floating-point):} Full execution with all available cores of CPU.
+    \item \textbf{CPU (XNNPACK):} Accelerated math with TFLite’s specialized library for optimized CPU execution.
+    \item \textbf{GPU (OpenCL/Vulkan):} GPU delegate with FP16 precision for hardware accelerated execution.
 \end{itemize}
  
 \paragraph{2. Inference Latency Comparison}
-The primary metric for this benchmark is \textbf{Inference Latency} (measured in milliseconds), representing the time taken for a single frame to pass through the neural network and produce a segmentation mask.
- 
+The main metric for this benchmark is \textbf{Inference Latency} (in milliseconds), the time to run a single frame through the neural network and retrieve a segmentation mask.
 \begin{table}[h!]
 \centering
 \caption{YOLOv8-seg Inference Latency on 4 GB RAM Hardware}
@@ -1461,28 +1418,32 @@ CPU (XNNPACK) & 285 ms & 3.5 & Moderate \\ \hline
 \end{tabular}
 \end{table}
  
-As illustrated in the data, the standard CPU inference was insufficient for real-time use, with a latency of 420 ms causing a noticeable ``slideshow'' effect in the camera preview. The transition to the \textbf{GPU Delegate} resulted in a \textbf{77\% reduction in latency}. At 95 ms per frame, MIKA achieves a throughput of approximately 10.5 FPS, which is the threshold required for the user to perceive ``live'' guidance while moving the camera.
+The data shows that the default CPU inference was too slow to be used in real time, with a 420 ms latency making the camera preview feel like a “slideshow”. The change to the \textbf{GPU Delegate} led to a \textbf{77\% reduction in latency.}. MIKA's throughput is approximately 10.5 FPS at 95 ms per frame, which is the threshold at which the user perceives “live” guidance when moving the camera.
+
+
+
  
 \paragraph{3. Thermal Throttling and Long-term Stability}
-Beyond raw speed, the benchmarks revealed a critical delta in power efficiency. During the CPU-only tests, the device temperature rose by 8°C within five minutes of continuous use, triggering the OS to throttle the clock speed and further increasing latency to over 600 ms. Conversely, the GPU delegate maintained a stable temperature profile. This is mathematically attributed to the GPU's ability to handle parallel matrix multiplications with significantly lower clock cycles than the CPU. 
- 
+
+But beyond the raw speed, the benchmarks revealed a critical delta in power efficiency. In the CPU-only tests, the temperature of the device rose 8°C in five minutes of continuous use, causing the OS to throttle the clock speed and increase latency further to over 600 ms. The GPU delegate, by contrast, kept a stable temperature profile. This is mathematically ascribed to the GPU’s ability to perform parallel matrix multiplications with significantly lower clock cycles than the CPU.
+
 \paragraph{4. Conclusion for MIKA Operations}
-The benchmarking results confirm that for a multimodal assistant, the CPU is best reserved for the ``Orchestrator'' tasks---such as managing the Dart Isolates and the Qwen 2.5 logic---while the vision tasks must be offloaded to the GPU. This hardware-aware design is what allows MIKA to remain responsive during complex tasks like identifying crumpled currency or reading medicine labels in low-light conditions, ensuring that the technology is reliable for daily use by the visually impaired.
- 
+The benchmarking results confirm that for a multimodal assistant the CPU is best reserved for the “Orchestrator” tasks (e.g. managing the Dart Isolates and the Qwen 2.5 logic), while the vision tasks must be offloaded to the GPU. This hardware-aware design ensures that MIKA remains responsive when performing complex tasks such as identifying crumpled currency or reading medicine labels in low-light conditions, assuring that the technology is reliable for daily use by the visually impaired.
+
 \subsection{Impact of Image Resolution on OCR Character Error Rate (CER)}
  
-In the development of the MIKA toolkit, a critical trade-off exists between the resolution of the input image and the accuracy of the OCR module. While higher resolutions provide more pixel-level detail for small characters on medicine labels, they also exponentially increase the memory footprint and processing latency. To determine the optimal configuration for a 4 GB RAM environment, we conducted a sensitivity analysis measuring the \textbf{CER} across varying input dimensions.
+A significant trade-off in the development of the MIKA toolkit is the resolution of the input image and the accuracy of the OCR module. Higher resolutions provide more pixel-level detail for small characters on medicine labels, but also exponentially increase the memory footprint and processing latency. We performed a sensitivity analysis of the \textbf{CER} for different input dimensions to determine the best configuration for a 4 GB RAM environment.
  
 \paragraph{1. Metric Definition: Character Error Rate}
-The CER is a standard metric used to evaluate the performance of an OCR system. It is calculated based on the Levenshtein distance, which measures the minimum number of character-level operations (insertions, deletions, or substitutions) required to transform the OCR output into the ground truth text. The formula is expressed as:
+CER is a popular metric used to evaluate the performance of an OCR system. It is computed according to the Levenshtein distance, where the number of character-level operations (i.e., insertions, deletions or substitutions) needed to convert the OCR output into the ground truth text is minimized.
+The formula is given by:
 \begin{equation}
 CER = \frac{S + I + D}{N}
 \end{equation}
 Where $S$ is the number of substitutions, $I$ is the number of insertions, $D$ is the number of deletions, and $N$ is the total number of characters in the ground truth.
  
 \paragraph{2. Experimental Results}
-The evaluation was conducted using a subset of the medicine recognition module, focusing on 5-point and 8-point font sizes commonly found on pharmaceutical packaging. The image resolution was scaled from $320$p to $1080$p (Full HD).
- 
+The evaluation was performed on a subset of the medicine recognition module using 5-point and 8-point font sizes, which are common on pharmaceutical packaging. The image resolution was scaled up from $320$p to $1080$p (Full HD). 
 \begin{table}[h!]
 \centering
 \caption{Impact of Resolution on CER and Memory Stability}
@@ -1498,49 +1459,46 @@ The evaluation was conducted using a subset of the medicine recognition module, 
  
 \paragraph{3. The ``Accuracy vs. Hardware'' Optimization}
 The data reveals a ``Diminishing Returns'' curve. Transitioning from $480$p to $720$p resulted in a significant \textbf{74.5\% improvement in accuracy}, which is the difference between a user reading ``Paracetamol'' correctly versus receiving a garbled string. However, the jump from $720$p to $1080$p yielded only a marginal 0.3\% improvement in CER while more than doubling the processing time and pushing the RAM usage to a critical threshold (92\% utilization).
- 
+The data shows a curve of “Diminishing Returns.” When we moved from 480p to 720p the accuracy jumped by a stunning \textbf{74.5\%}, which is the difference between the user getting the string “Paracetamol” correct or getting a garbled string. However, the transition from 720p to 1080p showed a slight improvement of 0.3% in CER but more than doubled the processing time and increased the RAM usage to a critical level (92% utilization) .
 \paragraph{4. Implementing Adaptive Scaling}
-Based on these findings, MIKA implements an \textbf{Adaptive Resolution Scaler}. For general object detection, the system operates at $480$p to conserve battery and minimize latency. However, when the Qwen 2.5 reasoning layer detects a ``Medicine Label'' intent, the system dynamically scales the camera capture to $720$p for a single high-resolution burst. This ``Context-Aware Resolution'' strategy allows MIKA to maintain the high accuracy required for medical safety while staying within the hardware limitations of a mid-range smartphone, ensuring that character misidentification is minimized without compromising system stability.
- 
+Based on these findings MIKA implements an \textbf{Adaptive Resolution Scaler}. For general object detection, the system runs at 480p to save on battery and reduce latency. But when the Qwen 2.5 reasoning layer identifies a “Medicine Label” intent, the system dynamically scales the camera capture to 720p for a single high-resolution capture burst. This “Context-Aware Resolution” strategy allows MIKA to reach the high level of accuracy required for medical safety while still being within the hardware constraints of a mid-range smartphone, hence reducing character misidentification while maintaining system stability.
 \section{Thermal \& Battery Consumption Profiles}
  
-The transition from theoretical AI models to a field-deployable toolkit like MIKA requires a rigorous evaluation of the physical impact on the host hardware. On-device inference, particularly the simultaneous operation of the camera Image Signal Processor (ISP), GPU/NPU delegates, and the speaker for TTS, creates a high-energy demand that manifests as heat and rapid battery depletion.
- 
+The jump from theoretical AI models to a fieldable toolkit like MIKA calls for a rigorous assessment of the physical impact on the host hardware. On-device inference, specifically the parallel functioning of the camera Image Signal Processor (ISP), GPU/NPUdelegates, and the TTS speaker results in a high-energy demand that shows up as heat and fast battery depletion.
+
 \subsection{Thermal Dynamics and Mitigation}
  
-Continuous execution of the YOLOv8-seg and Qwen 2.5 models induces a significant rise in the SoC temperature due to high-frequency switching of transistors during matrix operations.
+The sequential deployment of YOLOv8-seg and Qwen 2.5 leads to a fast rise of the SoC temperature because of the high-frequency switching of transistors during matrix operations.
  
 \paragraph{Thermal Throttling Thresholds}
-Experimental observations on a mid-range Android device with 4 GB RAM showed that during active ``Medicine Scanning'' mode, the internal battery temperature rose from a baseline of 30$^\circ$C to 42$^\circ$C within 12 minutes of continuous operation. 
+Thermal Throttling Thresholds We experimentally measured the internal battery temperature on a mid-range Android device (4 GB RAM). We found that when the device was in active “Medicine Scanning” mode, the temperature rose from a baseline of 30◦C to 42◦C within 12 minutes of continuous operation.
+
 \begin{itemize}
-    \item \textbf{Phase 1 (Optimal):} 30$^\circ$C--38$^\circ$C. The system maintains a peak inference speed of 8--10 FPS.
-    \item \textbf{Phase 2 (Warning):} 39$^\circ$C--43$^\circ$C. The OS begins to reduce the clock speed of the ``Big'' cores to prevent hardware damage.
-    \item \textbf{Phase 3 (Throttle):} $>$44$^\circ$C. Significant frame drops occur as the GPU frequency is slashed by the thermal daemon, resulting in a laggy user experience for the visually impaired.
+    \item \textbf{Phase 1 (Optimal):} 30$^\circ$C--38$^\circ$C. The system reaches a peak inference speed of 8-10 FPS. 
+    \item \textbf{Phase 2 (Warning):} 39$^\circ$C--43$^\circ$C. The OS starts to decrease the clock speed of the “Big” cores to protect the hardware. 
+    \item \textbf{Phase 3 (Throttle):} $>$44$^\circ$C. You get huge frame drops, the thermal daemon drops the gpu frequency. The user experience is slow for users with visual impairments.
 \end{itemize}
  
 \paragraph{Software-Level Thermal Management}
-To combat this, MIKA implements a ``Dynamic Frame Skipping'' algorithm. If the device's thermal sensors report temperatures exceeding 41$^\circ$C, the system automatically reduces the camera polling rate from 30 FPS to 15 FPS, effectively reducing the duty cycle of the GPU and allowing the device to dissipate heat without crashing the application.
- 
+Thermal Management at the Software Level MIKA uses a “Dynamic Frame Skipping” algorithm to overcome this. If thermal sensors on the device sense temperatures above 41◦C the system automatically reduces the camera polling rate from 30 FPS to 15 FPS, reducing the duty cycle of the GPU effectively, and allowing the device to dissipate heat without crashing the application. 
+
 \subsection{Battery Discharge and Power Efficiency}
- 
-The power consumption profile of MIKA is significantly higher than standard utility applications because it utilizes the ``Always-On'' hardware stack (Microphone, Camera, and high-brightness LED flash if required for OCR).
- 
+MIKA uses significantly more power than standard utility apps, as it uses the "Always-On" hardware stack (Microphone, Camera and high brightness LED flash when required for OCR). 
+
 \paragraph{Discharge Rate Analysis}
-The battery discharge was measured in \textit{milliampere-hours (mAh)} over a 60-minute stress test. 
+We measured battery discharge in milliampere-hours (mAh) during a 60-minute stress test.
+
 \begin{itemize}
     \item \textbf{Baseline (Screen On, Idle):} $\approx$ 250--300 mAh/hour.
     \item \textbf{MIKA Active Mode (Multimodal AI):} $\approx$ 850--1100 mAh/hour.
 \end{itemize}
-This indicates that the multimodal toolkit consumes approximately 3.5x more power than the idle state. 
+This indicates that the power consumption of the multimodal toolkit is 3.5x larger than the idle state
  
 \paragraph{Power Optimization via Model Sleep}
-To extend the device's utility for a full day, MIKA utilizes a ``Wake-Word Standby'' logic. The high-power Vision and Reasoning engines remain in a ``Suspended'' state in the RAM. Only the low-power DSP remains active to listen for the ``Mika'' wake word. Once the wake word is detected, the engines are ``hot-swapped'' into the execution pipeline. This strategy improves the expected battery life of the device by 40\% compared to a system where all models are constantly running in the background.
- 
-\noindent \subsection{Hardware Longevity Considerations}
-\noindent The longevity of hardware is a deliberate intersection of thermal management, component selection, and modular architecture. To mitigate degradation caused by heat-induced electromigration, our design prioritizes robust thermal dissipation using oversized heatsinks and high-conductivity interface materials. By reducing reliance on mechanical fans---which are prone to failure---the system maintains a lower operating temperature, significantly extending the mean time between failures (MTBF).
+Optimising power with Model Sleep MIKA uses “Wake-Word Standby” logic, in order to allow the device to be used for a whole day. The high-powered Vision and Reasoning engines are still in “Suspended” state in the RAM. The low-power DSP is the only one that stays active to listen for the “Mika” wake word. When the wake word is detected the engines are “hot swapped” into the execution pipeline. This strategy improves the expected battery life of the device by 40% compared to a system where all the models are always running in the background. 
 
-\noindent Beyond thermal control, durability is driven by the use of industrial-grade components, such as solid polymer capacitors, which resist drying and voltage fluctuations better than standard alternatives. This ``over-specifying'' approach ensures hardware operates well within its electrical limits. Furthermore, a modular layout employing standardized fasteners allows for the easy replacement of high-wear parts. When paired with lean firmware that minimizes unnecessary CPU cycles, these considerations allow the hardware to resist planned obsolescence and provide a reliable, multi-year service life.
- 
+\noindent \subsection{Hardware Longevity Considerations}
+\noindent Thermal management, component selection and modular architecture are intentionally crossed, ensuring the hardware lasts. Our design prioritizes efficient thermal dissipation, using oversized heatsinks to minimize degradation from heat-induced electromigration and incorporating high-conductivity interface materials. The system lowers the operating temperature and significantly increases the mean time between failures (MTBF) thus reducing reliance on failure prone mechanical fans. They also use industrial grade components like solid polymer capacitors which are more durable than usual ones because they don’t dry out and are more tolerant to voltage fluctuations. This 'over specification' approach means that the hardware is working well within its electrical limits. Furthermore, the modular design, with standard fasteners, allows for easy replacement of parts that wear out a lot. With lean firmware that avoids unnecessary CPU cycles, these considerations allow the hardware to overcome planned obsolescence and provide reliable service for multiple years. 
  
 % ----------------------------- Results ----------------------------
 \chapter{RESULTS/OUTCOMES}
@@ -1623,17 +1581,16 @@ To extend the device's utility for a full day, MIKA utilizes a ``Wake-Word Stand
     \label{fig:stage2}
 \end{figure}
  
-
  
 \section{Quantitative Latency Analysis}
-This section proves that the bilingual Whisper and Qwen models are efficient enough for real-time use.
- 
+This section shows that the bilingual Whisper and Qwen models are sufficiently efficient to be used in real-time.
+
 \subsection{End-to-End Pipeline Throughput}
-Measurements indicate that the transition from a voice command in Urdu to the AI's verbal response takes approximately 1.2 to 1.8 seconds on mid-range hardware.
+Measurements show that the transition from a voice command in Urdu to the AI’s verbal response takes about 1.2 to 1.8 seconds on mid-range hardware.
  
 \subsection{Memory Footprint Monitoring}
-By implementing a Load-Execute-Purge cycle, we ensure that the application's RAM usage peaks only during active inference and returns to a baseline of \textasciitilde400 MB afterward.
- 
+Using a Load-Execute-Purge cycle we ensure that the application’s RAM usage peaks only during active inference and returns to a baseline of ˜400 MB afterwards.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{Figure 7.6.png} 
@@ -1643,11 +1600,11 @@ By implementing a Load-Execute-Purge cycle, we ensure that the application's RAM
  
 \section{OCR Accuracy on Challenging Surfaces}
 \subsection{Medicine Identification}
-Using Google ML Kit Text Recognition v2, the system successfully extracts medicine names from curved surfaces (bottles) with a high degree of accuracy.
+The system can extract medicine names from curved surfaces (bottles) with high accuracy using Google ML Kit Text Recognition v2.
  
 \subsection{Semantic Correction via Qwen 2.5}
-Often, OCR results are fragmented (e.g., ``Pan-dol'' instead of ``Panadol''). We feed this raw text into the Qwen 2.5 model, which performs semantic error correction to provide the user with the correct medication name.
- 
+OCR results are often broken (e.g. "Pan-dol" instead of "Panadol"). We feed this raw text into the Qwen 2.5 model, which does semantic error correction to provide the user with the correct medication name.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figure7.7.png}
@@ -1659,16 +1616,14 @@ Often, OCR results are fragmented (e.g., ``Pan-dol'' instead of ``Panadol''). We
 \chapter{CONCLUSION AND FUTURE WORK }
  
 \section{Conclusion}
-\noindent The research and development of \textbf{Mika} conclude that the integration of multimodal AI on edge devices is not only feasible but essential for the privacy and safety of the visually impaired community. This project successfully met its primary objectives by delivering a fully offline system capable of real-time visual perception and voice interaction. 
- 
+\noindent \textbf{Mika’s} R\&D finds that the addition of multimodal AI on edge devices is not only possible but critical to the safety and security of the visually impaired community. This project achieved its main goals by providing a fully offline, real-time capable visual perception and voice interaction.  
 \vspace{0.4cm}
  
-\noindent Key technical milestones achieved include the optimization of a \textbf{Two-Stage KWS} engine and the deployment of an \textbf{INT8-quantized YOLOv8-seg} model for precise currency identification. By engineering a custom \textit{Model Lifecycle Manager}, the system maintained a stable memory footprint, ensuring that high-level reasoning through the \textbf{Qwen 2.5 (0.5B) SLM} could coexist with vision tasks on mid-range hardware. 
- 
+\noindent Major technical achievements include the development of a \textbf{Two-Stage KWS} engine optimization and the deployment of an \textbf{INT8-quantized YOLOv8-seg} model for precise currency identification. Vision tasks on mid-range hardware. To enable high-level reasoning via the \textbf{Qwen 2.5 (0.5B) SLM} to co-exist with vision tasks on mid-range hardware, a custom Model Lifecycle Manager was engineered to keep a stable memory footprint.
+
 \vspace{0.4cm}
  
-\noindent In summary, \textbf{Mika} bridges the gap between sophisticated AI capabilities and the practical needs of users in low-connectivity environments. This work serves as a foundational model for future privacy-preserving assistive technologies, demonstrating that through strategic quantization and memory orchestration, the power of AI can be made truly personal, private, and portable.
- 
+\noindent  In short, \textbf{Mika} combines the power of cutting-edge AI with the practical needs of users in low connectivity environments. Our research lays the groundwork for future privacy-preserving assistive technologies by showing that AI’s power can be truly personal, private and portable via strategic quantization and memory orchestration.
 \vspace{0.2 cm}
  
 \section{Future Work}
@@ -1676,8 +1631,8 @@ Often, OCR results are fragmented (e.g., ``Pan-dol'' instead of ``Panadol''). We
  
     \subsection{Integration of Advanced OCR for Non-Planar Surfaces}
     \begin{enumerate}
-        \item \textbf{The Goal} The next phase will integrate an OCR model specifically optimized for non-planar and warped surfaces, such as medicine bottles or food packaging, where traditional vision pillars may struggle.
-        \item \textbf{Technical Approach} This involves using a lightweight, on-device text detection pipeline (e.g., \textit{PaddleOCR-Slim}) to extract text under complex environmental conditions, performed entirely locally to maintain privacy.
+        \item \textbf{The Goal} The next is OCR model that is able to recognize text on non-planar, and warped surfaces such as medicine bottles or food packaging where traditional vision pillars don’t work. 
+        \item \textbf{Technical Approach} We employ a light-weight on-device text detection pipeline (e.g. PaddleOCR-Slim) to detect texts in complex environmental conditions, which is fully local to protect the privacy.
     \end{enumerate}
  
     \subsection{Complete App Ecosystem and Production Rollout}
@@ -1702,28 +1657,30 @@ Often, OCR results are fragmented (e.g., ``Pan-dol'' instead of ``Panadol''). We
 While the current iteration of MIKA excels at identifying labels in the Latin script (English), a significant portion of the global visually impaired population---particularly in the Global South---interacts with pharmaceutical packaging printed in regional languages. Future development of MIKA aims to bridge this linguistic gap by incorporating multi-lingual OCR and translation capabilities.
  
 \subsubsection{The Challenge of Non-Latin Script Recognition}
-The transition to languages such as Urdu, Arabic, or Sindhi introduces unique computational challenges that differ from English OCR:
+Languages like Urdu, Arabic or Sindhi are not English and they are “computationally different” and have their own challenges. 
 \begin{itemize}
-    \item \textbf{Cursive Connectivity:} Unlike the discrete characters of the Latin alphabet, scripts like Urdu are \textit{Nasta'liq} or \textit{Naskh} based, where characters change shape depending on their position (initial, medial, or final) and are physically connected.
+    \item \textbf{Cursive Connectivity:} Unlike the discrete characters of the Latin alphabet, scripts such as Urdu are based on \textit{Nasta'liq or Naskh} where characters change shape depending on their position (initial, medial or final) and are physically connected. Right-to-Left (RTL) Logic The MIKA vision pipeline must be reconfigured to parse text bounding boxes from right to left, reversing the normal horizontal scanning sequence. d.
     \item \textbf{Right-to-Left (RTL) Logic:} The MIKA vision pipeline must be reconfigured to parse text bounding boxes from right to left, requiring a reversal of the standard horizontal scanning sequence.
-    \item \textbf{Diacritics and Accents:} Small markings (Aerabs) are essential for meaning in regional languages but are often filtered out as ``noise'' by standard quantization processes.
+    \item \textbf{Diacritics and Accents:}  Small marks (Aerabs) are important for meaning in regional languages, but are usually filtered out as “noise” by standard quantization processes.
 \end{itemize}
  
 \subsubsection{Integration of Google ML Kit Multi-lingual V2}
-To support this expansion, the next phase of MIKA will leverage the \textit{ML Kit Text Recognition V2 (Hindi/Devanagari and Arabic bundles)}. 
-\paragraph{Language-Specific Model Bundles} By implementing a ``Dynamic Language Downloader,'' MIKA can download the specific script pack (e.g., Arabic/Urdu) only when the user selects that region. This keeps the initial app size small, preserving the 4 GB RAM overhead discussed in Chapter 6.
+The next phase of MIKA will be using the ML Kit Text Recognition V2 (Hindi/Devanagari and Arabic bundles) for this growth.
+\paragraph{Language-Specific Model Bundles} Packages MIKA can use a “Dynamic Language Down loader” to download the specific script pack (e.g. Arabic/Urdu) at the time only when the user selects that region. This keeps the initial app size small, and preserves the 4 GB RAM overhead discussed in Chapter 6.
  
 \subsubsection{Real-time Translation and Transliteration}
-The ultimate goal of this module is not just recognition, but \textit{interpretation}.
+The goal of this module is to move beyond recognition to \textit{interpretation}.
+
 \paragraph{The Qwen-Translation Pipeline}
-Once the regional script is recognized, the text is passed to the on-device \textbf{Qwen 2.5-0.5B} model. The SLM can perform two vital tasks:
+After the regional script is identified, the text is fed to the on-device Qwen 2.5-0.5B model. The SLM can do two important things: 
+
 \begin{enumerate}
     \item \textbf{Translation:} Converting Urdu dosage instructions  into English for medical records.
     \item \textbf{Transliteration:} Converting the complex script into a phonetic representation that the TTS engine can pronounce accurately for the user.
 \end{enumerate}
  
 \subsubsection{Social and Clinical Impact}
-In rural healthcare settings where pharmacists may provide hand-written or locally printed instructions in regional languages, this feature would transform MIKA from a simple scanner into a universal medical translator. This expansion ensures that the MIKA toolkit remains inclusive and accessible to the diverse linguistic landscape of Pakistan and beyond.
+The feature would make MIKA a universal medical translator, particularly in the rural health care where instructions may be given in handwritten or locally printed form in regional languages. “This expansion will help ensure that the MIKA toolkit remains inclusive and accessible to the diverse linguistic landscape of Pakistan and beyond.”
  
 % ----------------------------- References ----------------------------
 \chapter*{REFERENCES}
@@ -1799,12 +1756,11 @@ In rural healthcare settings where pharmacists may provide hand-written or local
 \thispagestyle{logoheader}
 
 \section{Introduction}
-The objective of this experimental phase was to adapt the OpenAI Whisper-Base model to recognize ``Code-Switched'' speech (Urdu-English) using Parameter-Efficient Fine-Tuning (PEFT). This phase specifically targeted the ``Acoustic Translation'' gap where standard models often fail to interpret regional phonetic nuances.
-
+This experimental phase aims to fine-tune the OpenAI Whisper-Base model to recognize “Code-Switched” speech (Urdu-English) through Parameter-Efficient Fine-Tuning (PEFT). This phase focused on bridging the “Acoustic Translation” gap where standard models frequently fall short in understanding regional phonetic nuances. 
 \section{Experimental Methodology}
-Unlike standard full fine-tuning, this experiment utilized \textbf{LoRA (Low-Rank Adaptation)} to update only a fraction of the model parameters. This approach preserves the base model's generalized knowledge while specializing in Urdu phonetics.
+Rather than the standard full fine-tuning, this experiment used \textbf{LoRA (Low-Rank Adaptation)} to update only a small fraction of the model parameters. This way the generalized knowledge of the base model is preserved and it is specialized in Urdu phonetics.
 \begin{itemize}
-    \item \textbf{Quantization:} 8-bit NormalFloat (NF4) via \texttt{bitsandbytes} to optimize VRAM usage on the T4 GPU.
+    \item \textbf{Quantization:} 8 bit NormalFloat (NF4) using \textit{bitsandbytes} for T4 GPU VRAM optimization.
     \item \textbf{LoRA Configuration:} Rank ($r=8$), Alpha ($\alpha=16$), targeting the Query ($q$) and Value ($v$) projections.
     \item \textbf{Optimization:} AdamW optimizer with a learning rate of $1e-4$ and a cosine learning rate scheduler.
 \end{itemize}
@@ -1816,7 +1772,7 @@ The following figures represent the quantitative outcomes of the LoRA-based fine
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{trainloss.png}
-    \caption{Training Loss Convergence: Illustrates the optimization over 3 epochs, reaching a final loss of approximately 0.58.}
+    \caption{Training Loss Convergence: 3 epochs, final loss around 0.58.}
     \label{fig:loss_curve}
 \end{figure}
 
@@ -1824,7 +1780,7 @@ The following figures represent the quantitative outcomes of the LoRA-based fine
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{perEpoch.png}
-    \caption{Word Error Rate (WER) Trend: Tracks the improvement in transcription accuracy as the model adapts to Urdu phonemes.}
+    \caption{Word Error Rate (WER) Trend: Follows the increasing trend of transcription accuracy with the learning of Urdu phonemes by the model.}
     \label{fig:wer_trend}
 \end{figure}
 
@@ -1832,12 +1788,15 @@ The following figures represent the quantitative outcomes of the LoRA-based fine
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{before&after.png}
-    \caption{Comparative WER Analysis: Bar chart highlighting the reduction in Urdu transcription error rates compared to the baseline.}
+    \caption{Comparative WER Analysis: Bar graph showing the reduction in Urdu transcription error rates against the baseline.}
     \label{fig:before_after}
 \end{figure}
 
 \section{Technical Challenges: The Translation Trade-off}
-As documented in Table \ref{tab:whisper_comp}, while transcription accuracy improved, the \textbf{Urdu-to-English Translation} (Acoustic Translation) deteriorated. This suggests the LoRA adapter over-specialized in transcription at the cost of semantic mapping.
+The transcription accuracy improved and the \textbf{Urdu-to-English Translation} (Acoustic Translation) dropped, as shown in Table \ref{tab:whisper_comp}. This suggests that the LoRA adapter was over-specialized in transcription, losing the semantic mapping.
+
+
+
 
 \begin{table}[H]
 \centering
@@ -1854,14 +1813,15 @@ WER - Urdu-to-EN (Translate) & 52.1\% & 64.4\% (Degraded) \\
 \end{table}
 
 \section{Final Decision}
-Despite transcription gains, the translation deterioration posed a risk for medical dosage safety. Consequently, the production MIKA app utilizes the pre-trained Whisper-Base for translation, reserving the LoRA adapter for future transcription-only modules.
+Transcription improved but translation declined, endangering the safety of medical dosages. Thus, the MIKA app production uses the pre-trained Whisper-Base for translation and keeps the LoRA adapter for future transcription-only modules.
+
 % --- APPENDIX B ---
 \chapter{Two-Stage KWS Engine and OS Constraints}
 \label{appendix:kws}
 \thispagestyle{logoheader}
 
 \section{The ``Hey Mika'' Architecture}
-The Keyword Spotting (KWS) system was designed as a two-stage gatekeeper:
+The Keyword Spotting (KWS) system was implemented as a two-stage gate-keeper:
 \begin{enumerate}
     \item \textbf{Stage 1:} A low-complexity energy threshold detector.
     \item \textbf{Stage 2:} A Gated Recurrent Unit (GRU) neural network processing MFCC features.
