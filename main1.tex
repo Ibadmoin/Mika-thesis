@@ -1095,22 +1095,20 @@ MIKA uses Regular Expressions (Regex) to scan the OCR output for critical patter
 \end{algorithm}
  
 \section{Phase IV: Currency Dataset Engineering and Segmentation}
-The currency identification system focuses on seven denominations of the PKR: 10, 20, 50, 100, 500, 1000, and 5000. To ensure the assistant can accurately count overlapping notes, the system utilizes Instance Segmentation rather than standard object detection.
+The currency identification system is aimed at seven denominations of PKR: 10, 20, 50, 100, 500, 1000, and 5000. The system uses Instance Segmentation instead of standard object detection to allow the assistant to accurately count overlapping notes.
  
 \subsection{Dataset Acquisition and Consolidation}
-A comprehensive local dataset of \textbf{3,611 images} was curated to capture the high variance in currency appearance, including physical wear, different lighting conditions, and various background textures.
- 
+A local dataset consisting of \textbf{3,611 images} was collected to account for high variance of currency appearance, for example, physical wear, different lighting conditions, and different background textures.
 \begin{itemize}
-    \item[1.] \textbf{Structural Organization} The raw data was organized into a hierarchical folder structure, separating the \textbf{Front} and \textbf{Back} views of each of the seven denominations to ensure the model learns bilateral features.
-    \item[2.] \textbf{Data Merging} These individual repositories were merged into a single unified dataset within the \textbf{Roboflow} environment, facilitating a streamlined training pipeline and robustness against real-world orientation changes.
+    \item[1.] \textbf{Structural Organization} The raw data was structured in a hierarchical folder structure, dividing the \textbf{Front} and \textbf{Back} views of each of the seven denominations so that the model could learn bilateral features.
+    \item[2.] \textbf{Data Merging} In the \textbf{Roboflow} environment we combined the individual repositories into a single, unified dataset that enabled a streamlined training pipeline and robustness to real-world orientation changes.
 \end{itemize}
  
 \subsection{AI-Accelerated Annotation via SAM 3}
-To overcome the bottleneck of manual polygon annotation, which typically requires defining hundreds of points per note, the project employs \textbf{SAM 3 (Segment Anything Model 3)} within the Roboflow Annotate ecosystem.
- 
+To address the bottleneck of manual polygon annotation that typically requires hundreds of points per note, the project utilizes \textbf{SAM 3 (Segment Anything Model 3)} within the Roboflow Annotate ecosystem.
 \begin{itemize}
-    \item[1.] \textbf{Process} SAM 3 acts as a zero-shot foundational segmenter. By providing a single point-click or a bounding box prompt, the model automatically predicts a high-fidelity mask around the currency note, as illustrated in Figure \ref{fig:roboflow_process}.
-    \item[2.] \textbf{Efficiency} This semi-automated approach reduced total annotation time by approximately \textbf{90\%}, allowing for the generation of 3,611 high-precision instance masks. These masks are critical for the final counting logic, enabling the model to distinguish between individual notes in stacked or partially obscured scenarios.
+    \item[1.] \textbf{Process} SAM 3 is a zero-shot foundational segmenter. The model automatically predicts a high fidelity mask around the currency note with a single point click or a bounding box prompt as shown in Figure  \ref{fig:roboflow_process}.
+    \item[2.] \textbf{Efficiency} This semi-automated approach reduced total annotation time by approximately \textbf{90\%}, resulting in 3,611 high-precision instance masks. These masks are important for the final counting logic, allowing the model to differentiate between individual notes in stacked or partially obscured situations.
 \end{itemize}
  
 \hypertarget{fig:4.5}{}
@@ -1161,23 +1159,22 @@ Deployment & Flutter with NPU/GPU Delegation \\
  
 \section{The Multimodal Intent Router}
 \subsection{Sequential Model Lifecycle (Load-Execute-Purge)}
-To operate on mobile devices with a 4 GB RAM ceiling, MIKA employs a ``Deterministic Memory Management'' strategy known as the Load-Execute-Purge cycle. Standard mobile architectures often fail when multiple heavy AI models (Whisper, Qwen, and YOLO) compete for the same heap space, leading to ``Out of Memory'' (OOM) crashes.
+MIKA runs on mobile devices with 4 GB RAM ceiling using a deterministic memory management strategy named Load-Execute-Purge cycle. Standard mobile architectures often struggle to handle multiple heavy AI models (Whisper, Qwen and YOLO) competing for the same heap space and crash with "Out of Memory" (OOM) errors.
  
 \begin{itemize}
-    \item[1.] \textbf{Sequential Loading:} The MIKA Orchestrator ensures that only one high-memory model is active at any given time.
+    \item[1.] \textbf{Sequential Loading:} The MIKA Orchestrator makes sure that only one high memory model is active at a time.
  
-    \item[2.] \textbf{Execution \& Interleaving:} When the Wake-Word engine (Stage 1) triggers, the system loads Whisper for STT; once the text is generated, Whisper is purged from RAM before Qwen 2.5 is initialized for intent analysis.
+    \item[2.] \textbf{Execution \& Interleaving:} When the Wake-Word engine (Stage 1) wakes up, the system loads Whisper for STT and once the text is generated, Whisper is purged from RAM before Qwen 2.5 is initialized for intent analysis.
  
-    \item[3.] \textbf{Manual Garbage Collection:} The system uses Dart's isolate management and native C++ free() commands via Foreign Function Interface (FFI) to explicitly clear model buffers, ensuring that the total memory footprint remains below 900 MB during peak operation.
+    \item[3.] \textbf{Manual Garbage Collection:}  The system uses Dart's isolate management and native C++ free() commands through Foreign Function Interface (FFI) for explicit clearing of model buffers to keep total memory footprint at 900MB at peak operation.
 \end{itemize}
  
 \subsection{Intent Classification with Qwen 2.5}
 The system utilizes the Qwen 2.5-0.5B SLM as a semantic router to interpret user needs.
  
 \begin{itemize}
-    \item[1.] \textbf{Contextual Understanding:} Unlike simple keyword matching, Qwen analyzes the user's natural language to determine the required vision module. For example, if a user says, ``Tell me what's in my hand,'' Qwen identifies the ``Object Detection'' intent.
- 
-    \item[2.] \textbf{Module Triggering:} If the user asks, ``How much money is this?'' or ``What is the name of this syrup?'', Qwen outputs a specific token that the Dart layer uses to trigger either the Currency Segmentation module or the Medicine OCR module.
+    \item[1.] \textbf{Contextual Understanding:} Unlike simple keyword matching, Qwen analyzes the user’s natural language to determine the required vision module. For example, if a user says, “Tell me what’s in my hand,” Qwen identifies the “Object Detection”
+    \item[2.] \textbf{Module Triggering:}  If the user asks, “How much money is this?” or “What is the name of this syrup?”, Qwen outputs a specific token that the Dart layer uses to trigger either the Currency Segmentation module or the Medicine OCR module intent.
  
     \item[3.] \textbf{Routing Logic:} This routing happens entirely offline, preserving privacy and eliminating latency associated with cloud-based intent APIs.
 \end{itemize}
@@ -1343,90 +1340,82 @@ We manually instantiate the \textbf{TfLiteGpuDelegateV2}. This will ensure that 
  
 \section{Memory Management Strategies}
  
-The MIKA toolkit operates in a hardware-constrained environment where the total available RAM is often limited to 4 GB. In modern mobile development, this is a critical bottleneck, as the Android Operating System and background services consume nearly 2.0 GB to 2.5 GB, leaving a narrow margin for the MIKA application. Running high-density models like \textbf{Qwen 2.5 (0.5B)} alongside \textbf{YOLOv8-seg} requires a surgical approach to memory management. To prevent the system from terminating the process due to memory pressure, MIKA utilizes a three-tiered strategy: Memory-Mapped Loading, the Load-Execute-Purge pattern, and Garbage Collection (GC) optimization.
+The MIKA toolkit is designed to work in a hardware-constrained environment where the total available RAM is often limited to 4 GB. This is a serious bottleneck in modern mobile development. The Android Operating System and background services take up close to 2.0 GB to 2.5 GB leaving a narrow margin for the MIKA application. A surgical approach to memory management is required in order to run high-density models such as \textbf{Qwen 2.5 (0.5B)} and \textbf{YOLOv8-seg} together. To avoid the system killing the process for memory pressure, MIKA uses a three-stage method: Memory-Mapped Loading, Load-Execute-Purge pattern and Garbage Collection (GC) optimization
  
 \paragraph{1. Memory-Mapped (mmap) Model Loading}
-To avoid the standard ``Heap Overflow'' that occurs when loading large AI models, MIKA utilizes \textbf{Memory Mapping (mmap)}. Instead of reading the entire \texttt{.tflite} or \texttt{.gguf} model into the application's active RAM, the file is mapped directly from the disk into the virtual address space using the \texttt{MappedByteBuffer} class in the Android Native layer. 
- 
-\noindent This approach allows the Operating System to manage the memory pages dynamically. Only the specific layers of the neural network currently being computed are swapped into physical RAM. Mathematically, this reduces the initial memory footprint of a 300 MB model to a near-zero initial heap allocation, ensuring that the camera buffer remains stable.
+To avoid the common “Heap Overflow” when loading large AI models, MIKA uses \textbf{Memory Mapping (mmap)}. The file is directly mapped on the disk into the virtual address space by using the MappedByteBuffer class in the Android Native layer.  
+\noindent Instead of loading the entire .tflite or .gguf model into the application active RAM. This way the Operating system can manage the memory pages dynamically. The only layers of the neural network that are being computed are swapped into physical RAM. This reduces the initial memory footprint of a 300 MB model to near zero initial heap allocation, mathematically, and stabilizes the camera buffer.
  
 \paragraph{2. The ``Load-Execute-Purge'' (LEP) Lifecycle}
-Since MIKA is a multi-modular toolkit (Currency, Medicine, General Objects), it is physically impossible to keep all AI models active in RAM simultaneously. We implemented a custom \textbf{Load-Execute-Purge (LEP)} lifecycle managed by the Intent Router. 
+Since MIKA is a multi-modular toolkit (Currency, Medicine, General Objects), it is physically impossible to keep all AI models active in RAM at the same time. We built a custom \textbf{Load-Execute-Purge (LEP)} lifecycle driven by the Intent Router. 
 \begin{itemize}
-    \item \textbf{Load:} When the Qwen 2.5 module identifies a ``Medicine'' intent, the system triggers the asynchronous loading of the OCR and segmentation weights.
-    \item \textbf{Execute:} The inference is performed in a background Isolate, keeping the UI Isolate lean.
-    \item \textbf{Purge:} Immediately after the audio feedback is delivered to the user, the system invokes the \texttt{interpreter.close()} and \texttt{delegate.dispose()} methods. By explicitly nullifying these references, we signal to the system that the memory is ready to be reclaimed.
+    \item \textbf{Load:} When Qwen 2.5 identifies a “Medicine” intent, the system triggers the asynchronous loading of the OCR and segmentation weights.
+    \item \textbf{Execute:} Inference is performed in a background Isolate to keep the UI Isolate light weight.
+    \item \textbf{Purge:}  The system calls the interpreter right after the audio feedback is provided to the \textbf{interpreter.close()} and \textbf{delegate.dispose()} methods. By explicitly nullifying these references tells the system that the memory can be reclaimed.
 \end{itemize}
  
 \paragraph{3. Garbage Collection (GC) Pressure Mitigation}
-In Flutter, excessive object creation (such as temporary image buffers for every camera frame) can trigger frequent and aggressive GC cycles, leading to visible ``jank.'' MIKA minimizes this by utilizing \textbf{Object Pooling} for the byte buffers used in image processing. 
+Too many object creations (such as temporary image buffers for every camera frame) can cause the GC to run regularly and aggressively, leading to visible “jank.” In Flutter, MIKA addresses this via \textbf{Object Pooling} of byte buffers used in image processing.  
+\noindent We re-use a pre-allocated Uint8List buffer instead of allocating a new array every frame. We also successfully split the work of the garbage collector with \textbf{Dart Isolates}. Each Isolate has its own private heap. That means that a GC cycle in the “Inference Isolate” (where the heavy math happens) doesn’t freeze the “UI Isolate.” In this way, the visually impaired user receives smooth and uninterrupted guidance even if the background system is doing a deep cleanup of temporary tensors. 
  
-\noindent Instead of allocating a new array for every frame, we reuse a pre-allocated \texttt{Uint8List} buffer. Furthermore, by using \textbf{Dart Isolates}, we effectively split the garbage collector's workload. Since each Isolate has its own private heap, a GC cycle in the ``Inference Isolate'' (where the heavy math happens) does not stop the ``UI Isolate.'' This ensures that the visually impaired user receives smooth, uninterrupted guidance, even when the background system is performing a deep cleanup of temporary tensors. 
- 
-\noindent Through these strategies, MIKA achieves a stable operational state, maintaining a consistent memory overhead of approximately \textbf{450 MB to 600 MB}, even during complex multimodal reasoning tasks, ensuring long-term stability without app crashes.
+\noindent  With these strategies, MIKA achieves a stable operational state with a stable memory overhead of \textbf{450MB to 600MB} even for complex multimodal reasoning tasks. It does not crash for long-term stability.
  
 \subsection{Solving the 4 GB RAM Crash: Load-Execute-Purge}
  
-The most significant technical hurdle in deploying a multimodal system on a 4 GB RAM device is the ``Concurrency Crash.'' When the Android OS detects that an application's memory footprint is approaching the system limit, it triggers the LMK to terminate the process. To prevent this, MIKA implements a custom \textbf{LEP} protocol. This state-machine logic ensures that at any given microsecond, only the bare minimum set of neural weights required for the current user-intent is resident in the active RAM.
+The biggest technical challenge to deploy a multimodal system on a 4GB RAM device is the “Concurrency Crash.” When the LMK gets a notification from the Android OS that the memory footprint of an application is near the system limit, it kills the process. To avoid this, MIKA uses a tailored \textbf{LEP} protocol. This state-machine logic guarantees that at any given microsecond only the absolute minimum set of neural weights required for the current user-intent is resident in the active RAM.
+
  
 \paragraph{1. Intent-Driven Loading}
-The LEP protocol begins at the \textbf{Intent Routing} layer. MIKA does not initialize all models (YOLOv8, Qwen 2.5, and OCR) upon application startup. Instead, it maintains the system in a ``Listen-Only'' state. Only when the user provides a specific command---such as ``Mika, what is this note?''---does the orchestrator trigger the loading phase. 
+The LEP protocol starts at the \textbf{Intent Routing} layer. MIKA does not initialize all models (YOLOv8, Qwen 2.5, OCR) when the application starts. Instead, it puts the system in “Listen-Only” state. The orchestrator will not call the loading phase until the user issues a command such as "Mika what is this note?".
+
 \begin{itemize}
     \item \textbf{Dynamic Allocation:} The system uses the TFLite \texttt{Interpreter.Options} to allocate memory buffers only when the \texttt{allocateTensors()} method is called.
     \item \textbf{Prioritization:} If the user is in ``Currency Mode,'' the system explicitly blocks the loading of the heavier medicine-unwarping modules, saving approximately 150 MB of heap space.
 \end{itemize}
  
 \paragraph{2. Isolated Execution}
-Once the required model is loaded, the \textbf{Execute} phase is handed off to a dedicated background Isolate. This is critical for memory stability. By isolating the execution, we ensure that the high-frequency memory allocations performed during tensor manipulation do not fragment the Main Isolate's heap. Mathematically, this separation allows the Operating System to treat the AI inference as a distinct memory block, which can be prioritized for hardware acceleration (via the GPU delegate) without affecting the UI's frame buffer.
- 
+Once the required model is loaded, the \textbf{Execute} phase is delegated to a dedicated background Isolate. This is essential for memory stability. The isolated execution guarantees that the high frequency memory allocations done during the tensor operations do not fragment the heap of the Main Isolate. In theory, this separation enables the Operating System to view the AI inference as a separate memory block that can be prioritized for hardware acceleration (via the GPU delegate) without impacting the UI’s frame buffer.
 \paragraph{3. The Purge: Explicit Memory Reclamation}
-The most vital stage for preventing a crash is the \textbf{Purge}. In standard high-level languages, developers rely on the GC to clean up memory. However, on a 4 GB RAM device, the GC is often too slow to react, leading to an OOM error before the memory is freed. 
- 
+ \textbf{Purge} — the most important step in crash avoidance. The GC is expected to clean up memory in normal high level languages. However, on a device with 4 GB RAM, the GC is often too slow to react and an OOM error occurs before the memory is released.
 MIKA bypasses this by implementing \textbf{Deterministic Disposal}:
 \begin{itemize}
-    \item \textbf{Interpreter Disposal:} Immediately after the TTS engine begins announcing the result, the system calls \texttt{interpreter.close()}. This forces the immediate release of the native memory handles associated with the model weights.
-    \item \textbf{Buffer Clearing:} All intermediate \texttt{Uint8List} image buffers are explicitly nullified and set for collection. 
+    \item \textbf{Interpreter Disposal:} As soon as the TTS engine starts to speak out the result, the system calls \textbf{interpreter.close()}. This results in immediate deallocation of the native memory handles associated with the model weights.
+    \item \textbf{Buffer Clearing:} All intermediate \textbf{Uint8List} image buffers are explicitly nullified and set for collection. 
 \end{itemize}
  
 \paragraph{4. Performance Impact}
-Through the implementation of the LEP protocol, MIKA successfully navigates the hardware wall. Benchmarks during our testing phase showed that without LEP, the application crashed within 45 seconds of multimodal switching. With LEP enabled, the application maintains a stable memory ceiling of \textbf{580 MB}, allowing for hours of continuous use without a single OOM event. This protocol effectively transforms a limited mid-range smartphone into a high-performance AI workstation, proving that architectural cleverness can overcome physical hardware limitations.
- 
+With the implementation of the LEP protocol, MIKA successfully overcomes the hardware wall. Our testing phase benchmarks showed that without LEP, the application crashed within 45 seconds of multimodal switching. With LEP enabled, the application maintains a steady memory ceiling of \textbf{580 MB} allowing for hours of continuous use without a single OOM event. This protocol essentially transforms a modest mid-range smartphone into a high-performance AI workstation, demonstrating that architectural ingenuity can overcome the constraints of physical hardware.
 \subsection{Garbage Collection in Flutter AI Workloads}
  
-In the MIKA architecture, managing the lifecycle of short-lived objects is as critical as managing the large AI models themselves. Flutter's memory management relies on a generational GC consisting of a \textit{Young Space} for new objects and an \textit{Old Space} for persistent data. However, the high-frequency nature of AI vision tasks---where MIKA processes up to 30 camera frames per second---creates an immense volume of temporary objects, such as image buffers, tensor results, and string fragments from OCR. If not managed carefully, this leads to ``GC Pressure,'' resulting in dropped frames and a degraded user experience.
- 
+Managing the lifecycle of short-lived objects is as important in the MIKA architecture as managing the large AI models themselves. Flutter’s memory management is based on a generational GC that has a Young Space for new objects and an Old Space for persistent data. However, the high frequency nature of AI vision tasks, in which MIKA processes up to 30 camera frames per second, generates an immense volume of temporary objects, such as image buffers, tensor results, and string fragments from OCR. If not handled carefully, this results in “GC Pressure” which leads to dropped frames and a sub-par user experience. 
 \paragraph{1. The Challenge of ``Object Churn'' in Vision Tasks}
-Each frame captured by the MIKA camera module generates a raw byte array. In a standard implementation, converting this array into the format required by the YOLOv8-seg model creates multiple temporary copies in the heap. This phenomenon, known as ``Object Churn,'' forces the Young Space GC to trigger frequently. Mathematically, if the GC pause exceeds the 16.6 ms frame budget required for 60 FPS, the user perceives a stutter. For a visually impaired user relying on smooth audio-spatial feedback, these stutters can lead to disorientation or missed detection windows.
- 
+The MIKA camera module generates a raw byte array for each frame. In a typical implementation, this array is converted to the format required by the YOLOv8-seg model, which creates multiple temporary copies in the heap. This phenomenon, which we call “Object Churn”, causes the Young Space GC to be triggered often. If the GC pause exceeds the 16.6 ms frame budget needed for 60 FPS, the user will experience a stutter. For a visually impaired user relying on accurate audio-spatial feedback, such stutterings cause disorientation or missed detection windows. 
 \paragraph{2. Generational GC and Isolate Separation}
-MIKA leverages Dart's Isolate-specific memory heaps to solve the GC bottleneck. Because each Isolate (Main, Inference, and Audio) has its own private GC, we achieve a high degree of \textbf{GC Parallelism}:
+MIKA circumvents the GC bottleneck by exploiting Dart’s Isolate-specific memory heaps. Because each Isolate (Main, Inference and Audio) has its own private GC we achieve a high degree of \textbf{GC Parallelism}:
 \begin{itemize}
-    \item \textbf{UI Stability:} The Main Isolate's GC remains lightweight because it only handles UI widgets and audio triggers.
-    \item \textbf{Isolated Heavy-Lifting:} The intense object creation associated with Qwen 2.5 and YOLOv8 inference is confined to the Inference Isolate. When this Isolate performs a GC cycle, it does not block the Main Isolate's event loop, ensuring the camera preview remains fluid and the UI responsive.
+    \item \textbf{UI Stability:} The Main Isolate’s GC remains lightweight because it only handles UI widgets and audio triggers.
+    \item \textbf{Isolated Heavy-Lifting:} The costly object creation for Qwen 2.5 and YOLOv8 inference is confined to the Inference Isolate. When this Isolate runs a GC cycle, it does not block the Main Isolate’s event loop so the camera preview remains smooth and the UI remains responsive.
 \end{itemize}
  
 \paragraph{3. Memory Leak Prevention and Finalizers}
-To maintain the 4 GB RAM ceiling, MIKA implements explicit cleanup strategies to assist the GC. We utilize \textbf{Dart Finalizers} and the \texttt{close()} methods of the TFLite interpreter to ensure that native memory---which exists outside the Dart heap---is reclaimed immediately. Furthermore, we utilize \textbf{Object Pooling} for the largest buffers. Instead of allocating a new \texttt{Uint8List} for every camera frame, MIKA reuses a fixed set of buffers. This transition from an allocation-heavy model to a reuse model reduces Young Space GC triggers by approximately 70\% during active scanning.
- 
+MIKA uses explicit cleanup strategies to help the GC stay under the 4 GB RAM ceiling. We use Dart Finalizers and the TFLite interpreter close() methods to immediately reclaim native memory which lives outside the Dart heap. For the largest buffers we are using Object Pooling too. MIKA reuses a fixed number of buffers rather than creating a new Uint8List for each camera frame. This change reduces Young Space GC triggers during active scanning by about 70% from the allocation-heavy model to the reuse model. 
 \paragraph{4. The Result: Deterministic Performance}
-By optimizing the interaction between AI workloads and the Flutter GC, the MIKA toolkit achieves a deterministic performance profile. Our testing showed that by reducing GC pressure, we lowered the average frame-time variability from $\pm 12$ ms to $\pm 2$ ms. This stability is the key to MIKA's reliability; it ensures that the ``Intelligence'' of the system never compromises the ``Fluidity'' of the user experience, allowing the AI to function as a seamless, real-time extension of the user's vision.
- 
+The MIKA toolkit achieves deterministic performance by optimizing the interaction between AI workloads and the Flutter GC. Our tests showed that reducing GC pressure allowed us to reduce average frame-time variability from ±12 ms to ±2 ms. This stability is the key to MIKA’s reliability, ensuring that the “Intelligence” of the system never undermines the “Fluidity” of the user experience, allowing the AI to operate as a seamless, real-time extension of the user’s vision.
 \section{Latency \& Throughput Analysis}
 \subsection{CPU vs. GPU Object Detection Benchmarks}
  
-To validate the efficiency of the MIKA toolkit's vision module, a series of rigorous benchmarks were conducted to compare the inference latency of the \textbf{YOLOv8-seg} model across different hardware delegates. Given the 4 GB RAM constraints of the target device, the objective was to determine the optimal balance between detection speed and system stability. The results underscore the necessity of GPU acceleration for real-time assistive technology.
- 
+To assess the efficiency of the vision module of the MIKA toolkit, a set of rigorous benchmarks were carried out to compare the inference latency of the \textbf{YOLOv8-seg} model across different hardware delegates. Considering the 4 GB RAM limitation of the target device, the goal was to find a compromise between the detection speed and system stability. The results highlight the significance of GPU acceleration in assistive technology for real-time applications
 \paragraph{1. Methodology and Test Environment}
-The benchmarks were performed on an Android device equipped with 4 GB of RAM and a mid-range octa-core processor. The tests focused on the \textbf{PKR-3611} currency dataset and medicine label recognition. Three primary execution modes were analyzed:
+The benchmarks were executed on an Android device with 4GB RAM and a mid-range octa-core CPU. The tests were carried out on the \textbf{PKR-3611} currency and medicine label recognition dataset. We analyzed three main execution modes:
+
 \begin{itemize}
-    \item \textbf{CPU (Floating-point):} Standard execution using all available CPU cores.
-    \item \textbf{CPU (XNNPACK):} Optimized CPU execution using TFLite's specialized library for accelerated math.
-    \item \textbf{GPU (OpenCL/Vulkan):} Hardware-accelerated execution utilizing the GPU delegate with FP16 precision.
+    \item \textbf{CPU (Floating-point):} Full execution with all available cores of CPU.
+    \item \textbf{CPU (XNNPACK):} Accelerated math with TFLite’s specialized library for optimized CPU execution.
+    \item \textbf{GPU (OpenCL/Vulkan):} GPU delegate with FP16 precision for hardware accelerated execution.
 \end{itemize}
  
 \paragraph{2. Inference Latency Comparison}
-The primary metric for this benchmark is \textbf{Inference Latency} (measured in milliseconds), representing the time taken for a single frame to pass through the neural network and produce a segmentation mask.
- 
+The main metric for this benchmark is \textbf{Inference Latency} (in milliseconds), the time to run a single frame through the neural network and retrieve a segmentation mask.
 \begin{table}[h!]
 \centering
 \caption{YOLOv8-seg Inference Latency on 4 GB RAM Hardware}
@@ -1439,28 +1428,32 @@ CPU (XNNPACK) & 285 ms & 3.5 & Moderate \\ \hline
 \end{tabular}
 \end{table}
  
-As illustrated in the data, the standard CPU inference was insufficient for real-time use, with a latency of 420 ms causing a noticeable ``slideshow'' effect in the camera preview. The transition to the \textbf{GPU Delegate} resulted in a \textbf{77\% reduction in latency}. At 95 ms per frame, MIKA achieves a throughput of approximately 10.5 FPS, which is the threshold required for the user to perceive ``live'' guidance while moving the camera.
+The data shows that the default CPU inference was too slow to be used in real time, with a 420 ms latency making the camera preview feel like a “slideshow”. The change to the \textbf{GPU Delegate} led to a \textbf{77\% reduction in latency.}. MIKA's throughput is approximately 10.5 FPS at 95 ms per frame, which is the threshold at which the user perceives “live” guidance when moving the camera.
+
+
+
  
 \paragraph{3. Thermal Throttling and Long-term Stability}
-Beyond raw speed, the benchmarks revealed a critical delta in power efficiency. During the CPU-only tests, the device temperature rose by 8°C within five minutes of continuous use, triggering the OS to throttle the clock speed and further increasing latency to over 600 ms. Conversely, the GPU delegate maintained a stable temperature profile. This is mathematically attributed to the GPU's ability to handle parallel matrix multiplications with significantly lower clock cycles than the CPU. 
- 
+
+But beyond the raw speed, the benchmarks revealed a critical delta in power efficiency. In the CPU-only tests, the temperature of the device rose 8°C in five minutes of continuous use, causing the OS to throttle the clock speed and increase latency further to over 600 ms. The GPU delegate, by contrast, kept a stable temperature profile. This is mathematically ascribed to the GPU’s ability to perform parallel matrix multiplications with significantly lower clock cycles than the CPU.
+
 \paragraph{4. Conclusion for MIKA Operations}
-The benchmarking results confirm that for a multimodal assistant, the CPU is best reserved for the ``Orchestrator'' tasks---such as managing the Dart Isolates and the Qwen 2.5 logic---while the vision tasks must be offloaded to the GPU. This hardware-aware design is what allows MIKA to remain responsive during complex tasks like identifying crumpled currency or reading medicine labels in low-light conditions, ensuring that the technology is reliable for daily use by the visually impaired.
- 
+The benchmarking results confirm that for a multimodal assistant the CPU is best reserved for the “Orchestrator” tasks (e.g. managing the Dart Isolates and the Qwen 2.5 logic), while the vision tasks must be offloaded to the GPU. This hardware-aware design ensures that MIKA remains responsive when performing complex tasks such as identifying crumpled currency or reading medicine labels in low-light conditions, assuring that the technology is reliable for daily use by the visually impaired.
+
 \subsection{Impact of Image Resolution on OCR Character Error Rate (CER)}
  
-In the development of the MIKA toolkit, a critical trade-off exists between the resolution of the input image and the accuracy of the OCR module. While higher resolutions provide more pixel-level detail for small characters on medicine labels, they also exponentially increase the memory footprint and processing latency. To determine the optimal configuration for a 4 GB RAM environment, we conducted a sensitivity analysis measuring the \textbf{CER} across varying input dimensions.
+A significant trade-off in the development of the MIKA toolkit is the resolution of the input image and the accuracy of the OCR module. Higher resolutions provide more pixel-level detail for small characters on medicine labels, but also exponentially increase the memory footprint and processing latency. We performed a sensitivity analysis of the \textbf{CER} for different input dimensions to determine the best configuration for a 4 GB RAM environment.
  
 \paragraph{1. Metric Definition: Character Error Rate}
-The CER is a standard metric used to evaluate the performance of an OCR system. It is calculated based on the Levenshtein distance, which measures the minimum number of character-level operations (insertions, deletions, or substitutions) required to transform the OCR output into the ground truth text. The formula is expressed as:
+CER is a popular metric used to evaluate the performance of an OCR system. It is computed according to the Levenshtein distance, where the number of character-level operations (i.e., insertions, deletions or substitutions) needed to convert the OCR output into the ground truth text is minimized.
+The formula is given by:
 \begin{equation}
 CER = \frac{S + I + D}{N}
 \end{equation}
 Where $S$ is the number of substitutions, $I$ is the number of insertions, $D$ is the number of deletions, and $N$ is the total number of characters in the ground truth.
  
 \paragraph{2. Experimental Results}
-The evaluation was conducted using a subset of the medicine recognition module, focusing on 5-point and 8-point font sizes commonly found on pharmaceutical packaging. The image resolution was scaled from $320$p to $1080$p (Full HD).
- 
+The evaluation was performed on a subset of the medicine recognition module using 5-point and 8-point font sizes, which are common on pharmaceutical packaging. The image resolution was scaled up from $320$p to $1080$p (Full HD). 
 \begin{table}[h!]
 \centering
 \caption{Impact of Resolution on CER and Memory Stability}
@@ -1476,10 +1469,9 @@ The evaluation was conducted using a subset of the medicine recognition module, 
  
 \paragraph{3. The ``Accuracy vs. Hardware'' Optimization}
 The data reveals a ``Diminishing Returns'' curve. Transitioning from $480$p to $720$p resulted in a significant \textbf{74.5\% improvement in accuracy}, which is the difference between a user reading ``Paracetamol'' correctly versus receiving a garbled string. However, the jump from $720$p to $1080$p yielded only a marginal 0.3\% improvement in CER while more than doubling the processing time and pushing the RAM usage to a critical threshold (92\% utilization).
- 
+The data shows a curve of “Diminishing Returns.” When we moved from 480p to 720p the accuracy jumped by a stunning \textbf{74.5\%}, which is the difference between the user getting the string “Paracetamol” correct or getting a garbled string. However, the transition from 720p to 1080p showed a slight improvement of 0.3% in CER but more than doubled the processing time and increased the RAM usage to a critical level (92% utilization) .
 \paragraph{4. Implementing Adaptive Scaling}
-Based on these findings, MIKA implements an \textbf{Adaptive Resolution Scaler}. For general object detection, the system operates at $480$p to conserve battery and minimize latency. However, when the Qwen 2.5 reasoning layer detects a ``Medicine Label'' intent, the system dynamically scales the camera capture to $720$p for a single high-resolution burst. This ``Context-Aware Resolution'' strategy allows MIKA to maintain the high accuracy required for medical safety while staying within the hardware limitations of a mid-range smartphone, ensuring that character misidentification is minimized without compromising system stability.
- 
+Based on these findings MIKA implements an \textbf{Adaptive Resolution Scaler}. For general object detection, the system runs at 480p to save on battery and reduce latency. But when the Qwen 2.5 reasoning layer identifies a “Medicine Label” intent, the system dynamically scales the camera capture to 720p for a single high-resolution capture burst. This “Context-Aware Resolution” strategy allows MIKA to reach the high level of accuracy required for medical safety while still being within the hardware constraints of a mid-range smartphone, hence reducing character misidentification while maintaining system stability.
 \section{Thermal \& Battery Consumption Profiles}
  
 The jump from theoretical AI models to a fieldable toolkit like MIKA calls for a rigorous assessment of the physical impact on the host hardware. On-device inference, specifically the parallel functioning of the camera Image Signal Processor (ISP), GPU/NPUdelegates, and the TTS speaker results in a high-energy demand that shows up as heat and fast battery depletion.
@@ -1774,12 +1766,11 @@ The feature would make MIKA a universal medical translator, particularly in the 
 \thispagestyle{logoheader}
 
 \section{Introduction}
-The objective of this experimental phase was to adapt the OpenAI Whisper-Base model to recognize ``Code-Switched'' speech (Urdu-English) using Parameter-Efficient Fine-Tuning (PEFT). This phase specifically targeted the ``Acoustic Translation'' gap where standard models often fail to interpret regional phonetic nuances.
-
+This experimental phase aims to fine-tune the OpenAI Whisper-Base model to recognize “Code-Switched” speech (Urdu-English) through Parameter-Efficient Fine-Tuning (PEFT). This phase focused on bridging the “Acoustic Translation” gap where standard models frequently fall short in understanding regional phonetic nuances. 
 \section{Experimental Methodology}
-Unlike standard full fine-tuning, this experiment utilized \textbf{LoRA (Low-Rank Adaptation)} to update only a fraction of the model parameters. This approach preserves the base model's generalized knowledge while specializing in Urdu phonetics.
+Rather than the standard full fine-tuning, this experiment used \textbf{LoRA (Low-Rank Adaptation)} to update only a small fraction of the model parameters. This way the generalized knowledge of the base model is preserved and it is specialized in Urdu phonetics.
 \begin{itemize}
-    \item \textbf{Quantization:} 8-bit NormalFloat (NF4) via \texttt{bitsandbytes} to optimize VRAM usage on the T4 GPU.
+    \item \textbf{Quantization:} 8 bit NormalFloat (NF4) using \textit{bitsandbytes} for T4 GPU VRAM optimization.
     \item \textbf{LoRA Configuration:} Rank ($r=8$), Alpha ($\alpha=16$), targeting the Query ($q$) and Value ($v$) projections.
     \item \textbf{Optimization:} AdamW optimizer with a learning rate of $1e-4$ and a cosine learning rate scheduler.
 \end{itemize}
@@ -1791,7 +1782,7 @@ The following figures represent the quantitative outcomes of the LoRA-based fine
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{trainloss.png}
-    \caption{Training Loss Convergence: Illustrates the optimization over 3 epochs, reaching a final loss of approximately 0.58.}
+    \caption{Training Loss Convergence: 3 epochs, final loss around 0.58.}
     \label{fig:loss_curve}
 \end{figure}
 
@@ -1799,7 +1790,7 @@ The following figures represent the quantitative outcomes of the LoRA-based fine
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{perEpoch.png}
-    \caption{Word Error Rate (WER) Trend: Tracks the improvement in transcription accuracy as the model adapts to Urdu phonemes.}
+    \caption{Word Error Rate (WER) Trend: Follows the increasing trend of transcription accuracy with the learning of Urdu phonemes by the model.}
     \label{fig:wer_trend}
 \end{figure}
 
@@ -1807,12 +1798,15 @@ The following figures represent the quantitative outcomes of the LoRA-based fine
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{before&after.png}
-    \caption{Comparative WER Analysis: Bar chart highlighting the reduction in Urdu transcription error rates compared to the baseline.}
+    \caption{Comparative WER Analysis: Bar graph showing the reduction in Urdu transcription error rates against the baseline.}
     \label{fig:before_after}
 \end{figure}
 
 \section{Technical Challenges: The Translation Trade-off}
-As documented in Table \ref{tab:whisper_comp}, while transcription accuracy improved, the \textbf{Urdu-to-English Translation} (Acoustic Translation) deteriorated. This suggests the LoRA adapter over-specialized in transcription at the cost of semantic mapping.
+The transcription accuracy improved and the \textbf{Urdu-to-English Translation} (Acoustic Translation) dropped, as shown in Table \ref{tab:whisper_comp}. This suggests that the LoRA adapter was over-specialized in transcription, losing the semantic mapping.
+
+
+
 
 \begin{table}[H]
 \centering
@@ -1829,14 +1823,15 @@ WER - Urdu-to-EN (Translate) & 52.1\% & 64.4\% (Degraded) \\
 \end{table}
 
 \section{Final Decision}
-Despite transcription gains, the translation deterioration posed a risk for medical dosage safety. Consequently, the production MIKA app utilizes the pre-trained Whisper-Base for translation, reserving the LoRA adapter for future transcription-only modules.
+Transcription improved but translation declined, endangering the safety of medical dosages. Thus, the MIKA app production uses the pre-trained Whisper-Base for translation and keeps the LoRA adapter for future transcription-only modules.
+
 % --- APPENDIX B ---
 \chapter{Two-Stage KWS Engine and OS Constraints}
 \label{appendix:kws}
 \thispagestyle{logoheader}
 
 \section{The ``Hey Mika'' Architecture}
-The Keyword Spotting (KWS) system was designed as a two-stage gatekeeper:
+The Keyword Spotting (KWS) system was implemented as a two-stage gate-keeper:
 \begin{enumerate}
     \item \textbf{Stage 1:} A low-complexity energy threshold detector.
     \item \textbf{Stage 2:} A Gated Recurrent Unit (GRU) neural network processing MFCC features.
