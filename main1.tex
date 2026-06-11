@@ -29,6 +29,7 @@
 \graphicspath{{./}}
 \DeclareGraphicsExtensions{.png,.jpg,.jpeg,.pdf}
 \usepackage{tabularx}
+\usepackage{xltabular}
 \usepackage{hyperref}
 \usepackage{booktabs}
 \usepackage{subcaption}
@@ -582,27 +583,63 @@ Likewise, SeeAround Framework also suggested offline support with heavy architec
 \noindent Also discussed were the problems of recognition of objects using algorithm SSD MobileNet V2[[3]]. [[3]] One main limitation identified is the existence of “Localization Errors” for occluded or folded objects, since the system is based on traditional bounding boxes.
 Mika resolves this by switching to YOLOv8-seg (Instance Segmentation) and masking the exact pixel-shape of the currency to ensure it can be reliably recognised. Visually Project (2024) reported the issue of “Concurrency Latency”, where concurrent model execution crashed devices with 4 GB RAM [[[4]]]. Mika does this with a custom Model Lifecycle Manager and TinyML Wake-Word engine that enables 100Finally, navigation guidance has been attempted in Flutter-based solutions such as Basira application, but with high latency due to inefficient Python/Flask bridges [[5]]. Mika overcomes these limitations by using native C++ memory pointers and optimised TFLite.
 
-\begin{table}[h!]
-    \centering
-
-    \label{tab:lit_review_gaps}
-    \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{2.5cm}|X|X|X|}
-        \hline
-        \rowcolor{gray!20}
-        \textbf{Reference} & \textbf{Methodology} & \textbf{Identified Gap} & \textbf{Mika's Solution} \\ \hline
+{\small
+\begin{xltabular}{\textwidth}{|>{\raggedright\arraybackslash}p{2.2cm}|>{\raggedright\arraybackslash}p{3.2cm}|X|X|}
+    \caption{Comprehensive Technical Comparative Analysis of Related Work, Architectural Gaps, and Mika's Contributions}
+    \label{tab:comprehensive_lit_review_gaps} \\
+    \hline
+    \rowcolor{gray!20}
+    \textbf{Reference} & \textbf{Core Methodology} & \textbf{Identified Compute \& Algorithmic Gap} & \textbf{Mika’s Engineering Solution} \\ \hline
+    \endfirsthead
+    
+    \multicolumn{4}{c}%
+    {{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+    \hline
+    \rowcolor{gray!20}
+    \textbf{Reference} & \textbf{Core Methodology} & \textbf{Identified Compute \& Algorithmic Gap} & \textbf{Mika’s Engineering Solution} \\ \hline
+    \endhead
+    
+    \hline \multicolumn{4}{|r|}{{Continued on next page}} \\ \hline
+    \endfoot
+    
+    \endlastfoot
         
-        \textbf{Chypak \& Morozov (2023)} & User-centered Android app using camera capture and OCR for text-to-speech. & \textbf{Dictionary Constraint:} Lacked contextual filtering; read all text without prioritizing critical data. & \textbf{SLM Integration:} Uses Qwen 0.5B to filter noise via intent-driven prompts for summaries. \\ \hline
+        \textbf{Chypak \& Morozov (2023)} & 
+        User-centered Android application using basic camera frame capture and legacy Tesseract OCR engines for sequential Text-to-Speech (TTS). & 
+        \textbf{Dictionary Constraint \& Spatial Clutter:} Lacked semantic and contextual text filtering. Legacies parsed raw string dumps sequentially, reading out irrelevant background noise, margins, and layout artifacts without prioritizing high-value user metadata. & 
+        \textbf{SLM-Driven Intent Filtering:} Integrates an on-device Qwen 2.5 (0.5B) model acting as a semantic parser. Raw OCR outputs are processed using intent-driven prompt boundaries, distilling unstructured text dumps into actionable summary briefs. \\ \hline
         
-        \textbf{SeeAround Framework (2022)} & Offline solution using heavy CNNs (Inception-V3, ResNet) for image captioning. & \textbf{Hardware Strain:} High parameter counts caused thermal throttling and battery drain on mobile. & \textbf{Modular Experts:} Replaces heavy CNNs with YOLOv8n (6.1 MB) for a 10x size reduction. \\ \hline
+        \textbf{SeeAround Framework (2022)} & 
+        Fully offline mobile application utilizing heavy, dense convolutional neural networks (Inception-V3, ResNet) to accomplish comprehensive image captioning. & 
+        \textbf{Hardware \& Execution Strain:} Extreme floating-point parameters (FP32 precision) triggered rapid memory saturation, sustained thermal throttling, and aggressive battery degradation on standard mid-range mobile SoC architectures. & 
+        \textbf{Quantized Edge-Experts Strategy:} Deploys a highly compact YOLOv8n-seg model optimized down to a 6.1\,MB footprint. Replaces broad global captioning with targeted instance lookups, cutting parameter overhead by over 90\%. \\ \hline
         
-        \textbf{Nasir et al. (2021)} & Offline recognition system for currency/clothing using SSD MobileNet V2. & \textbf{Localization Errors:} Struggled with small or occluded objects like folded banknotes. & \textbf{Instance Segmentation:} Uses YOLOv8-seg to mask exact pixel-shapes for higher accuracy. \\ \hline
+        \textbf{Nasir et al. (2021)} & 
+        Offline multi-class recognition system designed specifically for paper currency validation and garment matching using SSD MobileNet V2. & 
+        \textbf{Localization \& Occlusion Failures:} Rectangular bounding boxes failed during overlapping, folded, crumpled, or highly occluded banknote conditions. Background noise inside the box boundary induced high false-positive rates. & 
+        \textbf{Pixel-Perfect Instance Segmentation:} Implements a custom fine-tuned YOLOv8-seg architecture (trained on the PKR-3611 dataset). Generates polygon pixel-masks to mathematically isolate overlapping bills by geometric boundaries. \\ \hline
         
-        \textbf{The ``Visually'' Project (2024)} & Combined facial recognition and currency ID using TFLite for offline use. & \textbf{Concurrency Latency:} Simultaneous models caused crashes on 4 GB RAM; lacked hands-free mode. & \textbf{Intent-Based Routing:} Sequential model loading via a custom Lifecycle Manager and KWS. \\ \hline
+        \textbf{The ``Visually'' Project (2024)} & 
+        Multi-model suite grouping facial recognition, asset tracking, and currency verification using separate TFLite interpreters running offline. & 
+        \textbf{Concurrency Crashes \& UI Blocking:} Lacked an active scheduling broker. Running multiple distinct inference interpreters concurrently caused instantaneous Out-of-Memory (OOM) faults on 4\,GB RAM systems; lacked hand-free capabilities. & 
+        \textbf{The MIKA Brain Orchestrator:} Introduces a strict state machine utilizing a \textit{Load-Execute-Purge} lifecycle manager. Models are dynamically swapped out of RAM based on speech intents triggered hands-free via a GRU-based Keyword Spotting engine. \\ \hline
         
-        \textbf{The ``Basira'' App (2024)} & Flutter-based app for obstacle detection using voice commands. & \textbf{Bridge Latency:} Inefficient Python/Flask bridges resulted in poor real-time FPS. & \textbf{Native Optimization:} Uses TFLite C++ memory pointers for a stable 15--20 FPS. \\ \hline
-    \end{tabularx}
-    \caption{Comparative Analysis of Related Work and Research Gaps}
-\end{table}
+        \textbf{The ``Basira'' App (2024)} & 
+        Cross-platform Flutter app designed for environmental navigation via network-wrapped local microservices or embedded Python environments. & 
+        \textbf{Bridge \& Serialization Latency:} Inefficient cross-runtime abstractions (e.g., calling Python processes via Android shells or local loopback HTTP sockets) dropped video pipelines to an unuseable 2--4 FPS. & 
+        \textbf{Low-Level C++ FFI Bindings:} Bypasses standard serialization pipelines. Utilizes native Dart Foreign Function Interface (FFI) to pass raw memory pointers directly into the Whisper.cpp and TFLite execution buffers, locking a stable 15--20 FPS. \\ \hline
+        
+        \textbf{Lee \& Park (2025)} & 
+        Embedded system executing text scanning on production packages, relying on linear horizontal scanline geometry. & 
+        \textbf{Geometric Non-Planar Distortion:} Suffered complete text recognition collapse when processing curved surfaces. Cylinder wrapping on pharmaceutical packaging caused text compression and characters to skew past OCR dictionary bounds. & 
+        \textbf{Non-Planar Text Recognition v2:} Integrates Google ML Kit Text Recognition v2 featuring adaptive perspective mapping. Raw distorted strings are structurally stabilized and then resolved contextually by the Qwen LLM translation pipeline. \\ \hline
+        
+        \textbf{Khan (2026)} & 
+        Bilingual assistance application attempting custom fine-tuning routines on large end-to-end multi-task speech models. & 
+        \textbf{Catastrophic Forgetting \& Accents:} Fine-tuning efforts for localized code-switched phrases (Urdu-English mixes) caused model convergence to break, degrading baseline transcription accuracy for standard accents. & 
+        \textbf{Two-Stage Acoustic Cascade:} Employs a highly efficient pre-trained Whisper-Tiny baseline for generalized acoustics, offloading the linguistic code-switching correction, text normalization, and parsing to the on-device language engine. \\ \hline
+    \end{xltabular}
+}
  
  
 \section{Theoretical Framework}
@@ -1622,9 +1659,7 @@ The feature would make MIKA a universal medical translator, particularly in the 
 % ----------------------------- References ----------------------------
 % Restore logo header for References and pages after Chapter 8
 \clearpage
-\newgeometry{top=6.6cm, bottom=2.5cm, left=3.5cm, right=2.5cm, headheight=100pt, headsep=2cm}
-\pagestyle{logoheader}
-\thispagestyle{logoheader}
+
 
 \chapter*{REFERENCES}
 \addcontentsline{toc}{chapter}{REFERENCES}
@@ -1646,8 +1681,6 @@ The feature would make MIKA a universal medical translator, particularly in the 
     \item Ahmed, G.J., Khorsheed, F.H. and Zaidan, F.K. (2025) 'Designing an Assistive Tool for Visually Impaired People Based on Object Detection Technique', \textit{JOINCS (Journal of Informatics, Network, and Computer Science)}, 8(2).
  
     \item Naayini, P., Myakala, P.K., Bura, C., Jonnalagadda, A.K. and Kamatala, S. (2025) 'AI-Powered Assistive Technologies for Visual Impairment', \textit{arXiv preprint arXiv:2503.15494}.
- 
-    \newpage
     
     \item Joshi, R.C., Yadav, S., Dutta, M.K. and Travieso-Gonzalez, C.M. (2020) 'Efficient Multi-Object Detection and Smart Navigation Using Artificial Intelligence for Visually Impaired People', \textit{Entropy}, 22(9), p. 941.
  
@@ -1683,20 +1716,23 @@ The feature would make MIKA a universal medical translator, particularly in the 
  
     \item Mehmood, K. and Ahmed, Z. (2026) 'EdgeAI in Pakistan: Developing Localized Datasets for Visually Impaired Assistance Systems', \textit{Mehran University Research Journal of Engineering and Technology}, 45(2).
  
-    \newpage
- 
     \item Smith, D. (2025) 'Small Language Models (SLMs) as Orchestrators: A New Paradigm for Multimodal Mobile Agents', \textit{Nature Machine Intelligence}, 7(5), pp. 312--325.
 \end{enumerate}
+
 
 % --- APPENDIX A ---
 % ---------------------------------------------------------
 % APPENDICES
 % ---------------------------------------------------------
+\newgeometry{top=6.6cm, bottom=2.5cm, left=3.5cm, right=2.5cm, headheight=100pt, headsep=2cm}
+
 \appendix % This command turns Chapters into Appendices (A, B, C...)
+
 % --- APPENDIX A ---
 \chapter{Experimental Bilingual Whisper Fine-Tuning}
-\label{appendix:whisper}
+\pagestyle{logoheader}
 \thispagestyle{logoheader}
+\label{appendix:whisper}
 
 \section{Introduction}
 This experimental phase aims to fine-tune the OpenAI Whisper-Base model to recognise “Code-Switched” speech (Urdu-English) using Parameter-Efficient Fine-Tuning (PEFT). The phase was dedicated to the gap of “Acoustic Translation”, which is often problematic for standard models to understand the phonetic nuances at the regional level. 
